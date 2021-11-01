@@ -1,0 +1,10 @@
+﻿  application.cpp
+F:\Cpp-projects\Vulkan\application.cpp(84,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
+  descriptors.cpp
+F:\Cpp-projects\Vulkan\descriptors.cpp(182,94): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  Generating code
+  3 of 4155 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    14 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Vulkan.vcxproj -> F:\Cpp-projects\Vulkan\x64\Release\VulkanTriangle.exe
