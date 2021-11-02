@@ -110,7 +110,7 @@ namespace exo {
 
 			float aspect = renderer.getAspectRatio();
 			// always be kept with aspect ration of window
-			camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 100.f); // last parameter - far plane - render distance
+			camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 1000.f); // last parameter - far plane - render distance
 
 			// todo
 			// begin offscreen shadow pass
@@ -152,17 +152,19 @@ namespace exo {
 
 		std::shared_ptr<ExoModel> flat_vase_model = ExoModel::createModelFromFile(device, "models/earth.obj");
 
-		for (int i = 1; i < 9; i++) {
-			auto flat_vase = ExoObject::createGameObject();
-			flat_vase.model = flat_vase_model;
-			flat_vase.transform.translation = { 0.f, i * 10.f, 0.f };
-			flat_vase.transform.scale = glm::vec3(1.f * i);
+		for (int i = 25; i > 1; i--) {
+			for (int u = 25; u > 1; u--) {
+				auto flat_vase = ExoObject::createGameObject();
+				flat_vase.model = flat_vase_model;
+				flat_vase.transform.translation = { u * 10.f, 0.f, i * 10.f }; // x - z - y
+				flat_vase.transform.scale = glm::vec3(1.f * i);
 
-			objects.push_back(std::move(flat_vase));
+				objects.push_back(std::move(flat_vase));
+			}
 		}
 
 
-		std::shared_ptr<ExoModel> utah_teapot_model = ExoModel::createModelFromFile(device, "models/teapot.obj");
+		/*std::shared_ptr<ExoModel> utah_teapot_model = ExoModel::createModelFromFile(device, "models/teapot.obj");
 
 		auto utah_teapot = ExoObject::createGameObject();
 		utah_teapot.model = utah_teapot_model;
@@ -170,7 +172,7 @@ namespace exo {
 		utah_teapot.transform.scale = glm::vec3(3.f);
 		utah_teapot.transform.rotation = {90, 0, 90};
 
-		objects.push_back(std::move(utah_teapot));
+		objects.push_back(std::move(utah_teapot));*/
 	}
 
 }

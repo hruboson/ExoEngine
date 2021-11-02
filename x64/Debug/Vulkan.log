@@ -1,5 +1,26 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Vulkan.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   application.cpp
 F:\Cpp-projects\Vulkan\application.cpp(88,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  keyboard_mouse_movement_controller.cpp
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(21,48): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(24,56): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(27,48): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(30,56): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
   Vulkan.vcxproj -> F:\Cpp-projects\Vulkan\x64\Debug\VulkanTriangle.exe

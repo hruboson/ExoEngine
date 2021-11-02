@@ -28,7 +28,7 @@ namespace exo {
         bool mouseButtonPressed;
 
         KeyMappings keys{};
-        float moveSpeed{ 3.f };
+        float moveSpeed{ 5.f };
         float lookSpeed{ 5.f }; 
 	};
 
