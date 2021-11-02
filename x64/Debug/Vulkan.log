@@ -1,42 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Vulkan.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   application.cpp
-F:\Cpp-projects\Vulkan\application.cpp(82,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
-  buffer.cpp
-  camera.cpp
-  descriptors.cpp
-F:\Cpp-projects\Vulkan\descriptors.cpp(188,94): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
-  device.cpp
-  keyboard_mouse_movement_controller.cpp
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(21,48): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(24,56): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(27,48): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(30,56): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  main.cpp
-  model.cpp
-  object.cpp
-  pipeline.cpp
-  primitive_model_system.cpp
-  renderer.cpp
-  simple_render_system.cpp
-  swapchain.cpp
-  window.cpp
-  Generating Code...
-F:\Cpp-projects\Vulkan\pipeline.cpp(53): warning C4715: 'exo::ExoPipeline::readFile': not all control paths return a value
+F:\Cpp-projects\Vulkan\application.cpp(88,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Vulkan.vcxproj -> F:\Cpp-projects\Vulkan\x64\Debug\VulkanTriangle.exe

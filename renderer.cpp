@@ -131,7 +131,7 @@ namespace exo {
 
 		// clear color is color where nothing is rendered (void)
 		std::array<VkClearValue, 2> clearValues{};
-		clearValues[0].color = { 0.145f, 0.145f, 0.149f, 1.0f }; // old ide background: { 0.156f, 0.164f, 0.211f, 1.0f };
+		clearValues[0].color = { 0.09f, 0.09f, 0.09f, 1.0f }; // old ide background: { 0.156f, 0.164f, 0.211f, 1.0f };
 		clearValues[1].depthStencil = { 1.0f, 0 };
 
 		renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());

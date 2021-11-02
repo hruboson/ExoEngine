@@ -33,7 +33,7 @@ namespace exo {
 		globalPool = ExoDescriptorPool::Builder(device)
 			.setMaxSets(ExoSwapChain::MAX_FRAMES_IN_FLIGHT)
 			.addPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, ExoSwapChain::MAX_FRAMES_IN_FLIGHT)
-			.addPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, ExoSwapChain::MAX_FRAMES_IN_FLIGHT)
+			//.addPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, ExoSwapChain::MAX_FRAMES_IN_FLIGHT)
 			.build();
 
 		loadObjects();
@@ -49,7 +49,7 @@ namespace exo {
 				sizeof(GlobalUbo),
 				1,
 				VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
-				VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT
+				VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT
 				);
 			uboBuffers[i]->map();
 		}
@@ -64,7 +64,7 @@ namespace exo {
 		globalUboBuffer.map(); // allocate UboBuffer
 
 		auto globalSetLayout = ExoDescriptorSetLayout::Builder(device)
-			.addBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_VERTEX_BIT) // bind to vertex shader
+			.addBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT) // bind to vertex shader
 			.build();
 		/*auto samplerSetLayout = ExoDescriptorSetLayout::Builder(device)
 			.addBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
