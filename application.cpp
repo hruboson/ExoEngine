@@ -25,7 +25,7 @@ namespace exo {
 	struct GlobalUbo {
 		// same as simple push constant data struct
 		alignas(16) glm::mat4 projectionView{ 1.f };
-		alignas(16) glm::vec3 lightDirection = glm::normalize(glm::vec3{ 1.f, -3.f, -1.f });
+		alignas(16) glm::vec3 lightDirection = glm::normalize(glm::vec3{ 3.f, 0.f, 3.f });
 		alignas(16) glm::vec3 pointLight;
 	} ubo;
 
@@ -110,7 +110,7 @@ namespace exo {
 
 			float aspect = renderer.getAspectRatio();
 			// always be kept with aspect ration of window
-			camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 1000.f); // last parameter - far plane - render distance
+			camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 5000.f); // last parameter - far plane - render distance
 
 			// todo
 			// begin offscreen shadow pass
@@ -150,18 +150,77 @@ namespace exo {
 
 		// 3D Objects
 
-		std::shared_ptr<ExoModel> flat_vase_model = ExoModel::createModelFromFile(device, "models/earth.obj");
+		std::shared_ptr<ExoModel> sphere_model = ExoModel::createModelFromFile(device, "models/earth.obj");
 
-		for (int i = 25; i > 1; i--) {
-			for (int u = 25; u > 1; u--) {
-				auto flat_vase = ExoObject::createGameObject();
-				flat_vase.model = flat_vase_model;
-				flat_vase.transform.translation = { u * 10.f, 0.f, i * 10.f }; // x - z - y
-				flat_vase.transform.scale = glm::vec3(1.f * i);
+		auto sun = ExoObject::createGameObject();
+		sun.model = sphere_model;
+		sun.transform.translation = { 200.f, 25.f, 200.f }; // x - z - y
+		sun.transform.scale = glm::vec3(109.f);
 
-				objects.push_back(std::move(flat_vase));
-			}
-		}
+		objects.push_back(std::move(sun));
+
+		auto mercury = ExoObject::createGameObject();
+		mercury.model = sphere_model;
+		mercury.transform.translation = { 100.f, 25.f, 100.f }; // x - z - y
+		mercury.transform.scale = glm::vec3(0.38f);
+
+		objects.push_back(std::move(mercury));
+
+		auto venus = ExoObject::createGameObject();
+		venus.model = sphere_model;
+		venus.transform.translation = { 50.f, 25.f, 50.f }; // x - z - y
+		venus.transform.scale = glm::vec3(0.94f);
+
+		objects.push_back(std::move(venus));
+
+		auto earth = ExoObject::createGameObject();
+		earth.model = sphere_model;
+		earth.transform.translation = {0.f, 25.f,0.f }; // x - z - y
+		earth.transform.scale = glm::vec3(1.f);
+
+		objects.push_back(std::move(earth));
+
+		auto moon = ExoObject::createGameObject();
+		moon.model = sphere_model;
+		moon.transform.translation = { 0.f, 25.f, 5.f }; // x - z - y
+		moon.transform.scale = glm::vec3(0.27f);
+
+		objects.push_back(std::move(moon));
+
+		auto mars = ExoObject::createGameObject();
+		mars.model = sphere_model;
+		mars.transform.translation = { -50.f, 25.f, -50.f }; // x - z - y
+		mars.transform.scale = glm::vec3(0.53f);
+
+		objects.push_back(std::move(mars));
+
+		auto jupiter = ExoObject::createGameObject();
+		jupiter.model = sphere_model;
+		jupiter.transform.translation = { -100.f, 25.f, -100.f }; // x - z - y
+		jupiter.transform.scale = glm::vec3(11.f);
+
+		objects.push_back(std::move(jupiter));
+
+		auto saturn = ExoObject::createGameObject();
+		saturn.model = sphere_model;
+		saturn.transform.translation = { -150.f, 25.f, -150.f }; // x - z - y
+		saturn.transform.scale = glm::vec3(9.14f);
+
+		objects.push_back(std::move(saturn));
+
+		auto uranus = ExoObject::createGameObject();
+		uranus.model = sphere_model;
+		uranus.transform.translation = { -200.f, 25.f, -200.f }; // x - z - y
+		uranus.transform.scale = glm::vec3(4.f);
+
+		objects.push_back(std::move(uranus));
+
+		auto neptune = ExoObject::createGameObject();
+		neptune.model = sphere_model;
+		neptune.transform.translation = { -250.f, 25.f, -250.f }; // x - z - y
+		neptune.transform.scale = glm::vec3(3.86f);
+
+		objects.push_back(std::move(neptune));
 
 
 		/*std::shared_ptr<ExoModel> utah_teapot_model = ExoModel::createModelFromFile(device, "models/teapot.obj");
