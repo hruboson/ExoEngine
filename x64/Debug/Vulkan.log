@@ -1,26 +1,437 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Vulkan.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  application.cpp
-F:\Cpp-projects\Vulkan\application.cpp(88,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
-  keyboard_mouse_movement_controller.cpp
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(21,48): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(24,56): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(27,48): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(30,56): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  Generating Code...
-  Vulkan.vcxproj -> F:\Cpp-projects\Vulkan\x64\Debug\VulkanTriangle.exe
+exo_gui.obj : error LNK2005: "public: __cdecl ImGuiIO::ImGuiIO(void)" (??0ImGuiIO@@QEAA@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: __cdecl ImGuiListClipper::ImGuiListClipper(void)" (??0ImGuiListClipper@@QEAA@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: __cdecl ImGuiStyle::ImGuiStyle(void)" (??0ImGuiStyle@@QEAA@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: __cdecl ImGuiTextFilter::ImGuiTextFilter(char const *)" (??0ImGuiTextFilter@@QEAA@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: __cdecl ImGuiWindow::ImGuiWindow(struct ImGuiContext *,char const *)" (??0ImGuiWindow@@QEAA@PEAUImGuiContext@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: __cdecl ImGuiListClipper::~ImGuiListClipper(void)" (??1ImGuiListClipper@@QEAA@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: __cdecl ImGuiWindow::~ImGuiWindow(void)" (??1ImGuiWindow@@QEAA@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiPayload const * __cdecl ImGui::AcceptDragDropPayload(char const *,int)" (?AcceptDragDropPayload@ImGui@@YAPEBUImGuiPayload@@PEBDH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ActivateItem(unsigned int)" (?ActivateItem@ImGui@@YAXI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::AddContextHook(struct ImGuiContext *,struct ImGuiContextHook const *)" (?AddContextHook@ImGui@@YAIPEAUImGuiContext@@PEBUImGuiContextHook@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiIO::AddFocusEvent(bool)" (?AddFocusEvent@ImGuiIO@@QEAAX_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiIO::AddInputCharacter(unsigned int)" (?AddInputCharacter@ImGuiIO@@QEAAXI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiIO::AddInputCharacterUTF16(unsigned short)" (?AddInputCharacterUTF16@ImGuiIO@@QEAAXG@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiIO::AddInputCharactersUTF8(char const *)" (?AddInputCharactersUTF8@ImGuiIO@@QEAAXPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::Begin(char const *,bool *,int)" (?Begin@ImGui@@YA_NPEBDPEA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiListClipper::Begin(int,float)" (?Begin@ImGuiListClipper@@QEAAXHM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginChild(unsigned int,struct ImVec2 const &,bool,int)" (?BeginChild@ImGui@@YA_NIAEBUImVec2@@_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginChild(char const *,struct ImVec2 const &,bool,int)" (?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginChildEx(char const *,unsigned int,struct ImVec2 const &,bool,int)" (?BeginChildEx@ImGui@@YA_NPEBDIAEBUImVec2@@_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginChildFrame(unsigned int,struct ImVec2 const &,int)" (?BeginChildFrame@ImGui@@YA_NIAEBUImVec2@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::BeginDisabled(bool)" (?BeginDisabled@ImGui@@YAX_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginDragDropSource(int)" (?BeginDragDropSource@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginDragDropTarget(void)" (?BeginDragDropTarget@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginDragDropTargetCustom(struct ImRect const &,unsigned int)" (?BeginDragDropTargetCustom@ImGui@@YA_NAEBUImRect@@I@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::BeginGroup(void)" (?BeginGroup@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginPopup(char const *,int)" (?BeginPopup@ImGui@@YA_NPEBDH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginPopupContextItem(char const *,int)" (?BeginPopupContextItem@ImGui@@YA_NPEBDH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginPopupContextVoid(char const *,int)" (?BeginPopupContextVoid@ImGui@@YA_NPEBDH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginPopupContextWindow(char const *,int)" (?BeginPopupContextWindow@ImGui@@YA_NPEBDH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginPopupEx(unsigned int,int)" (?BeginPopupEx@ImGui@@YA_NIH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::BeginPopupModal(char const *,bool *,int)" (?BeginPopupModal@ImGui@@YA_NPEBDPEA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::BeginTooltip(void)" (?BeginTooltip@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::BeginTooltipEx(int,int)" (?BeginTooltipEx@ImGui@@YAXHH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::BringWindowToDisplayBack(struct ImGuiWindow *)" (?BringWindowToDisplayBack@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::BringWindowToDisplayFront(struct ImGuiWindow *)" (?BringWindowToDisplayFront@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::BringWindowToFocusFront(struct ImGuiWindow *)" (?BringWindowToFocusFront@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiTextFilter::Build(void)" (?Build@ImGuiTextFilter@@QEAAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiStorage::BuildSortByKey(void)" (?BuildSortByKey@ImGuiStorage@@QEAAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::CalcItemSize(struct ImVec2,float,float)" (?CalcItemSize@ImGui@@YA?AUImVec2@@U2@MM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::CalcItemWidth(void)" (?CalcItemWidth@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::CalcListClipping(int,float,int *,int *)" (?CalcListClipping@ImGui@@YAXHMPEAH0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::CalcTextSize(char const *,char const *,bool,float)" (?CalcTextSize@ImGui@@YA?AUImVec2@@PEBD0_NM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImGui::CalcTypematicRepeatAmount(float,float,float,float)" (?CalcTypematicRepeatAmount@ImGui@@YAHMMMM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::CalcWindowNextAutoFitSize(struct ImGuiWindow *)" (?CalcWindowNextAutoFitSize@ImGui@@YA?AUImVec2@@PEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::CalcWrapWidthForPos(struct ImVec2 const &,float)" (?CalcWrapWidthForPos@ImGui@@YAMAEBUImVec2@@M@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::CallContextHooks(struct ImGuiContext *,enum ImGuiContextHookType)" (?CallContextHooks@ImGui@@YAXPEAUImGuiContext@@W4ImGuiContextHookType@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::CaptureKeyboardFromApp(bool)" (?CaptureKeyboardFromApp@ImGui@@YAX_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::CaptureMouseFromApp(bool)" (?CaptureMouseFromApp@ImGui@@YAX_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ClearActiveID(void)" (?ClearActiveID@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ClearDragDrop(void)" (?ClearDragDrop@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ClearIniSettings(void)" (?ClearIniSettings@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiIO::ClearInputCharacters(void)" (?ClearInputCharacters@ImGuiIO@@QEAAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiIO::ClearInputKeys(void)" (?ClearInputKeys@ImGuiIO@@QEAAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::CloseCurrentPopup(void)" (?CloseCurrentPopup@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ClosePopupToLevel(int,bool)" (?ClosePopupToLevel@ImGui@@YAXH_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ClosePopupsExceptModals(void)" (?ClosePopupsExceptModals@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ClosePopupsOverWindow(struct ImGuiWindow *,bool)" (?ClosePopupsOverWindow@ImGui@@YAXPEAUImGuiWindow@@_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::ColorConvertFloat4ToU32(struct ImVec4 const &)" (?ColorConvertFloat4ToU32@ImGui@@YAIAEBUImVec4@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ColorConvertHSVtoRGB(float,float,float,float &,float &,float &)" (?ColorConvertHSVtoRGB@ImGui@@YAXMMMAEAM00@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ColorConvertRGBtoHSV(float,float,float,float &,float &,float &)" (?ColorConvertRGBtoHSV@ImGui@@YAXMMMAEAM00@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec4 __cdecl ImGui::ColorConvertU32ToFloat4(unsigned int)" (?ColorConvertU32ToFloat4@ImGui@@YA?AUImVec4@@I@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiStackSizes::CompareWithCurrentState(void)" (?CompareWithCurrentState@ImGuiStackSizes@@QEAAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiContext * __cdecl ImGui::CreateContext(struct ImFontAtlas *)" (?CreateContext@ImGui@@YAPEAUImGuiContext@@PEAUImFontAtlas@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiWindowSettings * __cdecl ImGui::CreateNewWindowSettings(char const *)" (?CreateNewWindowSettings@ImGui@@YAPEAUImGuiWindowSettings@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::DebugCheckVersionAndDataLayout(char const *,unsigned __int64,unsigned __int64,unsigned __int64,unsigned __int64,unsigned __int64,unsigned __int64)" (?DebugCheckVersionAndDataLayout@ImGui@@YA_NPEBD_K11111@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugHookIdInfo(unsigned int,int,void const *,void const *)" (?DebugHookIdInfo@ImGui@@YAXIHPEBX0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeColumns(struct ImGuiOldColumns *)" (?DebugNodeColumns@ImGui@@YAXPEAUImGuiOldColumns@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeDrawCmdShowMeshAndBoundingBox(struct ImDrawList *,struct ImDrawList const *,struct ImDrawCmd const *,bool,bool)" (?DebugNodeDrawCmdShowMeshAndBoundingBox@ImGui@@YAXPEAUImDrawList@@PEBU2@PEBUImDrawCmd@@_N3@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeDrawList(struct ImGuiWindow *,struct ImDrawList const *,char const *)" (?DebugNodeDrawList@ImGui@@YAXPEAUImGuiWindow@@PEBUImDrawList@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeFont(struct ImFont *)" (?DebugNodeFont@ImGui@@YAXPEAUImFont@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeStorage(struct ImGuiStorage *,char const *)" (?DebugNodeStorage@ImGui@@YAXPEAUImGuiStorage@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeTabBar(struct ImGuiTabBar *,char const *)" (?DebugNodeTabBar@ImGui@@YAXPEAUImGuiTabBar@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeViewport(struct ImGuiViewportP *)" (?DebugNodeViewport@ImGui@@YAXPEAUImGuiViewportP@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeWindow(struct ImGuiWindow *,char const *)" (?DebugNodeWindow@ImGui@@YAXPEAUImGuiWindow@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeWindowSettings(struct ImGuiWindowSettings *)" (?DebugNodeWindowSettings@ImGui@@YAXPEAUImGuiWindowSettings@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugNodeWindowsList(struct ImVector<struct ImGuiWindow *> *,char const *)" (?DebugNodeWindowsList@ImGui@@YAXPEAU?$ImVector@PEAUImGuiWindow@@@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DebugRenderViewportThumbnail(struct ImDrawList *,struct ImGuiViewportP *,struct ImRect const &)" (?DebugRenderViewportThumbnail@ImGui@@YAXPEAUImDrawList@@PEAUImGuiViewportP@@AEBUImRect@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::DestroyContext(struct ImGuiContext *)" (?DestroyContext@ImGui@@YAXPEAUImGuiContext@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: bool __cdecl ImGuiTextFilter::Draw(char const *,float)" (?Draw@ImGuiTextFilter@@QEAA_NPEBDM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::End(void)" (?End@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiListClipper::End(void)" (?End@ImGuiListClipper@@QEAAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::EndChild(void)" (?EndChild@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::EndChildFrame(void)" (?EndChildFrame@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::EndDisabled(void)" (?EndDisabled@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::EndDragDropSource(void)" (?EndDragDropSource@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::EndDragDropTarget(void)" (?EndDragDropTarget@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::EndFrame(void)" (?EndFrame@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::EndGroup(void)" (?EndGroup@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::EndPopup(void)" (?EndPopup@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::EndTooltip(void)" (?EndTooltip@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ErrorCheckEndFrameRecover(void (__cdecl*)(void *,char const *,...),void *)" (?ErrorCheckEndFrameRecover@ImGui@@YAXP6AXPEAXPEBDZZ0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ErrorCheckEndWindowRecover(void (__cdecl*)(void *,char const *,...),void *)" (?ErrorCheckEndWindowRecover@ImGui@@YAXP6AXPEAXPEBDZZ0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::FindBestWindowPosForPopup(struct ImGuiWindow *)" (?FindBestWindowPosForPopup@ImGui@@YA?AUImVec2@@PEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::FindBestWindowPosForPopupEx(struct ImVec2 const &,struct ImVec2 const &,int *,struct ImRect const &,struct ImRect const &,enum ImGuiPopupPositionPolicy)" (?FindBestWindowPosForPopupEx@ImGui@@YA?AUImVec2@@AEBU2@0PEAHAEBUImRect@@2W4ImGuiPopupPositionPolicy@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiWindowSettings * __cdecl ImGui::FindOrCreateWindowSettings(char const *)" (?FindOrCreateWindowSettings@ImGui@@YAPEAUImGuiWindowSettings@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImGui::FindRenderedTextEnd(char const *,char const *)" (?FindRenderedTextEnd@ImGui@@YAPEBDPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiSettingsHandler * __cdecl ImGui::FindSettingsHandler(char const *)" (?FindSettingsHandler@ImGui@@YAPEAUImGuiSettingsHandler@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiWindow * __cdecl ImGui::FindWindowByID(unsigned int)" (?FindWindowByID@ImGui@@YAPEAUImGuiWindow@@I@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiWindow * __cdecl ImGui::FindWindowByName(char const *)" (?FindWindowByName@ImGui@@YAPEAUImGuiWindow@@PEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiWindowSettings * __cdecl ImGui::FindWindowSettings(unsigned int)" (?FindWindowSettings@ImGui@@YAPEAUImGuiWindowSettings@@I@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImDrawDataBuilder::FlattenIntoSingleLayer(void)" (?FlattenIntoSingleLayer@ImDrawDataBuilder@@QEAAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::FocusTopMostWindowUnderOne(struct ImGuiWindow *,struct ImGuiWindow *)" (?FocusTopMostWindowUnderOne@ImGui@@YAXPEAUImGuiWindow@@0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::FocusWindow(struct ImGuiWindow *)" (?FocusWindow@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::GcAwakeTransientWindowBuffers(struct ImGuiWindow *)" (?GcAwakeTransientWindowBuffers@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::GcCompactTransientMiscBuffers(void)" (?GcCompactTransientMiscBuffers@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::GcCompactTransientWindowBuffers(struct ImGuiWindow *)" (?GcCompactTransientWindowBuffers@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::GetAllocatorFunctions(void * (__cdecl**)(unsigned __int64,void *),void (__cdecl**)(void *,void *),void * *)" (?GetAllocatorFunctions@ImGui@@YAXPEAP6APEAX_KPEAX@ZPEAP6AX11@ZPEAPEAX@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImDrawList * __cdecl ImGui::GetBackgroundDrawList(struct ImGuiViewport *)" (?GetBackgroundDrawList@ImGui@@YAPEAUImDrawList@@PEAUImGuiViewport@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImDrawList * __cdecl ImGui::GetBackgroundDrawList(void)" (?GetBackgroundDrawList@ImGui@@YAPEAUImDrawList@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: bool __cdecl ImGuiStorage::GetBool(unsigned int,bool)const " (?GetBool@ImGuiStorage@@QEBA_NI_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: bool * __cdecl ImGuiStorage::GetBoolRef(unsigned int,bool)" (?GetBoolRef@ImGuiStorage@@QEAAPEA_NI_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImGui::GetClipboardText(void)" (?GetClipboardText@ImGui@@YAPEBDXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetColorU32(struct ImVec4 const &)" (?GetColorU32@ImGui@@YAIAEBUImVec4@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetColorU32(int,float)" (?GetColorU32@ImGui@@YAIHM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetColorU32(unsigned int)" (?GetColorU32@ImGui@@YAII@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetContentRegionAvail(void)" (?GetContentRegionAvail@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetContentRegionMax(void)" (?GetContentRegionMax@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetContentRegionMaxAbs(void)" (?GetContentRegionMaxAbs@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiContext * __cdecl ImGui::GetCurrentContext(void)" (?GetCurrentContext@ImGui@@YAPEAUImGuiContext@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetCursorPos(void)" (?GetCursorPos@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetCursorPosX(void)" (?GetCursorPosX@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetCursorPosY(void)" (?GetCursorPosY@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetCursorScreenPos(void)" (?GetCursorScreenPos@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetCursorStartPos(void)" (?GetCursorStartPos@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiPayload const * __cdecl ImGui::GetDragDropPayload(void)" (?GetDragDropPayload@ImGui@@YAPEBUImGuiPayload@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImDrawData * __cdecl ImGui::GetDrawData(void)" (?GetDrawData@ImGui@@YAPEAUImDrawData@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImDrawListSharedData * __cdecl ImGui::GetDrawListSharedData(void)" (?GetDrawListSharedData@ImGui@@YAPEAUImDrawListSharedData@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: float __cdecl ImGuiStorage::GetFloat(unsigned int,float)const " (?GetFloat@ImGuiStorage@@QEBAMIM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: float * __cdecl ImGuiStorage::GetFloatRef(unsigned int,float)" (?GetFloatRef@ImGuiStorage@@QEAAPEAMIM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImFont * __cdecl ImGui::GetFont(void)" (?GetFont@ImGui@@YAPEAUImFont@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetFontSize(void)" (?GetFontSize@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetFontTexUvWhitePixel(void)" (?GetFontTexUvWhitePixel@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImDrawList * __cdecl ImGui::GetForegroundDrawList(struct ImGuiViewport *)" (?GetForegroundDrawList@ImGui@@YAPEAUImDrawList@@PEAUImGuiViewport@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImDrawList * __cdecl ImGui::GetForegroundDrawList(void)" (?GetForegroundDrawList@ImGui@@YAPEAUImDrawList@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImGui::GetFrameCount(void)" (?GetFrameCount@ImGui@@YAHXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetFrameHeight(void)" (?GetFrameHeight@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetFrameHeightWithSpacing(void)" (?GetFrameHeightWithSpacing@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetHoveredID(void)" (?GetHoveredID@ImGui@@YAIXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetID(char const *,char const *)" (?GetID@ImGui@@YAIPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetID(char const *)" (?GetID@ImGui@@YAIPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetID(void const *)" (?GetID@ImGui@@YAIPEBX@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: unsigned int __cdecl ImGuiWindow::GetID(int)" (?GetID@ImGuiWindow@@QEAAIH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: unsigned int __cdecl ImGuiWindow::GetID(char const *,char const *)" (?GetID@ImGuiWindow@@QEAAIPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: unsigned int __cdecl ImGuiWindow::GetID(void const *)" (?GetID@ImGuiWindow@@QEAAIPEBX@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: unsigned int __cdecl ImGuiWindow::GetIDFromRectangle(struct ImRect const &)" (?GetIDFromRectangle@ImGuiWindow@@QEAAIAEBUImRect@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: unsigned int __cdecl ImGuiWindow::GetIDNoKeepAlive(int)" (?GetIDNoKeepAlive@ImGuiWindow@@QEAAIH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: unsigned int __cdecl ImGuiWindow::GetIDNoKeepAlive(char const *,char const *)" (?GetIDNoKeepAlive@ImGuiWindow@@QEAAIPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: unsigned int __cdecl ImGuiWindow::GetIDNoKeepAlive(void const *)" (?GetIDNoKeepAlive@ImGuiWindow@@QEAAIPEBX@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetIDWithSeed(char const *,char const *,unsigned int)" (?GetIDWithSeed@ImGui@@YAIPEBD0I@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiIO & __cdecl ImGui::GetIO(void)" (?GetIO@ImGui@@YAAEAUImGuiIO@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: int __cdecl ImGuiStorage::GetInt(unsigned int,int)const " (?GetInt@ImGuiStorage@@QEBAHIH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: int * __cdecl ImGuiStorage::GetIntRef(unsigned int,int)" (?GetIntRef@ImGuiStorage@@QEAAPEAHIH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetItemRectMax(void)" (?GetItemRectMax@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetItemRectMin(void)" (?GetItemRectMin@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetItemRectSize(void)" (?GetItemRectSize@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImGui::GetKeyIndex(int)" (?GetKeyIndex@ImGui@@YAHH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImGui::GetKeyPressedAmount(int,float,float)" (?GetKeyPressedAmount@ImGui@@YAHHMM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiViewport * __cdecl ImGui::GetMainViewport(void)" (?GetMainViewport@ImGui@@YAPEAUImGuiViewport@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImGui::GetMergedKeyModFlags(void)" (?GetMergedKeyModFlags@ImGui@@YAHXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImGui::GetMouseCursor(void)" (?GetMouseCursor@ImGui@@YAHXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetMouseDragDelta(int,float)" (?GetMouseDragDelta@ImGui@@YA?AUImVec2@@HM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetMousePos(void)" (?GetMousePos@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetMousePosOnOpeningCurrentPopup(void)" (?GetMousePosOnOpeningCurrentPopup@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetNavInputAmount2d(int,enum ImGuiInputReadMode,float,float)" (?GetNavInputAmount2d@ImGui@@YA?AUImVec2@@HW4ImGuiInputReadMode@@MM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetNavInputAmount(int,enum ImGuiInputReadMode)" (?GetNavInputAmount@ImGui@@YAMHW4ImGuiInputReadMode@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImRect __cdecl ImGui::GetPopupAllowedExtentRect(struct ImGuiWindow *)" (?GetPopupAllowedExtentRect@ImGui@@YA?AUImRect@@PEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetScrollMaxX(void)" (?GetScrollMaxX@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetScrollMaxY(void)" (?GetScrollMaxY@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetScrollX(void)" (?GetScrollX@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetScrollY(void)" (?GetScrollY@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiStorage * __cdecl ImGui::GetStateStorage(void)" (?GetStateStorage@ImGui@@YAPEAUImGuiStorage@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiStyle & __cdecl ImGui::GetStyle(void)" (?GetStyle@ImGui@@YAAEAUImGuiStyle@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImGui::GetStyleColorName(int)" (?GetStyleColorName@ImGui@@YAPEBDH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec4 const & __cdecl ImGui::GetStyleColorVec4(int)" (?GetStyleColorVec4@ImGui@@YAAEBUImVec4@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetTextLineHeight(void)" (?GetTextLineHeight@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetTextLineHeightWithSpacing(void)" (?GetTextLineHeightWithSpacing@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "double __cdecl ImGui::GetTime(void)" (?GetTime@ImGui@@YANXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiWindow * __cdecl ImGui::GetTopMostPopupModal(void)" (?GetTopMostPopupModal@ImGui@@YAPEAUImGuiWindow@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImGui::GetVersion(void)" (?GetVersion@ImGui@@YAPEBDXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void * __cdecl ImGuiStorage::GetVoidPtr(unsigned int)const " (?GetVoidPtr@ImGuiStorage@@QEBAPEAXI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void * * __cdecl ImGuiStorage::GetVoidPtrRef(unsigned int,void *)" (?GetVoidPtrRef@ImGuiStorage@@QEAAPEAPEAXIPEAX@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetWindowContentRegionMax(void)" (?GetWindowContentRegionMax@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetWindowContentRegionMin(void)" (?GetWindowContentRegionMin@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImDrawList * __cdecl ImGui::GetWindowDrawList(void)" (?GetWindowDrawList@ImGui@@YAPEAUImDrawList@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetWindowHeight(void)" (?GetWindowHeight@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetWindowPos(void)" (?GetWindowPos@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetWindowResizeBorderID(struct ImGuiWindow *,int)" (?GetWindowResizeBorderID@ImGui@@YAIPEAUImGuiWindow@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImGui::GetWindowResizeCornerID(struct ImGuiWindow *,int)" (?GetWindowResizeCornerID@ImGui@@YAIPEAUImGuiWindow@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::GetWindowSize(void)" (?GetWindowSize@ImGui@@YA?AUImVec2@@XZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "float __cdecl ImGui::GetWindowWidth(void)" (?GetWindowWidth@ImGui@@YAMXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImAlphaBlendColors(unsigned int,unsigned int)" (?ImAlphaBlendColors@@YAIII@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImBezierCubicClosestPoint(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,int)" (?ImBezierCubicClosestPoint@@YA?AUImVec2@@AEBU1@0000H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImBezierCubicClosestPointCasteljau(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,float)" (?ImBezierCubicClosestPointCasteljau@@YA?AUImVec2@@AEBU1@0000M@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImFileClose(struct _iobuf *)" (?ImFileClose@@YA_NPEAU_iobuf@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned __int64 __cdecl ImFileGetSize(struct _iobuf *)" (?ImFileGetSize@@YA_KPEAU_iobuf@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void * __cdecl ImFileLoadToMemory(char const *,char const *,unsigned __int64 *,int)" (?ImFileLoadToMemory@@YAPEAXPEBD0PEA_KH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct _iobuf * __cdecl ImFileOpen(char const *,char const *)" (?ImFileOpen@@YAPEAU_iobuf@@PEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned __int64 __cdecl ImFileRead(void *,unsigned __int64,unsigned __int64,struct _iobuf *)" (?ImFileRead@@YA_KPEAX_K1PEAU_iobuf@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned __int64 __cdecl ImFileWrite(void const *,unsigned __int64,unsigned __int64,struct _iobuf *)" (?ImFileWrite@@YA_KPEBX_K1PEAU_iobuf@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImFormatString(char *,unsigned __int64,char const *,...)" (?ImFormatString@@YAHPEAD_KPEBDZZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImFormatStringV(char *,unsigned __int64,char const *,char *)" (?ImFormatStringV@@YAHPEAD_KPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImGetDirQuadrantFromDelta(float,float)" (?ImGetDirQuadrantFromDelta@@YAHMM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImHashData(void const *,unsigned __int64,unsigned int)" (?ImHashData@@YAIPEBX_KI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned int __cdecl ImHashStr(char const *,unsigned __int64,unsigned int)" (?ImHashStr@@YAIPEBD_KI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImLineClosestPoint(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &)" (?ImLineClosestPoint@@YA?AUImVec2@@AEBU1@00@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImStrSkipBlank(char const *)" (?ImStrSkipBlank@@YAPEBDPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImStrTrimBlanks(char *)" (?ImStrTrimBlanks@@YAXPEAD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "unsigned short const * __cdecl ImStrbolW(unsigned short const *,unsigned short const *)" (?ImStrbolW@@YAPEBGPEBG0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImStrchrRange(char const *,char const *,char)" (?ImStrchrRange@@YAPEBDPEBD0D@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char * __cdecl ImStrdup(char const *)" (?ImStrdup@@YAPEADPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char * __cdecl ImStrdupcpy(char *,unsigned __int64 *,char const *)" (?ImStrdupcpy@@YAPEADPEADPEA_KPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImStreolRange(char const *,char const *)" (?ImStreolRange@@YAPEBDPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImStricmp(char const *,char const *)" (?ImStricmp@@YAHPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImStristr(char const *,char const *,char const *,char const *)" (?ImStristr@@YAPEBDPEBD000@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImStrlenW(unsigned short const *)" (?ImStrlenW@@YAHPEBG@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImStrncpy(char *,char const *,unsigned __int64)" (?ImStrncpy@@YAXPEADPEBD_K@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImStrnicmp(char const *,char const *,unsigned __int64)" (?ImStrnicmp@@YAHPEBD0_K@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImTextCharFromUtf8(unsigned int *,char const *,char const *)" (?ImTextCharFromUtf8@@YAHPEAIPEBD1@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImTextCharToUtf8(char * const,unsigned int)" (?ImTextCharToUtf8@@YAPEBDQEADI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImTextCountCharsFromUtf8(char const *,char const *)" (?ImTextCountCharsFromUtf8@@YAHPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImTextCountUtf8BytesFromChar(char const *,char const *)" (?ImTextCountUtf8BytesFromChar@@YAHPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImTextCountUtf8BytesFromStr(unsigned short const *,unsigned short const *)" (?ImTextCountUtf8BytesFromStr@@YAHPEBG0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImTextStrFromUtf8(unsigned short *,int,char const *,char const *,char const * *)" (?ImTextStrFromUtf8@@YAHPEAGHPEBD1PEAPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "int __cdecl ImTextStrToUtf8(char *,int,unsigned short const *,unsigned short const *)" (?ImTextStrToUtf8@@YAHPEADHPEBG1@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImTriangleBarycentricCoords(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,float &,float &,float &)" (?ImTriangleBarycentricCoords@@YAXAEBUImVec2@@000AEAM11@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImTriangleClosestPoint(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &)" (?ImTriangleClosestPoint@@YA?AUImVec2@@AEBU1@000@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImTriangleContainsPoint(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &)" (?ImTriangleContainsPoint@@YA_NAEBUImVec2@@000@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::Indent(float)" (?Indent@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::Initialize(struct ImGuiContext *)" (?Initialize@ImGui@@YAXPEAUImGuiContext@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsAnyItemActive(void)" (?IsAnyItemActive@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsAnyItemFocused(void)" (?IsAnyItemFocused@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsAnyItemHovered(void)" (?IsAnyItemHovered@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsAnyMouseDown(void)" (?IsAnyMouseDown@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsClippedEx(struct ImRect const &,unsigned int)" (?IsClippedEx@ImGui@@YA_NAEBUImRect@@I@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsDragDropPayloadBeingAccepted(void)" (?IsDragDropPayloadBeingAccepted@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemActivated(void)" (?IsItemActivated@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemActive(void)" (?IsItemActive@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemClicked(int)" (?IsItemClicked@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemDeactivated(void)" (?IsItemDeactivated@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemDeactivatedAfterEdit(void)" (?IsItemDeactivatedAfterEdit@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemEdited(void)" (?IsItemEdited@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemFocused(void)" (?IsItemFocused@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemHovered(int)" (?IsItemHovered@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemToggledOpen(void)" (?IsItemToggledOpen@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemToggledSelection(void)" (?IsItemToggledSelection@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsItemVisible(void)" (?IsItemVisible@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsKeyDown(int)" (?IsKeyDown@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsKeyPressed(int,bool)" (?IsKeyPressed@ImGui@@YA_NH_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsKeyReleased(int)" (?IsKeyReleased@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsMouseClicked(int,bool)" (?IsMouseClicked@ImGui@@YA_NH_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsMouseDoubleClicked(int)" (?IsMouseDoubleClicked@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsMouseDown(int)" (?IsMouseDown@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsMouseDragPastThreshold(int,float)" (?IsMouseDragPastThreshold@ImGui@@YA_NHM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsMouseDragging(int,float)" (?IsMouseDragging@ImGui@@YA_NHM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsMouseHoveringRect(struct ImVec2 const &,struct ImVec2 const &,bool)" (?IsMouseHoveringRect@ImGui@@YA_NAEBUImVec2@@0_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsMousePosValid(struct ImVec2 const *)" (?IsMousePosValid@ImGui@@YA_NPEBUImVec2@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsMouseReleased(int)" (?IsMouseReleased@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsMouseTripleClicked(int)" (?IsMouseTripleClicked@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsPopupOpen(unsigned int,int)" (?IsPopupOpen@ImGui@@YA_NIH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsPopupOpen(char const *,int)" (?IsPopupOpen@ImGui@@YA_NPEBDH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsRectVisible(struct ImVec2 const &,struct ImVec2 const &)" (?IsRectVisible@ImGui@@YA_NAEBUImVec2@@0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsRectVisible(struct ImVec2 const &)" (?IsRectVisible@ImGui@@YA_NAEBUImVec2@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsWindowAbove(struct ImGuiWindow *,struct ImGuiWindow *)" (?IsWindowAbove@ImGui@@YA_NPEAUImGuiWindow@@0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsWindowAppearing(void)" (?IsWindowAppearing@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsWindowChildOf(struct ImGuiWindow *,struct ImGuiWindow *,bool)" (?IsWindowChildOf@ImGui@@YA_NPEAUImGuiWindow@@0_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsWindowCollapsed(void)" (?IsWindowCollapsed@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsWindowFocused(int)" (?IsWindowFocused@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsWindowHovered(int)" (?IsWindowHovered@ImGui@@YA_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::IsWindowNavFocusable(struct ImGuiWindow *)" (?IsWindowNavFocusable@ImGui@@YA_NPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::ItemAdd(struct ImRect const &,unsigned int,struct ImRect const *,int)" (?ItemAdd@ImGui@@YA_NAEBUImRect@@IPEBU2@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::ItemHoverable(struct ImRect const &,unsigned int)" (?ItemHoverable@ImGui@@YA_NAEBUImRect@@I@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ItemInputable(struct ImGuiWindow *,unsigned int)" (?ItemInputable@ImGui@@YAXPEAUImGuiWindow@@I@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ItemSize(struct ImRect const &,float)" (?ItemSize@ImGui@@YAXAEBUImRect@@M@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ItemSize(struct ImVec2 const &,float)" (?ItemSize@ImGui@@YAXAEBUImVec2@@M@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::KeepAliveID(unsigned int)" (?KeepAliveID@ImGui@@YAXI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LoadIniSettingsFromDisk(char const *)" (?LoadIniSettingsFromDisk@ImGui@@YAXPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LoadIniSettingsFromMemory(char const *,unsigned __int64)" (?LoadIniSettingsFromMemory@ImGui@@YAXPEBD_K@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogBegin(enum ImGuiLogType,int)" (?LogBegin@ImGui@@YAXW4ImGuiLogType@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogButtons(void)" (?LogButtons@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogFinish(void)" (?LogFinish@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogRenderedText(struct ImVec2 const *,char const *,char const *)" (?LogRenderedText@ImGui@@YAXPEBUImVec2@@PEBD1@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogSetNextTextDecoration(char const *,char const *)" (?LogSetNextTextDecoration@ImGui@@YAXPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogText(char const *,...)" (?LogText@ImGui@@YAXPEBDZZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogTextV(char const *,char *)" (?LogTextV@ImGui@@YAXPEBDPEAD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogToBuffer(int)" (?LogToBuffer@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogToClipboard(int)" (?LogToClipboard@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogToFile(int,char const *)" (?LogToFile@ImGui@@YAXHPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::LogToTTY(int)" (?LogToTTY@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::MarkIniSettingsDirty(struct ImGuiWindow *)" (?MarkIniSettingsDirty@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::MarkIniSettingsDirty(void)" (?MarkIniSettingsDirty@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::MarkItemEdited(unsigned int)" (?MarkItemEdited@ImGui@@YAXI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void * __cdecl ImGui::MemAlloc(unsigned __int64)" (?MemAlloc@ImGui@@YAPEAX_K@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::MemFree(void *)" (?MemFree@ImGui@@YAXPEAX@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::NavInitRequestApplyResult(void)" (?NavInitRequestApplyResult@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::NavInitWindow(struct ImGuiWindow *,bool)" (?NavInitWindow@ImGui@@YAXPEAUImGuiWindow@@_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::NavMoveRequestApplyResult(void)" (?NavMoveRequestApplyResult@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::NavMoveRequestButNoResultYet(void)" (?NavMoveRequestButNoResultYet@ImGui@@YA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::NavMoveRequestCancel(void)" (?NavMoveRequestCancel@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::NavMoveRequestForward(int,int,int,int)" (?NavMoveRequestForward@ImGui@@YAXHHHH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::NavMoveRequestResolveWithLastItem(void)" (?NavMoveRequestResolveWithLastItem@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::NavMoveRequestSubmit(int,int,int,int)" (?NavMoveRequestSubmit@ImGui@@YAXHHHH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::NavMoveRequestTryWrapping(struct ImGuiWindow *,int)" (?NavMoveRequestTryWrapping@ImGui@@YAXPEAUImGuiWindow@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::NewFrame(void)" (?NewFrame@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::OpenPopup(unsigned int,int)" (?OpenPopup@ImGui@@YAXIH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::OpenPopup(char const *,int)" (?OpenPopup@ImGui@@YAXPEBDH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::OpenPopupEx(unsigned int,int)" (?OpenPopupEx@ImGui@@YAXIH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::OpenPopupOnItemClick(char const *,int)" (?OpenPopupOnItemClick@ImGui@@YAXPEBDH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: bool __cdecl ImGuiTextFilter::PassFilter(char const *,char const *)const " (?PassFilter@ImGuiTextFilter@@QEBA_NPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopAllowKeyboardFocus(void)" (?PopAllowKeyboardFocus@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopButtonRepeat(void)" (?PopButtonRepeat@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopClipRect(void)" (?PopClipRect@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopFocusScope(void)" (?PopFocusScope@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopFont(void)" (?PopFont@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopID(void)" (?PopID@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopItemFlag(void)" (?PopItemFlag@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopItemWidth(void)" (?PopItemWidth@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopStyleColor(int)" (?PopStyleColor@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopStyleVar(int)" (?PopStyleVar@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PopTextWrapPos(void)" (?PopTextWrapPos@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushAllowKeyboardFocus(bool)" (?PushAllowKeyboardFocus@ImGui@@YAX_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushButtonRepeat(bool)" (?PushButtonRepeat@ImGui@@YAX_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushClipRect(struct ImVec2 const &,struct ImVec2 const &,bool)" (?PushClipRect@ImGui@@YAXAEBUImVec2@@0_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushFocusScope(unsigned int)" (?PushFocusScope@ImGui@@YAXI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushFont(struct ImFont *)" (?PushFont@ImGui@@YAXPEAUImFont@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushID(int)" (?PushID@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushID(char const *,char const *)" (?PushID@ImGui@@YAXPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushID(char const *)" (?PushID@ImGui@@YAXPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushID(void const *)" (?PushID@ImGui@@YAXPEBX@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushItemFlag(int,bool)" (?PushItemFlag@ImGui@@YAXH_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushItemWidth(float)" (?PushItemWidth@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushMultiItemsWidths(int,float)" (?PushMultiItemsWidths@ImGui@@YAXHM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushOverrideID(unsigned int)" (?PushOverrideID@ImGui@@YAXI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushStyleColor(int,struct ImVec4 const &)" (?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushStyleColor(int,unsigned int)" (?PushStyleColor@ImGui@@YAXHI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushStyleVar(int,struct ImVec2 const &)" (?PushStyleVar@ImGui@@YAXHAEBUImVec2@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushStyleVar(int,float)" (?PushStyleVar@ImGui@@YAXHM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::PushTextWrapPos(float)" (?PushTextWrapPos@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::RemoveContextHook(struct ImGuiContext *,unsigned int)" (?RemoveContextHook@ImGui@@YAXPEAUImGuiContext@@I@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::Render(void)" (?Render@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::RenderFrame(struct ImVec2,struct ImVec2,unsigned int,bool,float)" (?RenderFrame@ImGui@@YAXUImVec2@@0I_NM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::RenderFrameBorder(struct ImVec2,struct ImVec2,float)" (?RenderFrameBorder@ImGui@@YAXUImVec2@@0M@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::RenderNavHighlight(struct ImRect const &,unsigned int,int)" (?RenderNavHighlight@ImGui@@YAXAEBUImRect@@IH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::RenderText(struct ImVec2,char const *,char const *,bool)" (?RenderText@ImGui@@YAXUImVec2@@PEBD1_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::RenderTextClipped(struct ImVec2 const &,struct ImVec2 const &,char const *,char const *,struct ImVec2 const *,struct ImVec2 const &,struct ImRect const *)" (?RenderTextClipped@ImGui@@YAXAEBUImVec2@@0PEBD1PEBU2@0PEBUImRect@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::RenderTextClippedEx(struct ImDrawList *,struct ImVec2 const &,struct ImVec2 const &,char const *,char const *,struct ImVec2 const *,struct ImVec2 const &,struct ImRect const *)" (?RenderTextClippedEx@ImGui@@YAXPEAUImDrawList@@AEBUImVec2@@1PEBD2PEBU3@1PEBUImRect@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::RenderTextEllipsis(struct ImDrawList *,struct ImVec2 const &,struct ImVec2 const &,float,float,char const *,char const *,struct ImVec2 const *)" (?RenderTextEllipsis@ImGui@@YAXPEAUImDrawList@@AEBUImVec2@@1MMPEBD2PEBU3@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::RenderTextWrapped(struct ImVec2,char const *,char const *,float)" (?RenderTextWrapped@ImGui@@YAXUImVec2@@PEBD1M@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ResetMouseDragDelta(int)" (?ResetMouseDragDelta@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SameLine(float,float)" (?SameLine@ImGui@@YAXMM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SaveIniSettingsToDisk(char const *)" (?SaveIniSettingsToDisk@ImGui@@YAXPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "char const * __cdecl ImGui::SaveIniSettingsToMemory(unsigned __int64 *)" (?SaveIniSettingsToMemory@ImGui@@YAPEBDPEA_K@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiStyle::ScaleAllSizes(float)" (?ScaleAllSizes@ImGuiStyle@@QEAAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ScrollToItem(int)" (?ScrollToItem@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ScrollToRect(struct ImGuiWindow *,struct ImRect const &,int)" (?ScrollToRect@ImGui@@YAXPEAUImGuiWindow@@AEBUImRect@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImVec2 __cdecl ImGui::ScrollToRectEx(struct ImGuiWindow *,struct ImRect const &,int)" (?ScrollToRectEx@ImGui@@YA?AUImVec2@@PEAUImGuiWindow@@AEBUImRect@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetActiveID(unsigned int,struct ImGuiWindow *)" (?SetActiveID@ImGui@@YAXIPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetActiveIdUsingNavAndKeys(void)" (?SetActiveIdUsingNavAndKeys@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiStorage::SetAllInt(int)" (?SetAllInt@ImGuiStorage@@QEAAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetAllocatorFunctions(void * (__cdecl*)(unsigned __int64,void *),void (__cdecl*)(void *,void *),void *)" (?SetAllocatorFunctions@ImGui@@YAXP6APEAX_KPEAX@ZP6AX11@Z1@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiStorage::SetBool(unsigned int,bool)" (?SetBool@ImGuiStorage@@QEAAXI_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetClipboardText(char const *)" (?SetClipboardText@ImGui@@YAXPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetCurrentContext(struct ImGuiContext *)" (?SetCurrentContext@ImGui@@YAXPEAUImGuiContext@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetCurrentFont(struct ImFont *)" (?SetCurrentFont@ImGui@@YAXPEAUImFont@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetCursorPos(struct ImVec2 const &)" (?SetCursorPos@ImGui@@YAXAEBUImVec2@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetCursorPosX(float)" (?SetCursorPosX@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetCursorPosY(float)" (?SetCursorPosY@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetCursorScreenPos(struct ImVec2 const &)" (?SetCursorScreenPos@ImGui@@YAXAEBUImVec2@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "bool __cdecl ImGui::SetDragDropPayload(char const *,void const *,unsigned __int64,int)" (?SetDragDropPayload@ImGui@@YA_NPEBDPEBX_KH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiStorage::SetFloat(unsigned int,float)" (?SetFloat@ImGuiStorage@@QEAAXIM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetFocusID(unsigned int,struct ImGuiWindow *)" (?SetFocusID@ImGui@@YAXIPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetHoveredID(unsigned int)" (?SetHoveredID@ImGui@@YAXI@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiStorage::SetInt(unsigned int,int)" (?SetInt@ImGuiStorage@@QEAAXIH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetItemAllowOverlap(void)" (?SetItemAllowOverlap@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetItemDefaultFocus(void)" (?SetItemDefaultFocus@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetItemUsingMouseWheel(void)" (?SetItemUsingMouseWheel@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetKeyboardFocusHere(int)" (?SetKeyboardFocusHere@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetMouseCursor(int)" (?SetMouseCursor@ImGui@@YAXH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNavID(unsigned int,enum ImGuiNavLayer,unsigned int,struct ImRect const &)" (?SetNavID@ImGui@@YAXIW4ImGuiNavLayer@@IAEBUImRect@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNextItemWidth(float)" (?SetNextItemWidth@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNextWindowBgAlpha(float)" (?SetNextWindowBgAlpha@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNextWindowCollapsed(bool,int)" (?SetNextWindowCollapsed@ImGui@@YAX_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNextWindowContentSize(struct ImVec2 const &)" (?SetNextWindowContentSize@ImGui@@YAXAEBUImVec2@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNextWindowFocus(void)" (?SetNextWindowFocus@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNextWindowPos(struct ImVec2 const &,int,struct ImVec2 const &)" (?SetNextWindowPos@ImGui@@YAXAEBUImVec2@@H0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNextWindowScroll(struct ImVec2 const &)" (?SetNextWindowScroll@ImGui@@YAXAEBUImVec2@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNextWindowSize(struct ImVec2 const &,int)" (?SetNextWindowSize@ImGui@@YAXAEBUImVec2@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetNextWindowSizeConstraints(struct ImVec2 const &,struct ImVec2 const &,void (__cdecl*)(struct ImGuiSizeCallbackData *),void *)" (?SetNextWindowSizeConstraints@ImGui@@YAXAEBUImVec2@@0P6AXPEAUImGuiSizeCallbackData@@@ZPEAX@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollFromPosX(float,float)" (?SetScrollFromPosX@ImGui@@YAXMM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollFromPosX(struct ImGuiWindow *,float,float)" (?SetScrollFromPosX@ImGui@@YAXPEAUImGuiWindow@@MM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollFromPosY(float,float)" (?SetScrollFromPosY@ImGui@@YAXMM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollFromPosY(struct ImGuiWindow *,float,float)" (?SetScrollFromPosY@ImGui@@YAXPEAUImGuiWindow@@MM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollHereX(float)" (?SetScrollHereX@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollHereY(float)" (?SetScrollHereY@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollX(float)" (?SetScrollX@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollX(struct ImGuiWindow *,float)" (?SetScrollX@ImGui@@YAXPEAUImGuiWindow@@M@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollY(float)" (?SetScrollY@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetScrollY(struct ImGuiWindow *,float)" (?SetScrollY@ImGui@@YAXPEAUImGuiWindow@@M@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetStateStorage(struct ImGuiStorage *)" (?SetStateStorage@ImGui@@YAXPEAUImGuiStorage@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiStackSizes::SetToCurrentState(void)" (?SetToCurrentState@ImGuiStackSizes@@QEAAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetTooltip(char const *,...)" (?SetTooltip@ImGui@@YAXPEBDZZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetTooltipV(char const *,char *)" (?SetTooltipV@ImGui@@YAXPEBDPEAD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiStorage::SetVoidPtr(unsigned int,void *)" (?SetVoidPtr@ImGuiStorage@@QEAAXIPEAX@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowCollapsed(struct ImGuiWindow *,bool,int)" (?SetWindowCollapsed@ImGui@@YAXPEAUImGuiWindow@@_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowCollapsed(char const *,bool,int)" (?SetWindowCollapsed@ImGui@@YAXPEBD_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowCollapsed(bool,int)" (?SetWindowCollapsed@ImGui@@YAX_NH@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowFocus(char const *)" (?SetWindowFocus@ImGui@@YAXPEBD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowFocus(void)" (?SetWindowFocus@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowFontScale(float)" (?SetWindowFontScale@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowHitTestHole(struct ImGuiWindow *,struct ImVec2 const &,struct ImVec2 const &)" (?SetWindowHitTestHole@ImGui@@YAXPEAUImGuiWindow@@AEBUImVec2@@1@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowPos(struct ImVec2 const &,int)" (?SetWindowPos@ImGui@@YAXAEBUImVec2@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowPos(struct ImGuiWindow *,struct ImVec2 const &,int)" (?SetWindowPos@ImGui@@YAXPEAUImGuiWindow@@AEBUImVec2@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowPos(char const *,struct ImVec2 const &,int)" (?SetWindowPos@ImGui@@YAXPEBDAEBUImVec2@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowSize(struct ImVec2 const &,int)" (?SetWindowSize@ImGui@@YAXAEBUImVec2@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowSize(struct ImGuiWindow *,struct ImVec2 const &,int)" (?SetWindowSize@ImGui@@YAXPEAUImGuiWindow@@AEBUImVec2@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::SetWindowSize(char const *,struct ImVec2 const &,int)" (?SetWindowSize@ImGui@@YAXPEBDAEBUImVec2@@H@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ShowFontAtlas(struct ImFontAtlas *)" (?ShowFontAtlas@ImGui@@YAXPEAUImFontAtlas@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ShowMetricsWindow(bool *)" (?ShowMetricsWindow@ImGui@@YAXPEA_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::ShowStackToolWindow(bool *)" (?ShowStackToolWindow@ImGui@@YAXPEA_N@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::Shutdown(struct ImGuiContext *)" (?Shutdown@ImGui@@YAXPEAUImGuiContext@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::StartMouseMovingWindow(struct ImGuiWindow *)" (?StartMouseMovingWindow@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: bool __cdecl ImGuiListClipper::Step(void)" (?Step@ImGuiListClipper@@QEAA_NXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::Unindent(float)" (?Unindent@ImGui@@YAXM@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::UpdateHoveredWindowAndCaptureFlags(void)" (?UpdateHoveredWindowAndCaptureFlags@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::UpdateMouseMovingWindowEndFrame(void)" (?UpdateMouseMovingWindowEndFrame@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::UpdateMouseMovingWindowNewFrame(void)" (?UpdateMouseMovingWindowNewFrame@ImGui@@YAXXZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "void __cdecl ImGui::UpdateWindowParentAndRootLinks(struct ImGuiWindow *,int,struct ImGuiWindow *)" (?UpdateWindowParentAndRootLinks@ImGui@@YAXPEAUImGuiWindow@@H0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiTextBuffer::append(char const *,char const *)" (?append@ImGuiTextBuffer@@QEAAXPEBD0@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiTextBuffer::appendf(char const *,...)" (?appendf@ImGuiTextBuffer@@QEAAXPEBDZZ) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiTextBuffer::appendfv(char const *,char *)" (?appendfv@ImGuiTextBuffer@@QEAAXPEBDPEAD@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: void __cdecl ImGuiTextFilter::ImGuiTextRange::split(char,struct ImVector<struct ImGuiTextFilter::ImGuiTextRange> *)const " (?split@ImGuiTextRange@ImGuiTextFilter@@QEBAXDPEAU?$ImVector@UImGuiTextRange@ImGuiTextFilter@@@@@Z) already defined in application.obj
+exo_gui.obj : error LNK2005: "public: static char * ImGuiTextBuffer::EmptyString" (?EmptyString@ImGuiTextBuffer@@2PADA) already defined in application.obj
+exo_gui.obj : error LNK2005: "struct ImGuiContext * GImGui" (?GImGui@@3PEAUImGuiContext@@EA) already defined in application.obj
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+exo_gui.obj : error LNK2019: unresolved external symbol "bool __cdecl ImGui_ImplGlfw_InitForVulkan(struct GLFWwindow *,bool)" (?ImGui_ImplGlfw_InitForVulkan@@YA_NPEAUGLFWwindow@@_N@Z) referenced in function "public: __cdecl exo::ExoGui::ExoGui(class exo::ExoWindow &,class exo::ExoDevice &)" (??0ExoGui@exo@@QEAA@AEAVExoWindow@1@AEAVExoDevice@1@@Z)
+imgui.obj : error LNK2001: unresolved external symbol "bool __cdecl ImGui_ImplGlfw_InitForVulkan(struct GLFWwindow *,bool)" (?ImGui_ImplGlfw_InitForVulkan@@YA_NPEAUGLFWwindow@@_N@Z)
+F:\Cpp-projects\Vulkan\x64\Debug\VulkanTriangle.exe : fatal error LNK1120: 1 unresolved externals

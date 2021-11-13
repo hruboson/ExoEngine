@@ -6,6 +6,7 @@
 #include "simple_render_system.h"
 #include "primitive_model_system.h"
 #include "keyboard_mouse_movement_controller.h"
+#include "exo_gui.h"
 
 // libs
 #include <stdexcept>
@@ -92,6 +93,9 @@ namespace exo {
 
 		// return very accurate now time
 		auto currentTime = std::chrono::high_resolution_clock::now();
+
+		
+
 
 		while (!window.shouldWindowClose()) { // Keep the window opened until closed
 			glfwPollEvents(); // Checks events (like pressing buttons, etc.)

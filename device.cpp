@@ -71,11 +71,11 @@ namespace exo {
 		vkDestroyDevice(device_, nullptr);
 
 		if (enableValidationLayers) {
-			DestroyDebugUtilsMessengerEXT(instance, debugMessenger, nullptr);
+			DestroyDebugUtilsMessengerEXT(instance_, debugMessenger, nullptr);
 		}
 
-		vkDestroySurfaceKHR(instance, surface_, nullptr);
-		vkDestroyInstance(instance, nullptr);
+		vkDestroySurfaceKHR(instance_, surface_, nullptr);
+		vkDestroyInstance(instance_, nullptr);
 	}
 
 	void ExoDevice::createInstance() {
@@ -118,7 +118,7 @@ namespace exo {
 
 		// Everything is specified by this point
 		// Finally issue the vkCreateInstace call
-		if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
+		if (vkCreateInstance(&createInfo, nullptr, &instance_) != VK_SUCCESS) {
 			throw std::runtime_error("failed to create instance!");
 		}
 
@@ -127,31 +127,31 @@ namespace exo {
 
 	void ExoDevice::pickPhysicalDevice() {
 		uint32_t deviceCount = 0;
-		vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
+		vkEnumeratePhysicalDevices(instance_, &deviceCount, nullptr);
 
 		if (deviceCount == 0) { // If there's no gpu that supports vulkan
 			throw std::runtime_error("Failed to find GPUs with Vulkan support!");
 		}
 
 		std::vector<VkPhysicalDevice> devices(deviceCount);
-		vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
+		vkEnumeratePhysicalDevices(instance_, &deviceCount, devices.data());
 
 		for (const auto& device : devices) {
 			if (isDeviceSuitable(device)) {
-				physicalDevice = device;
+				physicalDevice_ = device;
 				break;
 			}
 		}
-		if (physicalDevice == VK_NULL_HANDLE) {
+		if (physicalDevice_ == VK_NULL_HANDLE) {
 			throw std::runtime_error("failed to find a suitable GPU!");
 		}
-		vkGetPhysicalDeviceProperties(physicalDevice, &properties);
+		vkGetPhysicalDeviceProperties(physicalDevice_, &properties);
 		std::cout << "physical device: " << properties.deviceName << std::endl;
 	}
 
 	void ExoDevice::createLogicalDevice() {
 		// Specify queues to be created
-		QueueFamilyIndices indices = findQueueFamilies(physicalDevice);
+		QueueFamilyIndices indices = findQueueFamilies(physicalDevice_);
 
 		std::vector<VkDeviceQueueCreateInfo> queueCreateInfos{};
 		std::set<uint32_t> uniqueQueueFamilies = { indices.graphicsFamily.value(), indices.presentFamily.value() };
@@ -190,7 +190,7 @@ namespace exo {
 			createInfo.enabledLayerCount = 0;
 		}
 
-		if (vkCreateDevice(physicalDevice, &createInfo, nullptr, &device_) != VK_SUCCESS) {
+		if (vkCreateDevice(physicalDevice_, &createInfo, nullptr, &device_) != VK_SUCCESS) {
 			throw std::runtime_error("failed to create logical device!");
 		}
 
@@ -200,7 +200,7 @@ namespace exo {
 
 	void ExoDevice::createCommandPool() { // register commands on init and then call them many times
 		// commands will be used to draw stuff on screen
-		QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice);
+		QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice_);
 
 		VkCommandPoolCreateInfo poolInfo{};
 		poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
@@ -213,7 +213,7 @@ namespace exo {
 	}
 
 	void ExoDevice::createSurface() {
-		window.createSurface(instance, &surface_);
+		window.createSurface(instance_, &surface_);
 	}
 
 	bool ExoDevice::isDeviceSuitable(VkPhysicalDevice device) {
@@ -261,7 +261,7 @@ namespace exo {
 		if (!enableValidationLayers) return;
 		VkDebugUtilsMessengerCreateInfoEXT createInfo;
 		populateDebugMessengerCreateInfo(createInfo);
-		if (CreateDebugUtilsMessengerEXT(instance, &createInfo, nullptr, &debugMessenger) != VK_SUCCESS) {
+		if (CreateDebugUtilsMessengerEXT(instance_, &createInfo, nullptr, &debugMessenger) != VK_SUCCESS) {
 			throw std::runtime_error("failed to set up debug messenger!");
 		}
 	}
@@ -361,6 +361,7 @@ namespace exo {
 		for (const auto& queueFamily : queueFamilies) {
 			if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
 				indices.graphicsFamily = i;
+				graphicsQueueFamily_ = i;
 			}
 
 			VkBool32 presentSupport = false;
@@ -410,7 +411,7 @@ namespace exo {
 		const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features) {
 		for (VkFormat format : candidates) {
 			VkFormatProperties props;
-			vkGetPhysicalDeviceFormatProperties(physicalDevice, format, &props);
+			vkGetPhysicalDeviceFormatProperties(physicalDevice_, format, &props);
 
 			if (tiling == VK_IMAGE_TILING_LINEAR && (props.linearTilingFeatures & features) == features) {
 				return format;
@@ -425,7 +426,7 @@ namespace exo {
 
 	uint32_t ExoDevice::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties) {
 		VkPhysicalDeviceMemoryProperties memProperties;
-		vkGetPhysicalDeviceMemoryProperties(physicalDevice, &memProperties);
+		vkGetPhysicalDeviceMemoryProperties(physicalDevice_, &memProperties);
 		for (uint32_t i = 0; i < memProperties.memoryTypeCount; i++) {
 			if ((typeFilter & (1 << i)) &&
 				(memProperties.memoryTypes[i].propertyFlags & properties) == properties) {

@@ -11,6 +11,7 @@ namespace exo {
 		VkSurfaceCapabilitiesKHR capabilities;
 		std::vector<VkSurfaceFormatKHR> formats;
 		std::vector<VkPresentModeKHR> presentModes;
+		VkFormat imagesFormat;
 	};
 
 	struct QueueFamilyIndices {
@@ -45,11 +46,14 @@ namespace exo {
 		VkDevice device() { return device_; }
 		VkSurfaceKHR surface() { return surface_; }
 		VkQueue graphicsQueue() { return graphicsQueue_; }
+		uint32_t graphicsQueueFamily() { return graphicsQueueFamily_; }
 		VkQueue presentQueue() { return presentQueue_; }
+		VkInstance instance() { return instance_; }
+		VkPhysicalDevice physicalDevice() { return physicalDevice_;  }
 
-		SwapChainSupportDetails getSwapChainSupport() { return querySwapChainSupport(physicalDevice); }
+		SwapChainSupportDetails getSwapChainSupport() { return querySwapChainSupport(physicalDevice_); }
 		uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
-		QueueFamilyIndices findPhysicalQueueFamilies() { return findQueueFamilies(physicalDevice); };
+		QueueFamilyIndices findPhysicalQueueFamilies() { return findQueueFamilies(physicalDevice_); };
 		VkFormat findSupportedFormat(const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features);
 
 		// Buffer Helper Functions
@@ -94,15 +98,16 @@ namespace exo {
 		void createLogicalDevice();
 		void createCommandPool();
 
-		VkInstance instance;
+		VkInstance instance_;
 		VkDebugUtilsMessengerEXT debugMessenger;
-		VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
+		VkPhysicalDevice physicalDevice_ = VK_NULL_HANDLE;
 		ExoWindow& window;
 		VkCommandPool commandPool;
 
 		VkDevice device_;
 		VkSurfaceKHR surface_;
 		VkQueue graphicsQueue_;
+		uint32_t graphicsQueueFamily_;
 		VkQueue presentQueue_;
 
 		// helper functions
