@@ -21,6 +21,7 @@ namespace exo {
 
 		VkRenderPass getSwapChainRenderPass() const { return swapchain->getRenderPass(); };
 		float getAspectRatio() const { return swapchain->extentAspectRatio(); };
+		uint32_t getImageCount() { return swapchain->imageCount(); };
 
 		bool isFrameInProgress() const { return isFrameStarted; }
 		VkCommandBuffer getCurrentCommandBuffer() const { 

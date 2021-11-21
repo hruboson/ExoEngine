@@ -55,7 +55,7 @@ namespace exo {
 		pipeline = std::make_unique<ExoPipeline>(device, "shaders/shader.vert.spv", "shaders/shader.frag.spv", pipelineConfig);
 	}
 
-	void SimpleRenderSystem::renderObjects(FrameInfo& frameInfo, std::vector<ExoObject>& objects) {
+	void SimpleRenderSystem::renderObjects(FrameInfo& frameInfo) {
 		pipeline->bind(frameInfo.commandBuffer);
 
 		vkCmdBindDescriptorSets(
@@ -68,8 +68,9 @@ namespace exo {
 			nullptr
 		);
 
-		for (auto& obj : objects) {
+		for (auto& kv : frameInfo.gameObjects) {
 
+			auto& obj = kv.second;
 			SimplePushConstantData push{};
 
 			push.modelMatrix = obj.transform.mat4();

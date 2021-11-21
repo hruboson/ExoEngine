@@ -24,7 +24,7 @@ namespace exo {
 		SimpleRenderSystem(const SimpleRenderSystem&) = delete;
 		SimpleRenderSystem& operator = (const SimpleRenderSystem&) = delete;
 
-		void renderObjects(FrameInfo &frameInfo, std::vector<ExoObject> &objects);
+		void renderObjects(FrameInfo &frameInfo);
 
 	private:
 		void createPipelineLayout(VkDescriptorSetLayout globalSetLayout);

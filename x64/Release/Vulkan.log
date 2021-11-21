@@ -1,3 +1,55 @@
-﻿  exo_gui.cpp
-exo_gui.obj : error LNK2001: unresolved external symbol "bool __cdecl ImGui_ImplGlfw_InitForVulkan(struct GLFWwindow *,bool)" (?ImGui_ImplGlfw_InitForVulkan@@YA_NPEAUGLFWwindow@@_N@Z)
-F:\Cpp-projects\Vulkan\x64\Release\VulkanTriangle.exe : fatal error LNK1120: 1 unresolved externals
+﻿  application.cpp
+F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+F:\Cpp-projects\Vulkan\application.cpp(90,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
+  buffer.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw.cpp
+  imgui_impl_vulkan.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  descriptors.cpp
+F:\Cpp-projects\Vulkan\descriptors.cpp(182,94): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  device.cpp
+  exo_gui.cpp
+  keyboard_mouse_movement_controller.cpp
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(21,48): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(24,56): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(27,48): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(30,56): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  main.cpp
+F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  model.cpp
+  object.cpp
+  pipeline.cpp
+  primitive_model_system.cpp
+  renderer.cpp
+F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  simple_render_system.cpp
+F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  Compiling...
+  swapchain.cpp
+  window.cpp
+  Generating code
+  1285 of 5406 functions (23.8%) were compiled, the rest were copied from previous compilation.
+    231 functions were new in current compilation
+    79 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Vulkan.vcxproj -> F:\Cpp-projects\Vulkan\x64\Release\VulkanTriangle.exe

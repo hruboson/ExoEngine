@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -115,7 +115,7 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -141,7 +141,7 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -167,7 +167,7 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -191,14 +191,16 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
     <ClCompile Include="application.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="dearimgui\imgui.cpp" />
+    <ClCompile Include="dearimgui\imgui_demo.cpp" />
+    <ClCompile Include="dearimgui\imgui_draw.cpp" />
+    <ClCompile Include="dearimgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="dearimgui\imgui_impl_vulkan.cpp" />
+    <ClCompile Include="dearimgui\imgui_tables.cpp" />
+    <ClCompile Include="dearimgui\imgui_widgets.cpp" />
     <ClCompile Include="descriptors.cpp" />
     <ClCompile Include="device.cpp" />
     <ClCompile Include="exo_gui.cpp" />
-    <ClCompile Include="imgui.cpp" />
-    <ClCompile Include="imgui_draw.cpp" />
-    <ClCompile Include="imgui_impl_vulkan.cpp" />
-    <ClCompile Include="imgui_tables.cpp" />
-    <ClCompile Include="imgui_widgets.cpp" />
     <ClCompile Include="keyboard_mouse_movement_controller.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="model.cpp" />
@@ -217,19 +219,19 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
     <ClInclude Include="application.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="dearimgui\imconfig.h" />
+    <ClInclude Include="dearimgui\imgui.h" />
+    <ClInclude Include="dearimgui\imgui_impl_glfw.h" />
+    <ClInclude Include="dearimgui\imgui_impl_vulkan.h" />
+    <ClInclude Include="dearimgui\imgui_internal.h" />
+    <ClInclude Include="dearimgui\imstb_rectpack.h" />
+    <ClInclude Include="dearimgui\imstb_textedit.h" />
+    <ClInclude Include="dearimgui\imstb_truetype.h" />
     <ClInclude Include="descriptors.h" />
     <ClInclude Include="device.h" />
     <ClInclude Include="exo_gui.h" />
     <ClInclude Include="exo_utils.h" />
     <ClInclude Include="frame_info.h" />
-    <ClInclude Include="imconfig.h" />
-    <ClInclude Include="imgui.h" />
-    <ClInclude Include="imgui_impl_glfw.h" />
-    <ClInclude Include="imgui_impl_vulkan.h" />
-    <ClInclude Include="imgui_internal.h" />
-    <ClInclude Include="imstb_rectpack.h" />
-    <ClInclude Include="imstb_textedit.h" />
-    <ClInclude Include="imstb_truetype.h" />
     <ClInclude Include="keyboard_mouse_movement_controller.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="object.h" />

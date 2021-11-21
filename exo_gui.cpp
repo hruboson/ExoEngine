@@ -1,30 +1,50 @@
 #include "exo_gui.h"
-#include "swapchain.h"
 
 #include <stdexcept>
 
 namespace exo {
 
-	ExoGui::ExoGui(ExoWindow& window, ExoDevice& device) : device{ device }, window{ window }{
+	ExoGui::ExoGui(ExoWindow& window, ExoDevice& device, VkRenderPass renderPass, uint32_t imageCount) : device{ device }, window{ window }, renderPass{ renderPass }, imageCount{ imageCount } {
 		createImGuiDescriptorPool();
-		createImGuiRenderPass();
+		createImGuiCommandPool();
 
 		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
-		ImGuiIO& io = ImGui::GetIO(); (void)io;
-		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+		ImGuiIO& io = ImGui::GetIO(); 
+		(void)io;
+		ImVector<ImWchar> ranges;
+		ImFontGlyphRangesBuilder builder;
+		for(auto specialCharCode : specialCharCodes) {
+			builder.AddChar(specialCharCode);
+		}
+		builder.AddRanges(io.Fonts->GetGlyphRangesDefault());
+		builder.AddRanges(io.Fonts->GetGlyphRangesDefault());
+		builder.BuildRanges(&ranges);
+		io.Fonts->AddFontFromFileTTF("dearimgui/consola.ttf", 20, NULL, ranges.Data);
+
+		ImGui_ImplGlfw_InitForVulkan(window.getGLFWwindow(), true);
+		ImGui_ImplVulkan_InitInfo init_info = getImGuiInitInfo();
+		ImGui_ImplVulkan_Init(&init_info, renderPass);
 
 		// Setup Dear ImGui style
 		ImGui::StyleColorsDark();
 		//ImGui::StyleColorsClassic();
 
-		ImGui_ImplGlfw_InitForVulkan(window.getGLFWwindow(), true);
-		ImGui_ImplVulkan_InitInfo init_info = getImGuiInitInfo();
-		ImGui_ImplVulkan_Init(&init_info, imGuiRenderPass);
-
+		// one time command buffer can be done with helper funcitons on device class
+		auto commandBuffer = device.beginSingleTimeCommands();
+		ImGui_ImplVulkan_CreateFontsTexture(commandBuffer);
+		device.endSingleTimeCommands(commandBuffer);
+		ImGui_ImplVulkan_DestroyFontUploadObjects();
+		
 	}
+
+	ExoGui::~ExoGui() {
+		vkDestroyDescriptorPool(device.device(), imGuiDescriptorPool, nullptr);
+		ImGui_ImplVulkan_Shutdown();
+		ImGui_ImplGlfw_Shutdown();
+		ImGui::DestroyContext();
+	};
 
 	ImGui_ImplVulkan_InitInfo ExoGui::getImGuiInitInfo() {
 		ImGui_ImplVulkan_InitInfo init_info = {};
@@ -33,11 +53,11 @@ namespace exo {
 		init_info.Device = device.device();
 		init_info.QueueFamily = device.graphicsQueueFamily();
 		init_info.Queue = device.graphicsQueue();
-		init_info.PipelineCache = nullptr;
+		init_info.PipelineCache = VK_NULL_HANDLE;
 		init_info.DescriptorPool = imGuiDescriptorPool;
-		init_info.Allocator = nullptr;
+		init_info.Allocator = VK_NULL_HANDLE;
 		init_info.MinImageCount = ExoSwapChain::MAX_FRAMES_IN_FLIGHT;
-		init_info.ImageCount = ExoSwapChain::MAX_FRAMES_IN_FLIGHT;
+		init_info.ImageCount = imageCount;
 		//init_info.CheckVkResultFn = check_vk_result;
 
 		return init_info;
@@ -69,48 +89,91 @@ namespace exo {
 		}
 	}
 
-	void ExoGui::createImGuiRenderPass() {
-		VkAttachmentDescription attachment = {};
-		attachment.format = device.findSupportedFormat(
-			{ VK_FORMAT_D32_SFLOAT, VK_FORMAT_D32_SFLOAT_S8_UINT, VK_FORMAT_D24_UNORM_S8_UINT },
-			VK_IMAGE_TILING_OPTIMAL,
-			VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT);
-		attachment.samples = VK_SAMPLE_COUNT_1_BIT;
-		attachment.loadOp = VK_ATTACHMENT_LOAD_OP_LOAD;
-		attachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
-		attachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
-		attachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
-		attachment.initialLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
-		attachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+	void ExoGui::createImGuiCommandPool() {
+		QueueFamilyIndices queueFamilyIndices = device.findPhysicalQueueFamilies();
 
-		VkAttachmentReference color_attachment = {};
-		color_attachment.attachment = 0;
-		color_attachment.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+		VkCommandPoolCreateInfo commandPoolCreateInfo = {};
+		commandPoolCreateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+		commandPoolCreateInfo.queueFamilyIndex = queueFamilyIndices.graphicsFamily.value();
+		commandPoolCreateInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
 
-		VkSubpassDescription subpass = {};
-		subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
-		subpass.colorAttachmentCount = 1;
-		subpass.pColorAttachments = &color_attachment;
-
-		VkSubpassDependency dependency = {};
-		dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
-		dependency.dstSubpass = 0;
-		dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-		dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-		dependency.srcAccessMask = 0;  // or VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
-		dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
-
-		VkRenderPassCreateInfo info = {};
-		info.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
-		info.attachmentCount = 1;
-		info.pAttachments = &attachment;
-		info.subpassCount = 1;
-		info.pSubpasses = &subpass;
-		info.dependencyCount = 1;
-		info.pDependencies = &dependency;
-		if (vkCreateRenderPass(device.device(), &info, nullptr, &imGuiRenderPass) != VK_SUCCESS) {
-			throw std::runtime_error("Could not create Dear ImGui's render pass");
+		if (vkCreateCommandPool(device.device(), &commandPoolCreateInfo, nullptr, &imGuiCommandPool) != VK_SUCCESS) {
+			throw std::runtime_error("Could not create graphics command pool!");
 		}
+	}
+
+	void ExoGui::newFrame() {
+		// we tell imgui we are creating new frame
+		ImGui_ImplVulkan_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+	}
+
+	void ExoGui::runGui() {
+		{
+			static float f = 0.0f;
+			static int counter = 0;
+
+			ImGui::Begin("Seznam planet");  // Begin must be close with End
+
+			ImGui::Text(
+				u8"P¯Ìliö ûluùouËk˝ k˘Ú ˙pÏl Ô·belskÈ Ûdy");  // Display some text (you can use a format strings too)
+
+			if (ImGui::Button(u8"Slunce")) {
+				
+			}
+			if (ImGui::Button(u8"Merkur")) {
+
+			}
+			if (ImGui::Button(u8"Venuöe")) {
+
+			}
+			if (ImGui::Button(u8"ZemÏ")) {
+
+			}
+			if (ImGui::Button(u8"Mars")) {
+
+			}
+			if (ImGui::Button(u8"Jupiter")) {
+
+			}
+			if (ImGui::Button(u8"Saturn")) {
+
+			}
+			if (ImGui::Button(u8"Uran")) {
+
+			}
+			if (ImGui::Button(u8"Neptun")) {
+
+			}
+			if (ImGui::Button(u8"Pluto")) {
+
+			}
+
+			ImGui::Checkbox("Debug", &debug);
+
+			ImGui::End();
+		}
+		if (debug) {
+			ImGui::Begin(
+				"Debug",
+				&debug);  // Pass a pointer to our bool variable (the window will have a
+										// closing button that will clear the bool when clicked)
+			ImGui::Text(
+				"Application average %.3f ms/frame (%.1f FPS)",
+				1000.0f / ImGui::GetIO().Framerate,
+				ImGui::GetIO().Framerate);
+
+			if (ImGui::Button(u8"Zav¯Ìt")) debug = false;
+			ImGui::End();
+		}
+	}
+
+	void ExoGui::renderGui(VkCommandBuffer imGuiCommandBuffer) {
+		// render the frame we created and occupied
+		ImGui::Render();
+		ImDrawData* drawdata = ImGui::GetDrawData();
+		ImGui_ImplVulkan_RenderDrawData(drawdata, imGuiCommandBuffer);
 	}
 
 }

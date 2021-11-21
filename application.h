@@ -7,6 +7,7 @@
 #include "model.h"
 #include "object.h"
 #include "primitive_model_system.h"
+#include "frame_info.h"
 
 // std
 #include <memory>
@@ -28,6 +29,7 @@ namespace exo {
 
 	private:
 		void loadObjects();
+		void update(FrameInfo& frameInfo);
 		// order of declaration matters !!!
 		//	  initializing from top to bottom and destroying in reverse (bottom to top - first objects last window)
 		ExoWindow window{ WIDTH, HEIGHT, "ExoPlanets" }; // initialization of an unnamed temporary with a braced-init-list (https://en.cppreference.com/w/cpp/language/list_initialization)
@@ -37,7 +39,7 @@ namespace exo {
 
 		std::unique_ptr<ExoDescriptorPool> globalPool{};
 		std::unique_ptr<ExoDescriptorPool> samplerPool{};
-		std::vector<ExoObject> objects;
+		ExoObject::Map objects;
 
 	};
 

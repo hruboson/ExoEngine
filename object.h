@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <glm/gtc/matrix_transform.hpp>
+#include <unordered_map>
 
 
 namespace exo {
@@ -22,6 +23,7 @@ namespace exo {
 	class ExoObject {
 	public:
 		using id_t = unsigned int;
+		using Map = std::unordered_map<id_t, ExoObject>;
 
 		static ExoObject createGameObject();
 

@@ -50,7 +50,6 @@ namespace exo {
 		VkQueue presentQueue() { return presentQueue_; }
 		VkInstance instance() { return instance_; }
 		VkPhysicalDevice physicalDevice() { return physicalDevice_;  }
-
 		SwapChainSupportDetails getSwapChainSupport() { return querySwapChainSupport(physicalDevice_); }
 		uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
 		QueueFamilyIndices findPhysicalQueueFamilies() { return findQueueFamilies(physicalDevice_); };

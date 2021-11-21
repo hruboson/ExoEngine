@@ -1,6 +1,7 @@
 #pragma once
 
 #include "camera.h"
+#include "object.h"
 
 //lib
 #include <vulkan/vulkan.h>
@@ -14,6 +15,7 @@ namespace exo {
 		ExoCamera& camera;
 
 		VkDescriptorSet globalDescriptorSet;
+		ExoObject::Map& gameObjects;
 
 	};
 }
