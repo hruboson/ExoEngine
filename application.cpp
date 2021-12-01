@@ -7,6 +7,7 @@
 #include "primitive_model_system.h"
 #include "keyboard_mouse_movement_controller.h"
 #include "exo_gui.h"
+#include "exo_db.h"
 
 // libs
 #include <stdexcept>
@@ -25,9 +26,10 @@ namespace exo {
 
 	struct GlobalUbo {
 		// same as simple push constant data struct
-		alignas(16) glm::mat4 projectionView{ 1.f };
-		alignas(16) glm::vec3 lightDirection = glm::normalize(glm::vec3{ 3.f, 0.f, 3.f });
-		alignas(16) glm::vec3 pointLight;
+		glm::mat4 projectionView{ 1.f };
+		glm::vec4 ambientLightColor{ 1.f, 1.f, 1.f, 0.55f }; // w = light intensity
+		glm::vec3 lightPosition{-1.f};
+		alignas(16) glm::vec4 lightColor{ 1.f }; // w = light intensity
 	} ubo;
 
 	Application::Application() {
@@ -65,7 +67,7 @@ namespace exo {
 		globalUboBuffer.map(); // allocate UboBuffer
 
 		auto globalSetLayout = ExoDescriptorSetLayout::Builder(device)
-			.addBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT) // bind to vertex shader
+			.addBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS) // bind to vertex shader
 			.build();
 		/*auto samplerSetLayout = ExoDescriptorSetLayout::Builder(device)
 			.addBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
@@ -81,12 +83,13 @@ namespace exo {
 
 		// render system, imgui and camera
 		SimpleRenderSystem simpleRenderSystem{ device, renderer.getSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout() };
-		ExoGui gui{ window, device, renderer.getSwapChainRenderPass(), renderer.getImageCount() };
+		ExoGui gui{ window, device, renderer.getSwapChainRenderPass(), renderer.getImageCount(), db };
 		ExoCamera camera{};
-		camera.setViewTarget(glm::vec3(-1.f, -2.f, 2.f), glm::vec3(.0f, .0f, 2.5f));
+		camera.setViewTarget(glm::vec3(-300.f, 25.f, -300.f), glm::vec3(.0f, .0f, 2.5f));
 
 		// player
 		auto viewerObject = ExoObject::createGameObject();
+		viewerObject.transform.translation = { -275.f, 25.f, -275.f };
 		KeyboardMouseMovementController cameraController{ window.getGLFWwindow() };
 		double previous_window_x;
 		double previous_window_y;
@@ -175,70 +178,70 @@ namespace exo {
 
 		auto sun = ExoObject::createGameObject();
 		sun.model = sphere_model;
-		sun.transform.translation = { 200.f, 25.f, 200.f }; // x - z - y
+		sun.transform.translation = { 0.f, 25.f,0.f }; // x - z - y
 		sun.transform.scale = glm::vec3(109.f);
 
 		objects.emplace(sun.getId(), std::move(sun));
 
 		auto mercury = ExoObject::createGameObject();
 		mercury.model = sphere_model;
-		mercury.transform.translation = { 100.f, 25.f, 100.f }; // x - z - y
+		mercury.transform.translation = { -100.f, 25.f, -100.f }; // x - z - y
 		mercury.transform.scale = glm::vec3(0.38f);
 
 		objects.emplace(mercury.getId(), std::move(mercury));
 
 		auto venus = ExoObject::createGameObject();
 		venus.model = sphere_model;
-		venus.transform.translation = { 50.f, 25.f, 50.f }; // x - z - y
+		venus.transform.translation = { -200.f, 25.f, -200.f }; // x - z - y
 		venus.transform.scale = glm::vec3(0.94f);
 
 		objects.emplace(venus.getId(), std::move(venus));
 
 		auto earth = ExoObject::createGameObject();
 		earth.model = sphere_model;
-		earth.transform.translation = {0.f, 25.f,0.f }; // x - z - y
+		earth.transform.translation = {-300.f, 25.f,-300.f }; // x - z - y
 		earth.transform.scale = glm::vec3(1.f);
 
 		objects.emplace(earth.getId(), std::move(earth));
 
 		auto moon = ExoObject::createGameObject();
 		moon.model = sphere_model;
-		moon.transform.translation = { 0.f, 25.f, 5.f }; // x - z - y
+		moon.transform.translation = { -310.f, 25.f, -310.f }; // x - z - y
 		moon.transform.scale = glm::vec3(0.27f);
 
 		objects.emplace(moon.getId(), std::move(moon));
 
 		auto mars = ExoObject::createGameObject();
 		mars.model = sphere_model;
-		mars.transform.translation = { -50.f, 25.f, -50.f }; // x - z - y
+		mars.transform.translation = { -400.f, 25.f, -400.f }; // x - z - y
 		mars.transform.scale = glm::vec3(0.53f);
 
 		objects.emplace(mars.getId(), std::move(mars));
 
 		auto jupiter = ExoObject::createGameObject();
 		jupiter.model = sphere_model;
-		jupiter.transform.translation = { -100.f, 25.f, -100.f }; // x - z - y
+		jupiter.transform.translation = { -500.f, 25.f, -500.f }; // x - z - y
 		jupiter.transform.scale = glm::vec3(11.f);
 
 		objects.emplace(jupiter.getId(), std::move(jupiter));
 
 		auto saturn = ExoObject::createGameObject();
 		saturn.model = sphere_model;
-		saturn.transform.translation = { -150.f, 25.f, -150.f }; // x - z - y
+		saturn.transform.translation = { -600.f, 25.f, -600.f }; // x - z - y
 		saturn.transform.scale = glm::vec3(9.14f);
 
 		objects.emplace(saturn.getId(), std::move(saturn));
 
 		auto uranus = ExoObject::createGameObject();
 		uranus.model = sphere_model;
-		uranus.transform.translation = { -200.f, 25.f, -200.f }; // x - z - y
+		uranus.transform.translation = { -700.f, 25.f, -700.f }; // x - z - y
 		uranus.transform.scale = glm::vec3(4.f);
 
 		objects.emplace(uranus.getId(), std::move(uranus));
 
 		auto neptune = ExoObject::createGameObject();
 		neptune.model = sphere_model;
-		neptune.transform.translation = { -250.f, 25.f, -250.f }; // x - z - y
+		neptune.transform.translation = { -800.f, 25.f, -800.f }; // x - z - y
 		neptune.transform.scale = glm::vec3(3.86f);
 
 		objects.emplace(neptune.getId(), std::move(neptune));

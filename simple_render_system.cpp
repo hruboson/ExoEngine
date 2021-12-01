@@ -70,6 +70,7 @@ namespace exo {
 
 		for (auto& kv : frameInfo.gameObjects) {
 
+			// kv = key value
 			auto& obj = kv.second;
 			SimplePushConstantData push{};
 

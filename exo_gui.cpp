@@ -1,10 +1,11 @@
 #include "exo_gui.h"
 
 #include <stdexcept>
+#include <utility>
 
 namespace exo {
 
-	ExoGui::ExoGui(ExoWindow& window, ExoDevice& device, VkRenderPass renderPass, uint32_t imageCount) : device{ device }, window{ window }, renderPass{ renderPass }, imageCount{ imageCount } {
+	ExoGui::ExoGui(ExoWindow& window, ExoDevice& device, VkRenderPass renderPass, uint32_t imageCount, ExoDB db) : device{ device }, window{ window }, renderPass{ renderPass }, imageCount{ imageCount }, db{db} {
 		createImGuiDescriptorPool();
 		createImGuiCommandPool();
 
@@ -37,10 +38,12 @@ namespace exo {
 		device.endSingleTimeCommands(commandBuffer);
 		ImGui_ImplVulkan_DestroyFontUploadObjects();
 		
+		getDbData();
 	}
 
 	ExoGui::~ExoGui() {
 		vkDestroyDescriptorPool(device.device(), imGuiDescriptorPool, nullptr);
+		vkDestroyCommandPool(device.device(), imGuiCommandPool, nullptr);
 		ImGui_ImplVulkan_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -114,41 +117,64 @@ namespace exo {
 			static float f = 0.0f;
 			static int counter = 0;
 
-			ImGui::Begin("Seznam planet");  // Begin must be close with End
+			ImGui::Begin("Seznam planet");  // Begin must be closed with End
 
 			ImGui::Text(
 				u8"Pøíliš žluouèký kùò úpìl ïábelské ódy");  // Display some text (you can use a format strings too)
 
-			if (ImGui::Button(u8"Slunce")) {
-				
+			for (auto &row : this->planetData) {
+				for (auto &data : row) {
+					auto text = data.first + " : " + data.second;
+					ImGui::Text(
+						text.c_str()
+					);
+				}
 			}
-			if (ImGui::Button(u8"Merkur")) {
 
-			}
-			if (ImGui::Button(u8"Venuše")) {
+			
+			//std::vector<std::vector<std::pair<std::string, std::string>>> data = db.selectPlanets();
+			//std::string text;
 
-			}
-			if (ImGui::Button(u8"Zemì")) {
-
-			}
-			if (ImGui::Button(u8"Mars")) {
-
-			}
-			if (ImGui::Button(u8"Jupiter")) {
-
-			}
-			if (ImGui::Button(u8"Saturn")) {
-
-			}
-			if (ImGui::Button(u8"Uran")) {
-
-			}
-			if (ImGui::Button(u8"Neptun")) {
-
-			}
-			if (ImGui::Button(u8"Pluto")) {
-
-			}
+			//for (auto i : data) {
+			//	for (auto k : i) {
+			//		text += k.first.append(", ");
+			//		text += k.second.append(" \n");
+			//	}
+			//}
+			//
+			//ImGui::Text(
+			//	text.c_str()
+			//);
+			//if (ImGui::Button(u8"Slunce")) {
+			//	
+			//}
+			//if (ImGui::Button(u8"Merkur")) {
+			//
+			//}
+			//if (ImGui::Button(u8"Venuše")) {
+			//
+			//}
+			//if (ImGui::Button(u8"Zemì")) {
+			//
+			//}
+			//if (ImGui::Button(u8"Mars")) {
+			//
+			//}
+			//if (ImGui::Button(u8"Jupiter")) {
+			//
+			//}
+			//if (ImGui::Button(u8"Saturn")) {
+			//
+			//}
+			//if (ImGui::Button(u8"Uran")) {
+			//
+			//}
+			//if (ImGui::Button(u8"Neptun")) {
+			//
+			//}
+			//if (ImGui::Button(u8"Pluto")) {
+			//
+			//}
 
 			ImGui::Checkbox("Debug", &debug);
 
@@ -174,6 +200,10 @@ namespace exo {
 		ImGui::Render();
 		ImDrawData* drawdata = ImGui::GetDrawData();
 		ImGui_ImplVulkan_RenderDrawData(drawdata, imGuiCommandBuffer);
+	}
+
+	void ExoGui::getDbData() {
+		this->planetData = ExoDB::planetData;
 	}
 
 }

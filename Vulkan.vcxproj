@@ -24,7 +24,7 @@
     <ProjectGuid>{b569e7ce-b52c-410a-8f70-bc299569d9bd}</ProjectGuid>
     <RootNamespace>Vulkan</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>VulkanTriangle</ProjectName>
+    <ProjectName>Exo</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\sqlite;F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -115,7 +115,7 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\sqlite;F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -141,7 +141,7 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\sqlite;F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -167,7 +167,7 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Cpp-projects\Vulkan\sqlite;F:\Cpp-projects\Vulkan\dearimgui;F:\Cpp-projects\Vulkan\lib\stb;F:\Libs\tinyobjectloader;F:\SDKS\Vulkan\1.2.176.1\Include;F:\VisualStudioLibraries\GLFW\glfw-3.3.4.bin.WIN64\include;F:\VisualStudioLibraries\GLM\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -200,6 +200,7 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
     <ClCompile Include="dearimgui\imgui_widgets.cpp" />
     <ClCompile Include="descriptors.cpp" />
     <ClCompile Include="device.cpp" />
+    <ClCompile Include="exo_db.cpp" />
     <ClCompile Include="exo_gui.cpp" />
     <ClCompile Include="keyboard_mouse_movement_controller.cpp" />
     <ClCompile Include="main.cpp" />
@@ -209,11 +210,15 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
     <ClCompile Include="primitive_model_system.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="simple_render_system.cpp" />
+    <ClCompile Include="sqlite\sqlite3.c" />
     <ClCompile Include="swapchain.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="compile.bat" />
+    <None Include="packages.config" />
+    <None Include="shaders\shader.frag" />
+    <None Include="shaders\shader.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="application.h" />
@@ -229,6 +234,7 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
     <ClInclude Include="dearimgui\imstb_truetype.h" />
     <ClInclude Include="descriptors.h" />
     <ClInclude Include="device.h" />
+    <ClInclude Include="exo_db.h" />
     <ClInclude Include="exo_gui.h" />
     <ClInclude Include="exo_utils.h" />
     <ClInclude Include="frame_info.h" />
@@ -244,5 +250,12 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\sqlite3_c_plus_plus.1.0.3\build\native\sqlite3_c_plus_plus.targets" Condition="Exists('packages\sqlite3_c_plus_plus.1.0.3\build\native\sqlite3_c_plus_plus.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\sqlite3_c_plus_plus.1.0.3\build\native\sqlite3_c_plus_plus.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sqlite3_c_plus_plus.1.0.3\build\native\sqlite3_c_plus_plus.targets'))" />
+  </Target>
 </Project>

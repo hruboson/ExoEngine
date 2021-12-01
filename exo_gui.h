@@ -3,17 +3,20 @@
 #include "device.h"
 #include "swapchain.h"
 
+#include "exo_db.h"
+
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_vulkan.h"
 
 #include <array>
+#include <string>
 
 namespace exo {
 
 	class ExoGui {
 	public:
-		ExoGui(ExoWindow &window, ExoDevice &device, VkRenderPass renderPass, uint32_t imageCount);
+		ExoGui(ExoWindow &window, ExoDevice &device, VkRenderPass renderPass, uint32_t imageCount, ExoDB db);
 		~ExoGui(); // to-do: cleanup
 
 		ExoGui(const ExoGui&) = delete;
@@ -41,6 +44,7 @@ namespace exo {
 	private:
 		ExoDevice& device;
 		ExoWindow& window;
+		ExoDB db;
 
 		// setup
 		uint32_t imageCount;
@@ -53,6 +57,11 @@ namespace exo {
 
 		VkCommandPool imGuiCommandPool;
 		void createImGuiCommandPool();
+
+		// SQLITE DB
+		void getDbData();
+
+		std::vector<std::vector<std::pair<std::string, std::string>>> planetData;
 
 	};
 

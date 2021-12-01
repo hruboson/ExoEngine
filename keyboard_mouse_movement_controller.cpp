@@ -36,8 +36,8 @@ namespace exo {
 		}
 
 		// limit pitch values between about +/- 85 degrees
-		object.transform.rotation.x = glm::clamp(object.transform.rotation.x, -1.5f, 1.5f);
-		object.transform.rotation.y = glm::mod(object.transform.rotation.y, glm::two_pi<float>());
+		// object.transform.rotation.x = glm::clamp(object.transform.rotation.x, -1.5f, 1.5f);
+		// object.transform.rotation.y = glm::mod(object.transform.rotation.y, glm::two_pi<float>());
 
 		float yaw = object.transform.rotation.y;
 		const glm::vec3 forwardDir{ sin(yaw), 0.f, cos(yaw) };

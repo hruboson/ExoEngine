@@ -8,6 +8,7 @@
 #include "object.h"
 #include "primitive_model_system.h"
 #include "frame_info.h"
+#include "exo_db.h"
 
 // std
 #include <memory>
@@ -40,6 +41,8 @@ namespace exo {
 		std::unique_ptr<ExoDescriptorPool> globalPool{};
 		std::unique_ptr<ExoDescriptorPool> samplerPool{};
 		ExoObject::Map objects;
+
+		ExoDB db{};
 
 	};
 
