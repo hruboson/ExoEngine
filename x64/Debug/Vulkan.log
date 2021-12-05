@@ -1,3 +1,8 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Vulkan.vcxproj, VulkanTriangle.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  application.cpp
+F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+F:\Cpp-projects\Vulkan\application.cpp(93,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
   exo_db.cpp
+  exo_gui.cpp
+  Generating Code...
   Vulkan.vcxproj -> F:\Cpp-projects\Vulkan\x64\Debug\Exo.exe

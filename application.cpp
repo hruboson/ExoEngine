@@ -89,7 +89,7 @@ namespace exo {
 
 		// player
 		auto viewerObject = ExoObject::createGameObject();
-		viewerObject.transform.translation = { -275.f, 25.f, -275.f };
+		viewerObject.transform.translation = { -275.f, 25.f, -275.f }; // start at earth
 		KeyboardMouseMovementController cameraController{ window.getGLFWwindow() };
 		double previous_window_x;
 		double previous_window_y;
@@ -160,13 +160,13 @@ namespace exo {
 
 	void Application::update(FrameInfo& frameInfo) {
 	
-		//auto rotateObjects = glm::rotate(glm::mat4(1.f), frameInfo.FrameTime, { 0.f, -1.f, 0.f });
-		//
-		//for (auto& kv : frameInfo.gameObjects) {
-		//	auto& obj = kv.second;
-		//
-		//	obj.transform.translation = glm::vec3(rotateObjects * glm::vec4(obj.transform.translation, 1.f));
-		//}
+		auto rotateObjects = glm::rotate(glm::mat4(1.f), frameInfo.FrameTime, { 0.f, -1.f, 0.f });
+		
+		for (auto& kv : frameInfo.gameObjects) {
+			auto& obj = kv.second;
+		
+			obj.transform.translation = glm::vec3(rotateObjects * glm::vec4(obj.transform.translation, .05f));
+		}
 	
 	}
 

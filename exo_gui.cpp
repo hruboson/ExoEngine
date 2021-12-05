@@ -113,14 +113,11 @@ namespace exo {
 	}
 
 	void ExoGui::runGui() {
-		{
+		{ // new scope
 			static float f = 0.0f;
 			static int counter = 0;
 
 			ImGui::Begin("Seznam planet");  // Begin must be closed with End
-
-			ImGui::Text(
-				u8"Pøíliš žluouèký kùò úpìl ïábelské ódy");  // Display some text (you can use a format strings too)
 
 			for (auto &row : this->planetData) {
 				for (auto &data : row) {
@@ -131,51 +128,6 @@ namespace exo {
 				}
 			}
 
-			
-			//std::vector<std::vector<std::pair<std::string, std::string>>> data = db.selectPlanets();
-			//std::string text;
-
-			//for (auto i : data) {
-			//	for (auto k : i) {
-			//		text += k.first.append(", ");
-			//		text += k.second.append(" \n");
-			//	}
-			//}
-			//
-			//ImGui::Text(
-			//	text.c_str()
-			//);
-			//if (ImGui::Button(u8"Slunce")) {
-			//	
-			//}
-			//if (ImGui::Button(u8"Merkur")) {
-			//
-			//}
-			//if (ImGui::Button(u8"Venuše")) {
-			//
-			//}
-			//if (ImGui::Button(u8"Zemì")) {
-			//
-			//}
-			//if (ImGui::Button(u8"Mars")) {
-			//
-			//}
-			//if (ImGui::Button(u8"Jupiter")) {
-			//
-			//}
-			//if (ImGui::Button(u8"Saturn")) {
-			//
-			//}
-			//if (ImGui::Button(u8"Uran")) {
-			//
-			//}
-			//if (ImGui::Button(u8"Neptun")) {
-			//
-			//}
-			//if (ImGui::Button(u8"Pluto")) {
-			//
-			//}
-
 			ImGui::Checkbox("Debug", &debug);
 
 			ImGui::End();
@@ -183,8 +135,7 @@ namespace exo {
 		if (debug) {
 			ImGui::Begin(
 				"Debug",
-				&debug);  // Pass a pointer to our bool variable (the window will have a
-										// closing button that will clear the bool when clicked)
+				&debug);  // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 			ImGui::Text(
 				"Application average %.3f ms/frame (%.1f FPS)",
 				1000.0f / ImGui::GetIO().Framerate,
