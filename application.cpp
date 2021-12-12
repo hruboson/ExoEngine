@@ -81,9 +81,8 @@ namespace exo {
 				.build(globalDescriptorSets[i]);
 		}
 
-		// render system, imgui and camera
+		// render system and camera
 		SimpleRenderSystem simpleRenderSystem{ device, renderer.getSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout() };
-		ExoGui gui{ window, device, renderer.getSwapChainRenderPass(), renderer.getImageCount(), db };
 		ExoCamera camera{};
 		camera.setViewTarget(glm::vec3(-300.f, 25.f, -300.f), glm::vec3(.0f, .0f, 2.5f));
 
@@ -94,6 +93,9 @@ namespace exo {
 		double previous_window_x;
 		double previous_window_y;
 		glfwGetCursorPos(window.getGLFWwindow(), &previous_window_x, &previous_window_y);
+
+		// imgui
+		ExoGui gui{ window, device, renderer.getSwapChainRenderPass(), renderer.getImageCount(), db };
 
 		// return very accurate now time
 		auto currentTime = std::chrono::high_resolution_clock::now();
@@ -145,7 +147,7 @@ namespace exo {
 				// render frame + gui
 				renderer.beginSwapChainRenderPass(commandBuffer);
 				simpleRenderSystem.renderObjects(frameInfo);
-				gui.runGui();
+				gui.runGui(frameInfo);
 				gui.renderGui(commandBuffer);
 				renderer.endSwapChainRenderPass(commandBuffer);
 				renderer.endFrame();

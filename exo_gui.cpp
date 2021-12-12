@@ -1,11 +1,15 @@
-#include "exo_gui.h"
+﻿#include "exo_gui.h"
+#include "IconsFontAwesome4.h"
 
 #include <stdexcept>
 #include <utility>
 
-namespace exo {
+#include <iostream>
 
-	ExoGui::ExoGui(ExoWindow& window, ExoDevice& device, VkRenderPass renderPass, uint32_t imageCount, ExoDB db) : device{ device }, window{ window }, renderPass{ renderPass }, imageCount{ imageCount }, db{db} {
+namespace exo {
+	const std::string ExoGui::identifier = "##ID";
+
+	ExoGui::ExoGui(ExoWindow& window, ExoDevice& device, VkRenderPass renderPass, uint32_t imageCount, ExoDB db) : device{ device }, window{ window }, renderPass{ renderPass }, imageCount{ imageCount }, db{ db } {
 		createImGuiDescriptorPool();
 		createImGuiCommandPool();
 
@@ -14,15 +18,22 @@ namespace exo {
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO(); 
 		(void)io;
+
+		// Special ranges and chars
 		ImVector<ImWchar> ranges;
 		ImFontGlyphRangesBuilder builder;
 		for(auto specialCharCode : specialCharCodes) {
 			builder.AddChar(specialCharCode);
 		}
 		builder.AddRanges(io.Fonts->GetGlyphRangesDefault());
-		builder.AddRanges(io.Fonts->GetGlyphRangesDefault());
 		builder.BuildRanges(&ranges);
 		io.Fonts->AddFontFromFileTTF("dearimgui/consola.ttf", 20, NULL, ranges.Data);
+		
+		// Icons
+		ImFontConfig config;
+		config.MergeMode = true;
+		static const ImWchar icon_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+		io.Fonts->AddFontFromFileTTF("dearimgui/fontawesome-webfont.ttf", 20, &config, icon_ranges);
 
 		ImGui_ImplGlfw_InitForVulkan(window.getGLFWwindow(), true);
 		ImGui_ImplVulkan_InitInfo init_info = getImGuiInitInfo();
@@ -39,6 +50,7 @@ namespace exo {
 		ImGui_ImplVulkan_DestroyFontUploadObjects();
 		
 		getDbData();
+		initWindowState();
 	}
 
 	ExoGui::~ExoGui() {
@@ -112,25 +124,47 @@ namespace exo {
 		ImGui::NewFrame();
 	}
 
-	void ExoGui::runGui() {
+	void ExoGui::runGui(FrameInfo frameInfo) {
 		{ // new scope
-			static float f = 0.0f;
-			static int counter = 0;
+			ImGui::Begin(u8"Seznam těles");  // Begin must be closed with End
 
-			ImGui::Begin("Seznam planet");  // Begin must be closed with End
-
+			int i = 0;
 			for (auto &row : this->planetData) {
-				for (auto &data : row) {
-					auto text = data.first + " : " + data.second;
-					ImGui::Text(
-						text.c_str()
-					);
+				if(ImGui::Button(row.at(0).second.c_str())) {
+					windowsOpened.at(i) = true;
 				}
+				ImGui::SameLine(); 
+				std::string buttonName = ICON_FA_SEARCH + ExoGui::identifier + std::to_string(i); // each button must have unique identifier so adding ##_num_ makes it unique but doesn't show it
+				if (ImGui::Button(buttonName.c_str())) {
+					int objId = i + 1;
+					std::cout << "x:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.x) + "z:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.z) << std::endl;
+				}
+				i++;
 			}
 
 			ImGui::Checkbox("Debug", &debug);
 
 			ImGui::End();
+		}
+
+		{
+			int i = 0;
+
+			for (auto& row : this->planetData) {
+				if (windowsOpened.at(i)) {
+					//ImGui::SetNextWindowFocus();
+					ImGui::Begin(row.at(0).second.c_str(), nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_HorizontalScrollbar);
+					for (auto& data : row) {
+						std::string text = data.first + " : " + data.second;
+						ImGui::TextWrapped(text.c_str());
+					}
+				
+					if (ImGui::Button(u8"Zavřít")) windowsOpened.at(i) = false; ImGui::SameLine(); if (ImGui::Button(ICON_FA_SEARCH)) windowsOpened.at(i) = false;
+
+					ImGui::End();
+				}
+				i++;
+			}
 		}
 		if (debug) {
 			ImGui::Begin(
@@ -141,7 +175,7 @@ namespace exo {
 				1000.0f / ImGui::GetIO().Framerate,
 				ImGui::GetIO().Framerate);
 
-			if (ImGui::Button(u8"Zav��t")) debug = false;
+			if (ImGui::Button(u8"Zavřít")) debug = false;
 			ImGui::End();
 		}
 	}
@@ -155,6 +189,12 @@ namespace exo {
 
 	void ExoGui::getDbData() {
 		this->planetData = ExoDB::planetData;
+	}
+
+	void ExoGui::initWindowState() {
+		for (auto& row : this->planetData) {
+			windowsOpened.push_back(false);
+		}
 	}
 
 }

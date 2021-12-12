@@ -23,14 +23,16 @@ namespace exo{
 		sqlite3_close(db);
 	}
 
-	int ExoDB::callback(void* NotUsed, int argc, char** argv, char** azColName)
+	int ExoDB::callback(void* NotUsed, int count, char** data, char** column)
 	{
-		for (int i = 0; i < argc; i++) {
-			// column name and value
-			queryRow row;
-			row.push_back(std::make_pair(azColName[i], argv[i]));
-			planetData.push_back(row);
+		// column name and value
+		queryRow row;
+
+		for (int i = 0; i < count; i++) {
+			row.push_back(std::make_pair(column[i], data[i]));
 		}
+
+		planetData.push_back(row);
 
 		std::cout << std::endl;
 

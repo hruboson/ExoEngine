@@ -224,6 +224,7 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
     <ClInclude Include="application.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="dearimgui\IconsFontAwesome4.h" />
     <ClInclude Include="dearimgui\imconfig.h" />
     <ClInclude Include="dearimgui\imgui.h" />
     <ClInclude Include="dearimgui\imgui_impl_glfw.h" />

@@ -187,5 +187,8 @@
     <ClInclude Include="exo_db.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="dearimgui\IconsFontAwesome4.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
