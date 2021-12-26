@@ -43,7 +43,7 @@ namespace exo{
 		sqlite3* DB;
 		char* messageError;
 
-		std::string sql = u8"SELECT name AS 'Název', description AS 'Popis', type AS 'Typ', dist AS 'Vzdálenost od Slunce', diameter AS 'Poloměr', mass AS 'Hmotnost', grav AS 'Síla gravitace', day_length AS 'Délka dne', year_length AS 'Délka roku', moons_num AS 'Počet přirozených družic', rings AS 'Prstence' FROM bodies ORDER BY id;";
+		std::string sql = u8"SELECT name AS 'Název', description AS 'Popis', type AS 'Typ', dist AS 'Vzdálenost od Slunce (miliony km)', diameter AS 'Poloměr (km)', mass AS 'Hmotnost (kvadrilion kg)', grav AS 'Síla gravitace (m/s)', day_length AS 'Délka dne (hodiny)', year_length AS 'Délka roku (dny)', moons_num AS 'Počet přirozených družic', rings AS 'Prstence' FROM bodies ORDER BY id;";
 
 		int exit = sqlite3_open(db_path, &DB);
 		/* An open database, SQL to be evaluated, Callback function, 1st argument to callback, Error msg written here*/

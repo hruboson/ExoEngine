@@ -570,6 +570,7 @@ namespace exo {
 			throw std::runtime_error("failed to load texture image!");
 		}
 
+		std::cout << "w:" << texWidth << " h:" << texHeight << std::endl;
 		VkBuffer stagingBuffer;
 		VkDeviceMemory stagingBufferMemory;
 		createBuffer(imageSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, stagingBuffer, stagingBufferMemory);

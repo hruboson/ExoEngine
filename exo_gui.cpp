@@ -16,19 +16,19 @@ namespace exo {
 		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
-		ImGuiIO& io = ImGui::GetIO(); 
+		ImGuiIO& io = ImGui::GetIO();
 		(void)io;
 
 		// Special ranges and chars
 		ImVector<ImWchar> ranges;
 		ImFontGlyphRangesBuilder builder;
-		for(auto specialCharCode : specialCharCodes) {
+		for (auto specialCharCode : specialCharCodes) {
 			builder.AddChar(specialCharCode);
 		}
 		builder.AddRanges(io.Fonts->GetGlyphRangesDefault());
 		builder.BuildRanges(&ranges);
 		io.Fonts->AddFontFromFileTTF("dearimgui/consola.ttf", 20, NULL, ranges.Data);
-		
+
 		// Icons
 		ImFontConfig config;
 		config.MergeMode = true;
@@ -48,7 +48,7 @@ namespace exo {
 		ImGui_ImplVulkan_CreateFontsTexture(commandBuffer);
 		device.endSingleTimeCommands(commandBuffer);
 		ImGui_ImplVulkan_DestroyFontUploadObjects();
-		
+
 		getDbData();
 		initWindowState();
 	}
@@ -129,15 +129,21 @@ namespace exo {
 			ImGui::Begin(u8"Seznam těles");  // Begin must be closed with End
 
 			int i = 0;
-			for (auto &row : this->planetData) {
-				if(ImGui::Button(row.at(0).second.c_str())) {
+			for (auto& row : this->planetData) {
+				int objId = i + 1; // because Sun is also object
+				if (ImGui::Button(row.at(0).second.c_str())) {
 					windowsOpened.at(i) = true;
 				}
-				ImGui::SameLine(); 
-				std::string buttonName = ICON_FA_SEARCH + ExoGui::identifier + std::to_string(i); // each button must have unique identifier so adding ##_num_ makes it unique but doesn't show it
+				ImGui::SameLine();
+				std::string buttonName = ICON_FA_SEARCH + ExoGui::identifier + std::to_string(i); // each button must have unique identifier so adding ##_num_ makes it unique but doesn't render it
 				if (ImGui::Button(buttonName.c_str())) {
-					int objId = i + 1;
-					std::cout << "x:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.x) + "z:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.z) << std::endl;
+					windowsOpened.at(i) = true; // open window when zooming to planet
+
+					frameInfo.viewerObject.transform.rotation = glm::vec3{0, 180.f, 0};
+					frameInfo.viewerObject.transform.translation = frameInfo.gameObjects.at(objId).transform.translation + glm::vec3{ frameInfo.gameObjects.at(objId).transform.scale.x*5, 0, frameInfo.gameObjects.at(objId).transform.scale.x * 5 };
+					frameInfo.camera.setViewYXZ(frameInfo.viewerObject.transform.translation, frameInfo.viewerObject.transform.rotation);
+
+					//std::cout << "x:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.x) + "z:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.z) << std::endl;
 				}
 				i++;
 			}
@@ -158,8 +164,15 @@ namespace exo {
 						std::string text = data.first + " : " + data.second;
 						ImGui::TextWrapped(text.c_str());
 					}
-				
-					if (ImGui::Button(u8"Zavřít")) windowsOpened.at(i) = false; ImGui::SameLine(); if (ImGui::Button(ICON_FA_SEARCH)) windowsOpened.at(i) = false;
+
+					if (ImGui::Button(u8"Zavřít")) windowsOpened.at(i) = false; 
+					ImGui::SameLine(); 
+					if (ImGui::Button(ICON_FA_SEARCH)) {
+						int objId = i + 1; // because Sun is also object
+						frameInfo.viewerObject.transform.rotation = glm::vec3{ 0, 180.f, 0 };
+						frameInfo.viewerObject.transform.translation = frameInfo.gameObjects.at(objId).transform.translation + glm::vec3{ frameInfo.gameObjects.at(objId).transform.scale.x * 5, 0, frameInfo.gameObjects.at(objId).transform.scale.x * 5 };
+						frameInfo.camera.setViewYXZ(frameInfo.viewerObject.transform.translation, frameInfo.viewerObject.transform.rotation);
+					}
 
 					ImGui::End();
 				}

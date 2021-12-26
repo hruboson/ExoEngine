@@ -12,6 +12,7 @@ namespace exo {
 		int frameIndex;
 		float FrameTime;
 		VkCommandBuffer commandBuffer;
+		ExoObject& viewerObject;
 		ExoCamera& camera;
 
 		VkDescriptorSet globalDescriptorSet;

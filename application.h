@@ -18,8 +18,8 @@ namespace exo {
 	class Application {
 
 	public:
-		static constexpr int WIDTH = 800;
-		static constexpr int HEIGHT = 600;
+		static constexpr int WIDTH = 1920;
+		static constexpr int HEIGHT = 1080;
 
 		void run();
 		Application();
@@ -32,7 +32,7 @@ namespace exo {
 		void loadObjects();
 		void update(FrameInfo& frameInfo);
 		// order of declaration matters !!!
-		//	  initializing from top to bottom and destroying in reverse (bottom to top - first objects last window)
+		// initializing from top to bottom and destroying in reverse (bottom to top - first objects last window)
 		ExoWindow window{ WIDTH, HEIGHT, "ExoPlanets" }; // initialization of an unnamed temporary with a braced-init-list (https://en.cppreference.com/w/cpp/language/list_initialization)
 		ExoDevice device{ window };
 		ExoRenderer renderer{ window, device };
@@ -40,9 +40,12 @@ namespace exo {
 
 		std::unique_ptr<ExoDescriptorPool> globalPool{};
 		std::unique_ptr<ExoDescriptorPool> samplerPool{};
+
 		ExoObject::Map objects;
 
+		// SQLITE DB
 		ExoDB db{};
+		std::vector<std::vector<std::pair<std::string, std::string>>> planetData;
 
 	};
 
