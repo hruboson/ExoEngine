@@ -22,6 +22,9 @@
     <Filter Include="sqlite">
       <UniqueIdentifier>{300287ec-81a7-4c48-a372-c71767fb5b72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Systems">
+      <UniqueIdentifier>{f5a062f0-796e-491a-9dd0-f7173322d9e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -49,9 +52,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="simple_render_system.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="primitive_model_system.cpp">
@@ -99,6 +99,12 @@
     <ClCompile Include="sqlite\sqlite3.c">
       <Filter>sqlite</Filter>
     </ClCompile>
+    <ClCompile Include="simple_render_system.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="point_light_system.cpp">
+      <Filter>Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="compile.bat">
@@ -107,6 +113,8 @@
     <None Include="shaders\shader.frag" />
     <None Include="shaders\shader.vert" />
     <None Include="packages.config" />
+    <None Include="shaders\point_light.vert" />
+    <None Include="shaders\point_light.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -131,9 +139,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="simple_render_system.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="primitive_model_system.h">
@@ -189,6 +194,12 @@
     </ClInclude>
     <ClInclude Include="dearimgui\IconsFontAwesome4.h">
       <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="simple_render_system.h">
+      <Filter>Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="point_light_system.h">
+      <Filter>Systems</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

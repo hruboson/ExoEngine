@@ -4,6 +4,7 @@
 
 // systems
 #include "simple_render_system.h"
+#include "point_light_system.h"
 #include "primitive_model_system.h"
 #include "keyboard_mouse_movement_controller.h"
 #include "exo_gui.h"
@@ -26,8 +27,9 @@
 namespace exo {
 
 	struct GlobalUbo {
-		glm::mat4 projectionView{ 1.f };
-		glm::vec4 ambientLightColor{ 1.f, 1.f, 1.f, 1.f }; // w = light intensity
+		glm::mat4 projection{ 1.f };
+		glm::mat4 view{ 1.f };
+		glm::vec4 ambientLightColor{ 1.f, 1.f, 1.f, .5f }; // w = light intensity
 		glm::vec3 lightPosition{-1.f};
 		alignas(16) glm::vec4 lightColor{ 1.f }; // w = light intensity
 	} ubo;
@@ -81,8 +83,10 @@ namespace exo {
 				.build(globalDescriptorSets[i]);
 		}
 
-		// render system and camera
+		// render systems and camera
 		SimpleRenderSystem simpleRenderSystem{ device, renderer.getSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout() };
+		//PointLightSystem pointLightSystem{ device, renderer.getSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout() };
+
 		ExoCamera camera{};
 		camera.setViewTarget(glm::vec3(-275.f, 25.f, -275.f), glm::vec3(-275.f, 25.f, -275.f));
 
@@ -138,7 +142,9 @@ namespace exo {
 				gui.newFrame();
 
 				// update
-				ubo.projectionView = camera.getProjection() * camera.getView();
+				ubo.projection = camera.getProjection();
+				ubo.view = camera.getView();
+
 				update(frameInfo);
 				uboBuffers[frameIndex]->writeToBuffer(&ubo);
 				uboBuffers[frameIndex]->flush();
@@ -148,6 +154,7 @@ namespace exo {
 				// render frame + gui
 				renderer.beginSwapChainRenderPass(commandBuffer);
 				simpleRenderSystem.renderObjects(frameInfo);
+				//pointLightSystem.render(frameInfo);
 				gui.runGui(frameInfo);
 				gui.renderGui(commandBuffer);
 				renderer.endSwapChainRenderPass(commandBuffer);
@@ -186,8 +193,8 @@ namespace exo {
 		sun.model = sphere_model;
 		sun.transform.translation = { 218.f, 25.f,0.f }; // x - z - y
 		sun.transform.scale = glm::vec3(109.f);
-		
 		objects.emplace(sun.getId(), std::move(sun));
+
 
 		for (auto& row : db.planetData) {
 			auto obj = ExoObject::createGameObject();
@@ -195,9 +202,17 @@ namespace exo {
 			obj.transform.translation = { -stof(row.at(3).second), 25.f,0.f };
 			float scale = ((stof(row.at(4).second) / earth_base) * earth_model_base) / 100;
 			obj.transform.scale = glm::vec3(scale);
-
 			objects.emplace(obj.getId(), std::move(obj));
 		}
+
+
+		std::shared_ptr<ExoModel> model =
+			ExoModel::createModelFromFile(device, "models/smooth_vase.obj");
+		auto flatVase = ExoObject::createGameObject();
+		flatVase.model = model;
+		flatVase.transform.translation = { -.5f, .5f, 0.f };
+		flatVase.transform.scale = { 3.f, 1.5f, 3.f };
+		objects.emplace(flatVase.getId(), std::move(flatVase));
 
 		// static objects
 		//auto sun = ExoObject::createGameObject();
