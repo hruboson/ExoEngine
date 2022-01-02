@@ -216,7 +216,6 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="compile.bat" />
     <None Include="packages.config" />
     <None Include="shaders\point_light.frag" />
     <None Include="shaders\point_light.vert" />

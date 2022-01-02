@@ -29,9 +29,9 @@ namespace exo {
 	struct GlobalUbo {
 		glm::mat4 projection{ 1.f };
 		glm::mat4 view{ 1.f };
-		glm::vec4 ambientLightColor{ 1.f, 1.f, 1.f, .5f }; // w = light intensity
-		glm::vec3 lightPosition{-1.f};
-		alignas(16) glm::vec4 lightColor{ 1.f }; // w = light intensity
+		glm::vec4 ambientLightColor{ 1.f, 1.f, 1.f, .02f }; // w = light intensity
+		glm::vec3 lightPosition{ -1.f };
+		alignas(16) glm::vec4 lightColor{ 1.f, 1.f, 1.f, 1.f }; // w = light intensity
 	} ubo;
 
 	Application::Application() {
@@ -85,10 +85,10 @@ namespace exo {
 
 		// render systems and camera
 		SimpleRenderSystem simpleRenderSystem{ device, renderer.getSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout() };
-		//PointLightSystem pointLightSystem{ device, renderer.getSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout() };
+		PointLightSystem pointLightSystem{ device, renderer.getSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout() };
 
 		ExoCamera camera{};
-		camera.setViewTarget(glm::vec3(-275.f, 25.f, -275.f), glm::vec3(-275.f, 25.f, -275.f));
+		//camera.setViewTarget(glm::vec3(-275.f, 25.f, -275.f), glm::vec3(-275.f, 25.f, -275.f));
 
 		// player
 		auto viewerObject = ExoObject::createGameObject();
@@ -154,7 +154,7 @@ namespace exo {
 				// render frame + gui
 				renderer.beginSwapChainRenderPass(commandBuffer);
 				simpleRenderSystem.renderObjects(frameInfo);
-				//pointLightSystem.render(frameInfo);
+				pointLightSystem.render(frameInfo);
 				gui.runGui(frameInfo);
 				gui.renderGui(commandBuffer);
 				renderer.endSwapChainRenderPass(commandBuffer);
@@ -204,15 +204,6 @@ namespace exo {
 			obj.transform.scale = glm::vec3(scale);
 			objects.emplace(obj.getId(), std::move(obj));
 		}
-
-
-		std::shared_ptr<ExoModel> model =
-			ExoModel::createModelFromFile(device, "models/smooth_vase.obj");
-		auto flatVase = ExoObject::createGameObject();
-		flatVase.model = model;
-		flatVase.transform.translation = { -.5f, .5f, 0.f };
-		flatVase.transform.scale = { 3.f, 1.5f, 3.f };
-		objects.emplace(flatVase.getId(), std::move(flatVase));
 
 		// static objects
 		//auto sun = ExoObject::createGameObject();

@@ -15,18 +15,18 @@ layout (location = 0) out vec2 fragOffset;
 layout(set = 0, binding = 0) uniform GlobalUbo{
 	mat4 projection;	
 	mat4 view;
-	vec4 ambientLightColor;
+	vec4 ambientLightColor; // w = light intensity
 	vec3 lightPosition;
 	vec4 lightColor; // w = light intensity
 } ubo;
 
-const float LIGHT_RADIUS = 0.1;
+const float LIGHT_RADIUS = 10.0;
 
 void main() {
 	fragOffset = OFFSETS[gl_VertexIndex];
 
 	vec3 cameraRightWorld = {ubo.view[0][0], ubo.view[1][0], ubo.view[2][0]};
-	vec3 cameraUpWorld = {ubo.view[0][0], ubo.view[1][0], ubo.view[2][0]};
+	vec3 cameraUpWorld = {ubo.view[0][1], ubo.view[1][1], ubo.view[2][1]};
 
 	vec3 positionWorld = ubo.lightPosition.xyz 
 	+ LIGHT_RADIUS * fragOffset.x * cameraRightWorld

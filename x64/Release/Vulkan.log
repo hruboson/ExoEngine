@@ -2,43 +2,9 @@
   application.cpp
 F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
 F:\Cpp-projects\Vulkan\application.cpp(96,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
-  exo_gui.cpp
-  keyboard_mouse_movement_controller.cpp
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(21,48): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(24,56): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(27,48): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(30,56): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  main.cpp
-F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
-  model.cpp
-  object.cpp
-  pipeline.cpp
-  point_light_system.cpp
-F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
-  primitive_model_system.cpp
-  renderer.cpp
-F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
-  simple_render_system.cpp
-F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
   Generating code
-  57 of 7887 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    95 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+F:\Cpp-projects\Vulkan\pipeline.cpp(53): warning C4715: 'exo::ExoPipeline::readFile': not all control paths return a value
+  All 7892 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Vulkan.vcxproj -> F:\Cpp-projects\Vulkan\x64\Release\Exo.exe
