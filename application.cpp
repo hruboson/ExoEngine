@@ -88,11 +88,12 @@ namespace exo {
 		PointLightSystem pointLightSystem{ device, renderer.getSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout() };
 
 		ExoCamera camera{};
-		//camera.setViewTarget(glm::vec3(-275.f, 25.f, -275.f), glm::vec3(-275.f, 25.f, -275.f));
+		//camera.setViewTarget({ -152.f, 25.f, -2.f }, { -152.f, 25.f, -2.f });
 
 		// player
 		auto viewerObject = ExoObject::createGameObject();
-		viewerObject.transform.translation = { -275.f, 25.f, -275.f }; // start at earth
+		viewerObject.transform.translation = { -152.f, 25.f, -2.f }; // start at earth
+		viewerObject.transform.rotation = { 0.f, 45.2f, 0.f }; // show beautiful scenery
 		KeyboardMouseMovementController cameraController{ window.getGLFWwindow() };
 		double previous_window_x;
 		double previous_window_y;
@@ -169,7 +170,7 @@ namespace exo {
 	}
 
 	void Application::update(FrameInfo& frameInfo) {
-	
+
 		//auto rotateObjects = glm::rotate(glm::mat4(1.f), frameInfo.FrameTime, { 0.f, -1.f, 0.f });
 		//
 		//for (auto& kv : frameInfo.gameObjects) {
@@ -177,18 +178,19 @@ namespace exo {
 		//
 		//	obj.transform.translation = glm::vec3(rotateObjects * glm::vec4(obj.transform.translation, .05f));
 		//}
-	
+
 	}
 
 	void Application::loadObjects() {
-
-		// 3D In-App Objects
-
-		std::shared_ptr<ExoModel> sphere_model = ExoModel::createModelFromFile(device, "models/earth.obj");
-
+		// CONSTANTS
 		const int earth_base = 12756;
 		const int earth_model_base = 10; // base size of earth in engine units
 
+		// MODELS
+		std::shared_ptr<ExoModel> sphere_model = ExoModel::createModelFromFile(device, "models/earth.obj");
+		std::shared_ptr<ExoModel> ring_model = ExoModel::createModelFromFile(device, "models/rings.obj");
+
+		// SUN
 		auto sun = ExoObject::createGameObject();
 		sun.model = sphere_model;
 		sun.transform.translation = { 218.f, 25.f,0.f }; // x - z - y
@@ -196,6 +198,7 @@ namespace exo {
 		objects.emplace(sun.getId(), std::move(sun));
 
 
+		// PLANETS (db)
 		for (auto& row : db.planetData) {
 			auto obj = ExoObject::createGameObject();
 			obj.model = sphere_model;
@@ -205,7 +208,22 @@ namespace exo {
 			objects.emplace(obj.getId(), std::move(obj));
 		}
 
-		// static objects
+		// PLANET RINGS
+		auto saturn_ring = ExoObject::createGameObject();
+		saturn_ring.model = ring_model;
+		saturn_ring.transform.translation = { -stof(db.planetData.at(6).at(3).second), 25.f, 0.f };
+		saturn_ring.transform.scale = glm::vec3(((stof(db.planetData.at(6).at(4).second) / earth_base) * earth_model_base) / 100);
+		saturn_ring.transform.rotation = { 10.f, 0.f, 0.f };
+		objects.emplace(saturn_ring.getId(), std::move(saturn_ring));
+
+		auto uran_ring = ExoObject::createGameObject();
+		uran_ring.model = ring_model;
+		uran_ring.transform.translation = { -stof(db.planetData.at(7).at(3).second), 25.f, 0.f };
+		uran_ring.transform.scale = glm::vec3(((stof(db.planetData.at(7).at(4).second) / earth_base) * earth_model_base) / 100);
+		uran_ring.transform.rotation = { 10.f, 0.f, 0.f };
+		objects.emplace(uran_ring.getId(), std::move(uran_ring));
+
+		// PLANETS (static)
 		//auto sun = ExoObject::createGameObject();
 		//sun.model = sphere_model;
 		//sun.transform.translation = { 0.f, 25.f,0.f }; // x - z - y

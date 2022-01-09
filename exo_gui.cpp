@@ -139,8 +139,8 @@ namespace exo {
 				if (ImGui::Button(buttonName.c_str())) {
 					windowsOpened.at(i) = true; // open window when zooming to planet
 
-					frameInfo.viewerObject.transform.rotation = glm::vec3{0, 180.f, 0};
-					frameInfo.viewerObject.transform.translation = frameInfo.gameObjects.at(objId).transform.translation + glm::vec3{ frameInfo.gameObjects.at(objId).transform.scale.x*5, 0, frameInfo.gameObjects.at(objId).transform.scale.x * 5 };
+					frameInfo.viewerObject.transform.rotation = glm::vec3{ 0, 180.f, 0 };
+					frameInfo.viewerObject.transform.translation = frameInfo.gameObjects.at(objId).transform.translation + glm::vec3{ frameInfo.gameObjects.at(objId).transform.scale.x * 5, 0, frameInfo.gameObjects.at(objId).transform.scale.x * 5 };
 					frameInfo.camera.setViewYXZ(frameInfo.viewerObject.transform.translation, frameInfo.viewerObject.transform.rotation);
 
 					//std::cout << "x:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.x) + "z:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.z) << std::endl;
@@ -165,8 +165,8 @@ namespace exo {
 						ImGui::TextWrapped(text.c_str());
 					}
 
-					if (ImGui::Button(u8"Zavřít")) windowsOpened.at(i) = false; 
-					ImGui::SameLine(); 
+					if (ImGui::Button(u8"Zavřít")) windowsOpened.at(i) = false;
+					ImGui::SameLine();
 					if (ImGui::Button(ICON_FA_SEARCH)) {
 						int objId = i + 1; // because Sun is also object
 						frameInfo.viewerObject.transform.rotation = glm::vec3{ 0, 180.f, 0 };
@@ -178,6 +178,47 @@ namespace exo {
 				}
 				i++;
 			}
+		}
+		{
+			float yaw = frameInfo.viewerObject.transform.rotation.y;
+			const glm::vec3 forwardDir{ sin(yaw), 0.f, cos(yaw) };
+			const glm::vec3 rightDir{ forwardDir.z, 0.f, -forwardDir.x };
+			const glm::vec3 upDir{ 0.f, -1.f, 0.f };
+			glm::vec3 moveDir{ 0.f };
+			glm::vec3 rotate{ 0 };
+
+			ImGui::SetNextWindowSize(ImVec2{130, 130});
+			ImGui::Begin(u8"Ovládání", 0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize |  ImGuiWindowFlags_NoScrollbar);
+
+				// Table (Grid) of controls (3x3)
+				ImGui::BeginTable("Ovládání", 3);
+				ImGui::TableSetupColumn("");
+				ImGui::TableSetupColumn("");
+				ImGui::TableSetupColumn("");
+
+					ImGui::TableNextColumn();
+					ImGui::Button(ICON_FA_UNDO); if (ImGui::IsItemActive()) { rotate.y -= 1.f; } ImGui::TableNextColumn();
+					ImGui::Button(ICON_FA_ARROW_UP);  if (ImGui::IsItemActive()) { moveDir += forwardDir; } ImGui::TableNextColumn(); 
+					ImGui::Button(ICON_FA_REPEAT); if (ImGui::IsItemActive()) { rotate.y += 1.f; } ImGui::TableNextColumn();
+				
+					ImGui::Button(ICON_FA_ARROW_LEFT);  if (ImGui::IsItemActive()) { moveDir -= rightDir; } ImGui::TableNextColumn();
+					if (ImGui::Button(ICON_FA_GLOBE)) { frameInfo.viewerObject.transform.translation = { -152.f, 25.f, -2.f }; frameInfo.viewerObject.transform.rotation = { 0.f, 45.2f, 0.f };}; ImGui::TableNextColumn();
+					ImGui::Button(ICON_FA_ARROW_RIGHT); if (ImGui::IsItemActive()) { moveDir += rightDir; } ImGui::TableNextColumn();
+
+					ImGui::Button(ICON_FA_LEVEL_DOWN);  if (ImGui::IsItemActive()) { moveDir -= upDir; } ImGui::TableNextColumn();
+					ImGui::Button(ICON_FA_ARROW_DOWN); if (ImGui::IsItemActive()) { moveDir -= forwardDir; } ImGui::TableNextColumn();
+					ImGui::Button(ICON_FA_LEVEL_UP);  if (ImGui::IsItemActive()) { moveDir += upDir; }
+
+				ImGui::EndTable();
+
+			if (glm::dot(rotate, rotate) > std::numeric_limits<float>::epsilon()) {
+				frameInfo.viewerObject.transform.rotation += 4.f * frameInfo.FrameTime * glm::normalize(rotate);
+			}
+			if (glm::dot(moveDir, moveDir) > std::numeric_limits<float>::epsilon()) {
+				frameInfo.viewerObject.transform.translation += 8.f * frameInfo.FrameTime * glm::normalize(moveDir);
+			}
+
+			ImGui::End();
 		}
 		if (debug) {
 			ImGui::Begin(
