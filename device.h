@@ -74,19 +74,6 @@ namespace exo {
 			VkImage& image,
 			VkDeviceMemory& imageMemory);
 
-		// textures
-		VkImage textureImage;
-		VkDeviceMemory textureImageMemory;
-		VkImageView textureImageView;
-		void transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout);
-		void createTextureImage();
-		void createTextureImageView();
-		VkImageView createImageView(VkImage image, VkFormat format);
-
-		// sampler
-		VkSampler textureSampler;
-		void createTextureSampler();
-
 		VkPhysicalDeviceProperties properties;
 
 	private:

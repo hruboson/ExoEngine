@@ -72,6 +72,7 @@ namespace exo {
 
 			// kv = key value
 			auto& obj = kv.second;
+			if (obj.model == nullptr) continue;
 			SimplePushConstantData push{};
 
 			push.modelMatrix = obj.transform.mat4();

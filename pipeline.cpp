@@ -75,8 +75,8 @@ namespace exo {
 		fragShaderModule = VK_NULL_HANDLE;
 		vertShaderModule = VK_NULL_HANDLE;
 
-		auto vertShaderCode = readFile("shaders/shader.vert.spv"); // load bytecode of the two shaders
-		auto fragShaderCode = readFile("shaders/shader.frag.spv"); // load bytecode of the two shaders
+		auto vertShaderCode = readFile(vertFilepath); // load bytecode of the two shaders
+		auto fragShaderCode = readFile(fragFilepath); // load bytecode of the two shaders
 
 		// std::cout << "Vertex shader size: " << vertShaderCode.size() << "\n";
 		// std::cout << "Fragment shader size: " << fragShaderCode.size() << "\n";

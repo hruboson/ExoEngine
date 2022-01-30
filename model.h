@@ -22,7 +22,7 @@ namespace exo {
 			glm::vec3 color{};
 			glm::vec3 normal{};
 			glm::vec2 uv{};
-			//glm::vec2 texCoord{}; // for texels
+			glm::vec2 texCoord{}; // for texels
 
 			static std::vector<VkVertexInputBindingDescription> getBindingDescriptions();
 			static std::vector<VkVertexInputAttributeDescription> getAttributeDescriptions();

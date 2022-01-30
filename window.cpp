@@ -1,4 +1,5 @@
 #include "window.h"
+#include "stb_image.h"
 #include <stdexcept>
 
 namespace exo {
@@ -20,6 +21,13 @@ namespace exo {
 		window = glfwCreateWindow(this->width, this->height, this->windowName.c_str(), nullptr, nullptr); // Create actual window
 		//                               |w|          |h|               |title|       |monitor||unrelevant without OpenGL|
 		glfwSetWindowUserPointer(window, this);
+
+		// set window icon
+		GLFWimage images[1];
+		images[0].pixels = stbi_load("exo.png", &images[0].width, &images[0].height, 0, 4); //rgba channels 
+		glfwSetWindowIcon(window, 1, images);
+		stbi_image_free(images[0].pixels);
+
 		glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
 	}
 

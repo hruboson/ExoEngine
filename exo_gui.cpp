@@ -1,5 +1,6 @@
 ﻿#include "exo_gui.h"
 #include "IconsFontAwesome4.h"
+#include "frame_info.h"
 
 #include <stdexcept>
 #include <utility>
@@ -7,7 +8,7 @@
 #include <iostream>
 
 namespace exo {
-	const std::string ExoGui::identifier = "##ID";
+	const std::string ExoGui::btn_identifier = "##ID";
 
 	ExoGui::ExoGui(ExoWindow& window, ExoDevice& device, VkRenderPass renderPass, uint32_t imageCount, ExoDB db) : device{ device }, window{ window }, renderPass{ renderPass }, imageCount{ imageCount }, db{ db } {
 		createImGuiDescriptorPool();
@@ -127,57 +128,78 @@ namespace exo {
 	void ExoGui::runGui(FrameInfo frameInfo) {
 		{ // new scope
 			ImGui::Begin(u8"Seznam těles");  // Begin must be closed with End
-
-			int i = 0;
-			for (auto& row : this->planetData) {
-				int objId = i + 1; // because Sun is also object
-				if (ImGui::Button(row.at(0).second.c_str())) {
-					windowsOpened.at(i) = true;
-				}
-				ImGui::SameLine();
-				std::string buttonName = ICON_FA_SEARCH + ExoGui::identifier + std::to_string(i); // each button must have unique identifier so adding ##_num_ makes it unique but doesn't render it
-				if (ImGui::Button(buttonName.c_str())) {
-					windowsOpened.at(i) = true; // open window when zooming to planet
-
-					frameInfo.viewerObject.transform.rotation = glm::vec3{ 0, 180.f, 0 };
-					frameInfo.viewerObject.transform.translation = frameInfo.gameObjects.at(objId).transform.translation + glm::vec3{ frameInfo.gameObjects.at(objId).transform.scale.x * 5, 0, frameInfo.gameObjects.at(objId).transform.scale.x * 5 };
-					frameInfo.camera.setViewYXZ(frameInfo.viewerObject.transform.translation, frameInfo.viewerObject.transform.rotation);
-
-					//std::cout << "x:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.x) + "z:" + std::to_string(frameInfo.gameObjects.at(objId).transform.translation.z) << std::endl;
-				}
-				i++;
-			}
-
-			ImGui::Checkbox("Debug", &debug);
-
-			ImGui::End();
-		}
-
-		{
 			int i = 0;
 
+			auto lst_front = windowsOpened.begin();
+
 			for (auto& row : this->planetData) {
-				if (windowsOpened.at(i)) {
-					//ImGui::SetNextWindowFocus();
-					ImGui::Begin(row.at(0).second.c_str(), nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_HorizontalScrollbar);
-					for (auto& data : row) {
-						std::string text = data.first + " : " + data.second;
-						ImGui::TextWrapped(text.c_str());
+				if (lst_front == windowsOpened.end()) {
+				
+				}
+				else {
+					int objId = i + 1; // because Sun is also object
+					if (ImGui::Button(row.at(0).second.c_str())) {
+						windowsOpened.insert(lst_front, true);
+						std::cout << *lst_front << std::endl;
 					}
-
-					if (ImGui::Button(u8"Zavřít")) windowsOpened.at(i) = false;
 					ImGui::SameLine();
-					if (ImGui::Button(ICON_FA_SEARCH)) {
-						int objId = i + 1; // because Sun is also object
+					std::string buttonName = ICON_FA_SEARCH + ExoGui::btn_identifier + std::to_string(i); // each button must have unique identifier so adding ##_num_ makes it unique but doesn't render it
+					if (ImGui::Button(buttonName.c_str())) {
+						//windowsOpened.at(i) = true; // open window when zooming to planet
+						timeSpeed = 0; // Stop time when zooming on planet
+				
 						frameInfo.viewerObject.transform.rotation = glm::vec3{ 0, 180.f, 0 };
 						frameInfo.viewerObject.transform.translation = frameInfo.gameObjects.at(objId).transform.translation + glm::vec3{ frameInfo.gameObjects.at(objId).transform.scale.x * 5, 0, frameInfo.gameObjects.at(objId).transform.scale.x * 5 };
 						frameInfo.camera.setViewYXZ(frameInfo.viewerObject.transform.translation, frameInfo.viewerObject.transform.rotation);
 					}
+					i++;
+					++lst_front;
+				};	
+			}
+			ImGui::Checkbox("Debug", &debug);
+			ImGui::End();
+		}
+		{
+			int i = 0;
+			
+			auto lst_front = windowsOpened.begin();
 
-					ImGui::End();
+			for (auto& row : this->planetData) {
+				if (lst_front == windowsOpened.end()) {
+
+				}
+				else {
+					if (*lst_front) {
+						ImGui::Begin(row.at(0).second.c_str(), &(*lst_front), ImGuiWindowFlags_::ImGuiWindowFlags_HorizontalScrollbar); // NO WAAAAAAAY IM GENIUS &(*lst_front)
+						for (auto& data : row) {
+								ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(112, 147, 184, 255));
+								std::string text1 = data.first + " : ";
+								std::string text2 = data.second;
+								ImGui::TextWrapped(text1.c_str());
+								ImGui::PopStyleColor();
+								ImGui::SameLine();
+								ImGui::TextWrapped(text2.c_str());
+						}
+						if (ImGui::Button(u8"Zavřít")) *lst_front = false;
+						ImGui::SameLine();
+						if (ImGui::Button(ICON_FA_SEARCH)) {
+							int objId = i + 1; // because Sun is also object
+							frameInfo.viewerObject.transform.rotation = glm::vec3{ 0, 180.f, 0 };
+							frameInfo.viewerObject.transform.translation = frameInfo.gameObjects.at(objId).transform.translation + glm::vec3{ frameInfo.gameObjects.at(objId).transform.scale.x * 5, 0, frameInfo.gameObjects.at(objId).transform.scale.x * 5 };
+							frameInfo.camera.setViewYXZ(frameInfo.viewerObject.transform.translation, frameInfo.viewerObject.transform.rotation);
+						}
+						ImGui::End();
+					}
+					++lst_front;
 				}
 				i++;
 			}
+		}
+		{
+			ImGui::Begin(u8"Nastavení scény", 0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar);
+			ImGui::SliderInt(u8"Rychlost času", &timeSpeed, 1, 100); ImGui::SameLine(); if (ImGui::Button(ICON_FA_PLAY)) { timeSpeed = 1; }; ImGui::SameLine(); if (ImGui::Button(ICON_FA_STOP)) { timeSpeed = 0; };
+			ImGui::SliderInt(u8"Velikost planet", &planetSize, 1, 100);
+			ImGui::End();
 		}
 		{
 			float yaw = frameInfo.viewerObject.transform.rotation.y;
@@ -191,18 +213,18 @@ namespace exo {
 			ImGui::Begin(u8"Ovládání", 0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize |  ImGuiWindowFlags_NoScrollbar);
 
 				// Table (Grid) of controls (3x3)
-				ImGui::BeginTable("Ovládání", 3);
+				ImGui::BeginTable("Kamera", 3);
 				ImGui::TableSetupColumn("");
 				ImGui::TableSetupColumn("");
 				ImGui::TableSetupColumn("");
 
 					ImGui::TableNextColumn();
 					ImGui::Button(ICON_FA_UNDO); if (ImGui::IsItemActive()) { rotate.y -= 1.f; } ImGui::TableNextColumn();
-					ImGui::Button(ICON_FA_ARROW_UP);  if (ImGui::IsItemActive()) { moveDir += forwardDir; } ImGui::TableNextColumn(); 
+					ImGui::Button(ICON_FA_ARROW_UP);  if (ImGui::IsItemActive()) { moveDir += forwardDir; } ImGui::TableNextColumn();
 					ImGui::Button(ICON_FA_REPEAT); if (ImGui::IsItemActive()) { rotate.y += 1.f; } ImGui::TableNextColumn();
 				
 					ImGui::Button(ICON_FA_ARROW_LEFT);  if (ImGui::IsItemActive()) { moveDir -= rightDir; } ImGui::TableNextColumn();
-					if (ImGui::Button(ICON_FA_GLOBE)) { frameInfo.viewerObject.transform.translation = { -152.f, 25.f, -2.f }; frameInfo.viewerObject.transform.rotation = { 0.f, 45.2f, 0.f };}; ImGui::TableNextColumn();
+					if (ImGui::Button(ICON_FA_GLOBE)) { frameInfo.viewerObject.transform.translation = { -152.f, 0.f, -2.f }; frameInfo.viewerObject.transform.rotation = { 0.f, 45.2f, 0.f };}; ImGui::TableNextColumn();
 					ImGui::Button(ICON_FA_ARROW_RIGHT); if (ImGui::IsItemActive()) { moveDir += rightDir; } ImGui::TableNextColumn();
 
 					ImGui::Button(ICON_FA_LEVEL_DOWN);  if (ImGui::IsItemActive()) { moveDir -= upDir; } ImGui::TableNextColumn();
@@ -218,6 +240,14 @@ namespace exo {
 				frameInfo.viewerObject.transform.translation += 8.f * frameInfo.FrameTime * glm::normalize(moveDir);
 			}
 
+			ImGui::End();
+		}
+		{
+			ImGui::Begin(u8"Scénáře", nullptr);
+			ImGui::Button(u8"Porovnání planet");
+			ImGui::Button(u8"Skutečná velikost");
+			ImGui::Button(u8"Zobrazit celou Sluneční soustavu");
+			ImGui::Button(u8"...");
 			ImGui::End();
 		}
 		if (debug) {
@@ -248,6 +278,8 @@ namespace exo {
 	void ExoGui::initWindowState() {
 		for (auto& row : this->planetData) {
 			windowsOpened.push_back(false);
+			// No new elements should be added after this code
+			// Find way to lock windowsOpened after this "initiation"
 		}
 	}
 

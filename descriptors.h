@@ -9,6 +9,8 @@
 
 namespace exo {
 
+    // Descriptors are kind of pointers to resources (e.g.buffer, texture)
+
     class ExoDescriptorSetLayout {
     public:
         class Builder {

@@ -51,9 +51,18 @@ namespace exo {
 		return ExoObject{ currentId++ };
 	}
 
+	ExoObject ExoObject::makePointLight(float intensity, float radius, glm::vec3 color)
+	{
+		ExoObject obj = ExoObject::createGameObject();
+		obj.color = color;
+		obj.transform.scale.x = radius;
+		obj.pointLight = std::make_unique<PointLightComponent>();
+		obj.pointLight->lightIntensity = intensity;
+		return obj;
+	}
+
 	id_t ExoObject::getId() {
 		return id;
 	}
-
 
 }

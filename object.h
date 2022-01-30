@@ -20,12 +20,17 @@ namespace exo {
 		glm::mat3 normalMatrix();
 	};
 
+	struct PointLightComponent {
+		float lightIntensity = 1.0f;
+	};
+
 	class ExoObject {
 	public:
 		using id_t = unsigned int;
 		using Map = std::unordered_map<id_t, ExoObject>;
 
 		static ExoObject createGameObject();
+		static ExoObject makePointLight(float intensity = 10.f, float radius = 0.1f, glm::vec3 color = glm::vec3(1.f));
 
 		ExoObject(const ExoObject&) = delete;
 		ExoObject& operator = (const ExoObject&) = delete;
@@ -34,10 +39,11 @@ namespace exo {
 
 		id_t getId();
 
-		std::shared_ptr<ExoModel> model{};
 		glm::vec3 color{};
 		TransformComponent transform{};
 
+		std::shared_ptr<ExoModel> model{};
+		std::unique_ptr<PointLightComponent> pointLight = nullptr;
 	private:
 		ExoObject(id_t objId);
 		id_t id;

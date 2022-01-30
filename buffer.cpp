@@ -3,6 +3,8 @@
  *
  * Initially based off VulkanBuffer by Sascha Willems -
  * https://github.com/SaschaWillems/Vulkan/blob/master/base/VulkanBuffer.h
+ * 
+ * Implementation of Brendan Galea
  */
 
 #include "buffer.h"

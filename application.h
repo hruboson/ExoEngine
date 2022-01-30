@@ -47,6 +47,13 @@ namespace exo {
 		ExoDB db{};
 		std::vector<std::vector<std::pair<std::string, std::string>>> planetData;
 
+		// COMPONENTS
+		int timeSpeed;
+		int planetSize;
+
+		// CONSTANTS
+		const int earth_base = 12756;
+		const int earth_model_base = 10; // base size of earth in engine units
 	};
 
 }

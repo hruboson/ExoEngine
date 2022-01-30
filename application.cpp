@@ -26,14 +26,6 @@
 
 namespace exo {
 
-	struct GlobalUbo {
-		glm::mat4 projection{ 1.f };
-		glm::mat4 view{ 1.f };
-		glm::vec4 ambientLightColor{ 1.f, 1.f, 1.f, .02f }; // w = light intensity
-		glm::vec3 lightPosition{ -1.f };
-		alignas(16) glm::vec4 lightColor{ 1.f, 1.f, 1.f, 1.f }; // w = light intensity
-	} ubo;
-
 	Application::Application() {
 		globalPool = ExoDescriptorPool::Builder(device)
 			.setMaxSets(ExoSwapChain::MAX_FRAMES_IN_FLIGHT)
@@ -68,18 +60,19 @@ namespace exo {
 		};
 		globalUboBuffer.map(); // allocate UboBuffer
 
+		// what should descriptors expect
 		auto globalSetLayout = ExoDescriptorSetLayout::Builder(device)
 			.addBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS) // bind to vertex shader
+			//.addBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT, 1)
 			.build();
-		/*auto samplerSetLayout = ExoDescriptorSetLayout::Builder(device)
-			.addBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
-			.build();*/
 
 		std::vector<VkDescriptorSet> globalDescriptorSets(ExoSwapChain::MAX_FRAMES_IN_FLIGHT);
 		for (int i = 0; i < globalDescriptorSets.size(); i++) {
 			auto bufferInfo = uboBuffers[i]->descriptorInfo();
+			//auto imageInfo = ; // NEED TO GET THIS
 			ExoDescriptorWriter(*globalSetLayout, *globalPool)
 				.writeBuffer(0, &bufferInfo)
+				//.writeImage(1, &imageInfo)
 				.build(globalDescriptorSets[i]);
 		}
 
@@ -88,11 +81,10 @@ namespace exo {
 		PointLightSystem pointLightSystem{ device, renderer.getSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout() };
 
 		ExoCamera camera{};
-		//camera.setViewTarget({ -152.f, 25.f, -2.f }, { -152.f, 25.f, -2.f });
 
 		// player
 		auto viewerObject = ExoObject::createGameObject();
-		viewerObject.transform.translation = { -152.f, 25.f, -2.f }; // start at earth
+		viewerObject.transform.translation = { -152.f, 0.f, -2.f }; // start at earth
 		viewerObject.transform.rotation = { 0.f, 45.2f, 0.f }; // show beautiful scenery
 		KeyboardMouseMovementController cameraController{ window.getGLFWwindow() };
 		double previous_window_x;
@@ -123,6 +115,10 @@ namespace exo {
 			// always be kept with aspect ration of window
 			camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 10000.f); // last parameter - far plane - render distance
 
+			// GUI Variables
+			planetSize = gui.planetSize;
+			timeSpeed = gui.timeSpeed;
+
 			// todo
 			// begin offscreen shadow pass
 			// render shadow casting objects
@@ -143,14 +139,13 @@ namespace exo {
 				gui.newFrame();
 
 				// update
+				GlobalUbo ubo{};
 				ubo.projection = camera.getProjection();
 				ubo.view = camera.getView();
-
+				pointLightSystem.update(frameInfo, ubo);
 				update(frameInfo);
 				uboBuffers[frameIndex]->writeToBuffer(&ubo);
 				uboBuffers[frameIndex]->flush();
-				globalUboBuffer.writeToIndex(&ubo, frameIndex);
-				globalUboBuffer.flushIndex(frameIndex);
 
 				// render frame + gui
 				renderer.beginSwapChainRenderPass(commandBuffer);
@@ -170,31 +165,32 @@ namespace exo {
 	}
 
 	void Application::update(FrameInfo& frameInfo) {
+		int i = 0;
+		for (auto& kv : frameInfo.gameObjects) {
+			if (i < db.planetData.size()) {
+				auto& obj = kv.second;
+				if (obj.pointLight != nullptr) continue; // dont rotate Sun
 
-		//auto rotateObjects = glm::rotate(glm::mat4(1.f), frameInfo.FrameTime, { 0.f, -1.f, 0.f });
-		//
-		//for (auto& kv : frameInfo.gameObjects) {
-		//	auto& obj = kv.second;
-		//
-		//	obj.transform.translation = glm::vec3(rotateObjects * glm::vec4(obj.transform.translation, .05f));
-		//}
+				auto rotatePlanet = glm::rotate(glm::mat4(1.f), frameInfo.FrameTime / stof(db.planetData.at(i).at(8).second) * timeSpeed, { 0.f, -.05f, 0.f });
 
+				obj.transform.translation = glm::vec3(rotatePlanet * glm::vec4(obj.transform.translation, .05f));
+				float scale = (((stof(db.planetData.at(i).at(4).second) / earth_base) * earth_model_base) / 100) * planetSize;
+				obj.transform.scale = glm::vec3(scale);
+				i++;
+			}
+		}
 	}
 
 	void Application::loadObjects() {
-		// CONSTANTS
-		const int earth_base = 12756;
-		const int earth_model_base = 10; // base size of earth in engine units
-
 		// MODELS
 		std::shared_ptr<ExoModel> sphere_model = ExoModel::createModelFromFile(device, "models/earth.obj");
 		std::shared_ptr<ExoModel> ring_model = ExoModel::createModelFromFile(device, "models/rings.obj");
 
 		// SUN
-		auto sun = ExoObject::createGameObject();
-		sun.model = sphere_model;
-		sun.transform.translation = { 218.f, 25.f,0.f }; // x - z - y
-		sun.transform.scale = glm::vec3(109.f);
+		auto sun = ExoObject::makePointLight(1.f);
+		sun.transform.translation = { 0.f, 0.f,0.f }; // x - z - y
+		float scale = ((109.f / earth_base) * earth_model_base) / 100;
+		sun.transform.scale = glm::vec3(50.f);
 		objects.emplace(sun.getId(), std::move(sun));
 
 
@@ -202,7 +198,7 @@ namespace exo {
 		for (auto& row : db.planetData) {
 			auto obj = ExoObject::createGameObject();
 			obj.model = sphere_model;
-			obj.transform.translation = { -stof(row.at(3).second), 25.f,0.f };
+			obj.transform.translation = { -stof(row.at(3).second), -stof(row.at(9).second), 0.f };
 			float scale = ((stof(row.at(4).second) / earth_base) * earth_model_base) / 100;
 			obj.transform.scale = glm::vec3(scale);
 			objects.emplace(obj.getId(), std::move(obj));
@@ -211,17 +207,37 @@ namespace exo {
 		// PLANET RINGS
 		auto saturn_ring = ExoObject::createGameObject();
 		saturn_ring.model = ring_model;
-		saturn_ring.transform.translation = { -stof(db.planetData.at(6).at(3).second), 25.f, 0.f };
+		saturn_ring.transform.translation = { -stof(db.planetData.at(6).at(3).second), -stof(db.planetData.at(6).at(9).second), 0.f };
 		saturn_ring.transform.scale = glm::vec3(((stof(db.planetData.at(6).at(4).second) / earth_base) * earth_model_base) / 100);
 		saturn_ring.transform.rotation = { 10.f, 0.f, 0.f };
 		objects.emplace(saturn_ring.getId(), std::move(saturn_ring));
 
 		auto uran_ring = ExoObject::createGameObject();
 		uran_ring.model = ring_model;
-		uran_ring.transform.translation = { -stof(db.planetData.at(7).at(3).second), 25.f, 0.f };
+		uran_ring.transform.translation = { -stof(db.planetData.at(7).at(3).second), -stof(db.planetData.at(7).at(9).second), 0.f };
 		uran_ring.transform.scale = glm::vec3(((stof(db.planetData.at(7).at(4).second) / earth_base) * earth_model_base) / 100);
 		uran_ring.transform.rotation = { 10.f, 0.f, 0.f };
 		objects.emplace(uran_ring.getId(), std::move(uran_ring));
+
+		std::vector<glm::vec3> lightColors{
+			{1.f, .1f, .1f},
+			{.1f, .1f, 1.f},
+			{.1f, 1.f, .1f},
+			{1.f, 1.f, .1f},
+			{.1f, 1.f, 1.f},
+			{1.f, 1.f, 1.f}  //
+		};
+
+		for (int i = 0; i < lightColors.size(); i++) {
+			auto pointLight = ExoObject::makePointLight(0.2f);
+			pointLight.color = lightColors[i];
+			auto rotateLight = glm::rotate(
+				glm::mat4(1.f),
+				(i * glm::two_pi<float>()) / lightColors.size(),
+				{ 0.f, -1.f, 0.f });
+			pointLight.transform.translation = glm::vec3(rotateLight * glm::vec4(-1.f, -1.f, -1.f, 1.f));
+			objects.emplace(pointLight.getId(), std::move(pointLight));
+		}
 
 		// PLANETS (static)
 		//auto sun = ExoObject::createGameObject();

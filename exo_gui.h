@@ -12,6 +12,7 @@
 
 #include <array>
 #include <string>
+#include <list>
 
 namespace exo {
 
@@ -37,11 +38,13 @@ namespace exo {
 
 		// components
 		bool debug = false;
-		std::vector<bool> windowsOpened;
+		int timeSpeed;
+		int planetSize = 1;
+		std::list<bool> windowsOpened;
 
 		// chars for compatibility with cz
 		const std::vector<int> specialCharCodes = {
-			0x011B, 0x00ED, 0x008A, 0x0159, 0x0161, 0x017E, 0x017D, 0x0165, 0x010D, 0x010C, 0x010F, 0x016F, 0x00FD, 0x0148, 0xD83D, 0xDC41
+			0x011B, 0x00ED, 0x008A, 0x0159, 0x0161, 0x017E, 0x017D, 0x0165, 0x010D, 0x010C, 0x010F, 0x016F, 0x00FD, 0x0148, 0xD83D, 0xDC41, 0x010D, 0x2221
 		};
 
 	private:
@@ -68,7 +71,7 @@ namespace exo {
 		void initWindowState();
 
 		// helper variables
-		const static std::string identifier;
+		const static std::string btn_identifier;
 
 	};
 

@@ -1,33 +1,45 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (VulkanTriangle.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   application.cpp
 F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
-F:\Cpp-projects\Vulkan\application.cpp(97,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
+F:\Cpp-projects\Vulkan\application.cpp(89,73): warning C4838: conversion from 'GLFWwindow *' to 'bool' requires a narrowing conversion
   device.cpp
+  exo_db.cpp
   exo_gui.cpp
   keyboard_mouse_movement_controller.cpp
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(21,48): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(22,48): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(24,56): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(25,56): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(27,48): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(28,48): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(30,56): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+F:\Cpp-projects\Vulkan\keyboard_mouse_movement_controller.cpp(31,56): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
+  main.cpp
+F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  model.cpp
+  object.cpp
+  pipeline.cpp
+  point_light_system.cpp
+F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  simple_render_system.cpp
+F:\Cpp-projects\Vulkan\renderer.h(24,28): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  texture.cpp
+  window.cpp
   Generating code
-  220 of 8015 functions ( 2.7%) were compiled, the rest were copied from previous compilation.
-    9 functions were new in current compilation
-    129 functions had inline decision re-evaluated but remain unchanged
+  1099 of 8257 functions (13.3%) were compiled, the rest were copied from previous compilation.
+    241 functions were new in current compilation
+    309 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Vulkan.vcxproj -> F:\Cpp-projects\Vulkan\x64\Release\Exo.exe
