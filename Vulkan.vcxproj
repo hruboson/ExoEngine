@@ -251,16 +251,18 @@ F:\SDKS\Vulkan\1.2.176.1\Bin32\glslc.exe shader.frag -o shader.frag.spv</Command
     <ClInclude Include="renderer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resource1.h" />
+    <ClInclude Include="resource2.h" />
+    <ClInclude Include="resource3.h" />
     <ClInclude Include="simple_render_system.h" />
     <ClInclude Include="swapchain.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Exo1.rc" />
+    <ResourceCompile Include="Exo.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="D:\Downloaded\exo_ico.ico" />
+    <Image Include="exo.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

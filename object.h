@@ -39,6 +39,10 @@ namespace exo {
 
 		id_t getId();
 
+		void setRing(int parent);
+		bool isRing();
+		int getParent();
+
 		glm::vec3 color{};
 		TransformComponent transform{};
 
@@ -47,6 +51,8 @@ namespace exo {
 	private:
 		ExoObject(id_t objId);
 		id_t id;
+		bool ring = false;
+		int parent;
 	};
 
 }

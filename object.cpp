@@ -65,4 +65,17 @@ namespace exo {
 		return id;
 	}
 
+	bool ExoObject::isRing() {
+		return ring;
+	}
+
+	void ExoObject::setRing(int _parent) {
+		ring = true;
+		parent = _parent;
+	}
+
+	int ExoObject::getParent() {
+		return parent;
+	}
+
 }

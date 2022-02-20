@@ -104,9 +104,15 @@ namespace exo {
 			float frameTime = std::chrono::duration<float, std::chrono::seconds::period>(newTime - currentTime).count();
 			currentTime = newTime;
 
+			// GUI Variables
+			planetSize = gui.planetSize;
+			timeSpeed = gui.timeSpeed;
+			moveSpeed = gui.moveSpeed;
+			lookSpeed = gui.lookSpeed;
+
 			//frameTime = glm::min(frameTime, MAX_FRAME_TIME);
 
-			cameraController.moveInPlaneXZ(window.getGLFWwindow(), frameTime, viewerObject, previous_window_x, previous_window_y);
+			cameraController.moveInPlaneXZ(window.getGLFWwindow(), frameTime, viewerObject, previous_window_x, previous_window_y, moveSpeed, lookSpeed);
 			glfwGetCursorPos(window.getGLFWwindow(), &previous_window_x, &previous_window_y);
 
 			camera.setViewYXZ(viewerObject.transform.translation, viewerObject.transform.rotation);
@@ -115,10 +121,7 @@ namespace exo {
 			// always be kept with aspect ration of window
 			camera.setPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 10000.f); // last parameter - far plane - render distance
 
-			// GUI Variables
-			planetSize = gui.planetSize;
-			timeSpeed = gui.timeSpeed;
-
+			gui.mainMenu = cameraController.mainMenu;
 			// todo
 			// begin offscreen shadow pass
 			// render shadow casting objects
@@ -166,17 +169,24 @@ namespace exo {
 
 	void Application::update(FrameInfo& frameInfo) {
 		int i = 0;
-		for (auto& kv : frameInfo.gameObjects) {
-			if (i < db.planetData.size()) {
-				auto& obj = kv.second;
-				if (obj.pointLight != nullptr) continue; // dont rotate Sun
+		for (auto& kv : frameInfo.gameObjects) { // key value
+			auto& obj = kv.second;
+			if (obj.pointLight != nullptr) continue; // dont rotate Sun
+			if (obj.isRing()) { // rotate ring with correct speed
+				auto rotateRing = glm::rotate(glm::mat4(1.f), frameInfo.FrameTime / stof(db.planetData.at(obj.getParent()).at(8).second) * timeSpeed, { 0.f, -0.5f, 0.f });
 
-				auto rotatePlanet = glm::rotate(glm::mat4(1.f), frameInfo.FrameTime / stof(db.planetData.at(i).at(8).second) * timeSpeed, { 0.f, -.05f, 0.f });
-
-				obj.transform.translation = glm::vec3(rotatePlanet * glm::vec4(obj.transform.translation, .05f));
-				float scale = (((stof(db.planetData.at(i).at(4).second) / earth_base) * earth_model_base) / 100) * planetSize;
+				obj.transform.translation = glm::vec3(rotateRing * glm::vec4(obj.transform.translation, .05f));
+				float scale = (((stof(db.planetData.at(obj.getParent()).at(4).second) / earth_base) * earth_model_base) / 100) * planetSize;
 				obj.transform.scale = glm::vec3(scale);
-				i++;
+			} else {
+				if (i < db.planetData.size()) {
+					auto rotatePlanet = glm::rotate(glm::mat4(1.f), frameInfo.FrameTime / stof(db.planetData.at(i).at(8).second) * timeSpeed, { 0.f, -.05f, 0.f });
+
+					obj.transform.translation = glm::vec3(rotatePlanet * glm::vec4(obj.transform.translation, .05f));
+					float scale = (((stof(db.planetData.at(i).at(4).second) / earth_base) * earth_model_base) / 100) * planetSize;
+					obj.transform.scale = glm::vec3(scale);
+					i++;
+				}
 			}
 		}
 	}
@@ -189,8 +199,8 @@ namespace exo {
 		// SUN
 		auto sun = ExoObject::makePointLight(1.f);
 		sun.transform.translation = { 0.f, 0.f,0.f }; // x - z - y
-		float scale = ((109.f / earth_base) * earth_model_base) / 100;
-		sun.transform.scale = glm::vec3(50.f);
+		float scale = ((1390000.f / earth_base) * earth_model_base) / 100;
+		sun.transform.scale = glm::vec3(scale);
 		objects.emplace(sun.getId(), std::move(sun));
 
 
@@ -210,6 +220,7 @@ namespace exo {
 		saturn_ring.transform.translation = { -stof(db.planetData.at(6).at(3).second), -stof(db.planetData.at(6).at(9).second), 0.f };
 		saturn_ring.transform.scale = glm::vec3(((stof(db.planetData.at(6).at(4).second) / earth_base) * earth_model_base) / 100);
 		saturn_ring.transform.rotation = { 10.f, 0.f, 0.f };
+		saturn_ring.setRing(6);
 		objects.emplace(saturn_ring.getId(), std::move(saturn_ring));
 
 		auto uran_ring = ExoObject::createGameObject();
@@ -217,105 +228,8 @@ namespace exo {
 		uran_ring.transform.translation = { -stof(db.planetData.at(7).at(3).second), -stof(db.planetData.at(7).at(9).second), 0.f };
 		uran_ring.transform.scale = glm::vec3(((stof(db.planetData.at(7).at(4).second) / earth_base) * earth_model_base) / 100);
 		uran_ring.transform.rotation = { 10.f, 0.f, 0.f };
+		uran_ring.setRing(7);
 		objects.emplace(uran_ring.getId(), std::move(uran_ring));
-
-		std::vector<glm::vec3> lightColors{
-			{1.f, .1f, .1f},
-			{.1f, .1f, 1.f},
-			{.1f, 1.f, .1f},
-			{1.f, 1.f, .1f},
-			{.1f, 1.f, 1.f},
-			{1.f, 1.f, 1.f}  //
-		};
-
-		for (int i = 0; i < lightColors.size(); i++) {
-			auto pointLight = ExoObject::makePointLight(0.2f);
-			pointLight.color = lightColors[i];
-			auto rotateLight = glm::rotate(
-				glm::mat4(1.f),
-				(i * glm::two_pi<float>()) / lightColors.size(),
-				{ 0.f, -1.f, 0.f });
-			pointLight.transform.translation = glm::vec3(rotateLight * glm::vec4(-1.f, -1.f, -1.f, 1.f));
-			objects.emplace(pointLight.getId(), std::move(pointLight));
-		}
-
-		// PLANETS (static)
-		//auto sun = ExoObject::createGameObject();
-		//sun.model = sphere_model;
-		//sun.transform.translation = { 0.f, 25.f,0.f }; // x - z - y
-		//sun.transform.scale = glm::vec3(109.f);
-		//
-		//objects.emplace(sun.getId(), std::move(sun));
-		//
-		//auto mercury = ExoObject::createGameObject();
-		//mercury.model = sphere_model;
-		//mercury.transform.translation = { -100.f, 25.f, 0.f }; // x - z - y
-		//mercury.transform.scale = glm::vec3(0.38f);
-		//
-		//objects.emplace(mercury.getId(), std::move(mercury));
-		//
-		//auto venus = ExoObject::createGameObject();
-		//venus.model = sphere_model;
-		//venus.transform.translation = { -200.f, 25.f, 0.f }; // x - z - y
-		//venus.transform.scale = glm::vec3(0.94f);
-		//
-		//objects.emplace(venus.getId(), std::move(venus));
-		//
-		//auto earth = ExoObject::createGameObject();
-		//earth.model = sphere_model;
-		//earth.transform.translation = {-300.f, 25.f,0.f }; // x - z - y
-		//earth.transform.scale = glm::vec3(1.f);
-		//
-		//objects.emplace(earth.getId(), std::move(earth));
-		//
-		//auto moon = ExoObject::createGameObject();
-		//moon.model = sphere_model;
-		//moon.transform.translation = { -310.f, 25.f, 0.f }; // x - z - y
-		//moon.transform.scale = glm::vec3(0.27f);
-		//
-		//objects.emplace(moon.getId(), std::move(moon));
-		//
-		//auto mars = ExoObject::createGameObject();
-		//mars.model = sphere_model;
-		//mars.transform.translation = { -400.f, 25.f, 0.f }; // x - z - y
-		//mars.transform.scale = glm::vec3(0.53f);
-		//
-		//objects.emplace(mars.getId(), std::move(mars));
-		//
-		//auto jupiter = ExoObject::createGameObject();
-		//jupiter.model = sphere_model;
-		//jupiter.transform.translation = { -500.f, 25.f, 0.f }; // x - z - y
-		//jupiter.transform.scale = glm::vec3(11.f);
-		//
-		//objects.emplace(jupiter.getId(), std::move(jupiter));
-		//
-		//auto saturn = ExoObject::createGameObject();
-		//saturn.model = sphere_model;
-		//saturn.transform.translation = { -600.f, 25.f, 0.f }; // x - z - y
-		//saturn.transform.scale = glm::vec3(9.14f);
-		//
-		//objects.emplace(saturn.getId(), std::move(saturn));
-		//
-		//auto uranus = ExoObject::createGameObject();
-		//uranus.model = sphere_model;
-		//uranus.transform.translation = { -700.f, 25.f, 0.f }; // x - z - y
-		//uranus.transform.scale = glm::vec3(4.f);
-		//
-		//objects.emplace(uranus.getId(), std::move(uranus));
-		//
-		//auto neptune = ExoObject::createGameObject();
-		//neptune.model = sphere_model;
-		//neptune.transform.translation = { -800.f, 25.f, 0.f }; // x - z - y
-		//neptune.transform.scale = glm::vec3(3.86f);
-		//
-		//objects.emplace(neptune.getId(), std::move(neptune));
-		//
-		//auto pluto = ExoObject::createGameObject();
-		//pluto.model = sphere_model;
-		//pluto.transform.translation = { -900.f, 25.f, 0.f }; // x - z - y
-		//pluto.transform.scale = glm::vec3(.3f);
-		//
-		//objects.emplace(pluto.getId(), std::move(pluto));
 
 	}
 }

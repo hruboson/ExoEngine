@@ -18,7 +18,7 @@ namespace exo {
 
 		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API); // Do not create OpenGL context
 		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-		window = glfwCreateWindow(this->width, this->height, this->windowName.c_str(), nullptr, nullptr); // Create actual window
+		window = glfwCreateWindow(this->width, this->height, this->windowName.c_str(), glfwGetPrimaryMonitor(), nullptr); // Create actual window
 		//                               |w|          |h|               |title|       |monitor||unrelevant without OpenGL|
 		glfwSetWindowUserPointer(window, this);
 

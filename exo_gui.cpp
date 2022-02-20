@@ -28,7 +28,7 @@ namespace exo {
 		}
 		builder.AddRanges(io.Fonts->GetGlyphRangesDefault());
 		builder.BuildRanges(&ranges);
-		io.Fonts->AddFontFromFileTTF("dearimgui/consola.ttf", 20, NULL, ranges.Data);
+		io.Fonts->AddFontFromFileTTF("dearimgui/Mulish-Regular.ttf", 20, NULL, ranges.Data);
 
 		// Icons
 		ImFontConfig config;
@@ -41,7 +41,8 @@ namespace exo {
 		ImGui_ImplVulkan_Init(&init_info, renderPass);
 
 		// Setup Dear ImGui style
-		ImGui::StyleColorsDark();
+		setStyle();
+		//ImGui::StyleColorsDark();
 		//ImGui::StyleColorsClassic();
 
 		// one time command buffer can be done with helper funcitons on device class
@@ -118,6 +119,145 @@ namespace exo {
 		}
 	}
 
+	void ExoGui::setStyle() {
+
+		// source: https://github.com/ocornut/imgui/issues/707#issuecomment-917151020
+		// all rights to this theme belong to janekb04
+		//ImVec4* colors = ImGui::GetStyle().Colors;
+		//colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
+		//colors[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.00f);
+		//colors[ImGuiCol_WindowBg] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);
+		//colors[ImGuiCol_ChildBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+		//colors[ImGuiCol_PopupBg] = ImVec4(0.19f, 0.19f, 0.19f, 0.92f);
+		//colors[ImGuiCol_Border] = ImVec4(0.19f, 0.19f, 0.19f, 0.29f);
+		//colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.24f);
+		//colors[ImGuiCol_FrameBg] = ImVec4(0.05f, 0.05f, 0.05f, 0.54f);
+		//colors[ImGuiCol_FrameBgHovered] = ImVec4(0.19f, 0.19f, 0.19f, 0.54f);
+		//colors[ImGuiCol_FrameBgActive] = ImVec4(0.20f, 0.22f, 0.23f, 1.00f);
+		//colors[ImGuiCol_TitleBg] = ImVec4(0.00f, 0.00f, 0.00f, 1.00f);
+		//colors[ImGuiCol_TitleBgActive] = ImVec4(0.06f, 0.06f, 0.06f, 1.00f);
+		//colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.00f, 0.00f, 0.00f, 1.00f);
+		//colors[ImGuiCol_MenuBarBg] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
+		//colors[ImGuiCol_ScrollbarBg] = ImVec4(0.05f, 0.05f, 0.05f, 0.54f);
+		//colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.34f, 0.34f, 0.34f, 0.54f);
+		//colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.40f, 0.40f, 0.40f, 0.54f);
+		//colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.56f, 0.56f, 0.56f, 0.54f);
+		//colors[ImGuiCol_CheckMark] = ImVec4(0.33f, 0.67f, 0.86f, 1.00f);
+		//colors[ImGuiCol_SliderGrab] = ImVec4(0.34f, 0.34f, 0.34f, 0.54f);
+		//colors[ImGuiCol_SliderGrabActive] = ImVec4(0.56f, 0.56f, 0.56f, 0.54f);
+		//colors[ImGuiCol_Button] = ImVec4(0.05f, 0.05f, 0.05f, 0.54f);
+		//colors[ImGuiCol_ButtonHovered] = ImVec4(0.19f, 0.19f, 0.19f, 0.54f);
+		//colors[ImGuiCol_ButtonActive] = ImVec4(0.20f, 0.22f, 0.23f, 1.00f);
+		//colors[ImGuiCol_Header] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+		//colors[ImGuiCol_HeaderHovered] = ImVec4(0.00f, 0.00f, 0.00f, 0.36f);
+		//colors[ImGuiCol_HeaderActive] = ImVec4(0.20f, 0.22f, 0.23f, 0.33f);
+		//colors[ImGuiCol_Separator] = ImVec4(0.28f, 0.28f, 0.28f, 0.29f);
+		//colors[ImGuiCol_SeparatorHovered] = ImVec4(0.44f, 0.44f, 0.44f, 0.29f);
+		//colors[ImGuiCol_SeparatorActive] = ImVec4(0.40f, 0.44f, 0.47f, 1.00f);
+		//colors[ImGuiCol_ResizeGrip] = ImVec4(0.28f, 0.28f, 0.28f, 0.29f);
+		//colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.44f, 0.44f, 0.44f, 0.29f);
+		//colors[ImGuiCol_ResizeGripActive] = ImVec4(0.40f, 0.44f, 0.47f, 1.00f);
+		//colors[ImGuiCol_Tab] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+		//colors[ImGuiCol_TabHovered] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
+		//colors[ImGuiCol_TabActive] = ImVec4(0.20f, 0.20f, 0.20f, 0.36f);
+		//colors[ImGuiCol_TabUnfocused] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+		//colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
+		////colors[ImGuiCol_DockingPreview] = ImVec4(0.33f, 0.67f, 0.86f, 1.00f);
+		////colors[ImGuiCol_DockingEmptyBg] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+		//colors[ImGuiCol_PlotLines] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+		//colors[ImGuiCol_PlotLinesHovered] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+		//colors[ImGuiCol_PlotHistogram] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+		//colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+		//colors[ImGuiCol_TableHeaderBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+		//colors[ImGuiCol_TableBorderStrong] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
+		//colors[ImGuiCol_TableBorderLight] = ImVec4(0.28f, 0.28f, 0.28f, 0.29f);
+		//colors[ImGuiCol_TableRowBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+		//colors[ImGuiCol_TableRowBgAlt] = ImVec4(1.00f, 1.00f, 1.00f, 0.06f);
+		//colors[ImGuiCol_TextSelectedBg] = ImVec4(0.20f, 0.22f, 0.23f, 1.00f);
+		//colors[ImGuiCol_DragDropTarget] = ImVec4(0.33f, 0.67f, 0.86f, 1.00f);
+		//colors[ImGuiCol_NavHighlight] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+		//colors[ImGuiCol_NavWindowingHighlight] = ImVec4(1.00f, 0.00f, 0.00f, 0.70f);
+		//colors[ImGuiCol_NavWindowingDimBg] = ImVec4(1.00f, 0.00f, 0.00f, 0.20f);
+		//colors[ImGuiCol_ModalWindowDimBg] = ImVec4(1.00f, 0.00f, 0.00f, 0.35f);
+		//
+		//ImGuiStyle& style = ImGui::GetStyle();
+		//style.WindowPadding = ImVec2(8.00f, 8.00f);
+		//style.FramePadding = ImVec2(5.00f, 2.00f);
+		//style.CellPadding = ImVec2(6.00f, 6.00f);
+		//style.ItemSpacing = ImVec2(6.00f, 6.00f);
+		//style.ItemInnerSpacing = ImVec2(6.00f, 6.00f);
+		//style.TouchExtraPadding = ImVec2(0.00f, 0.00f);
+		//style.IndentSpacing = 25;
+		//style.ScrollbarSize = 15;
+		//style.GrabMinSize = 10;
+		//style.WindowBorderSize = 1;
+		//style.ChildBorderSize = 1;
+		//style.PopupBorderSize = 1;
+		//style.FrameBorderSize = 1;
+		//style.TabBorderSize = 1;
+		//style.WindowRounding = 7;
+		//style.ChildRounding = 4;
+		//style.FrameRounding = 3;
+		//style.PopupRounding = 4;
+		//style.ScrollbarRounding = 9;
+		//style.GrabRounding = 3;
+		//style.LogSliderDeadzone = 4;
+		//style.TabRounding = 4;
+
+		// source: https://github.com/ocornut/imgui/issues/707#issuecomment-678611331
+		// all rights to this theme belong to OverShifted
+		ImGuiStyle& style = ImGui::GetStyle();
+		style.Colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
+		style.Colors[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.00f);
+		style.Colors[ImGuiCol_WindowBg] = ImVec4(0.13f, 0.14f, 0.15f, 1.00f);
+		style.Colors[ImGuiCol_ChildBg] = ImVec4(0.13f, 0.14f, 0.15f, 1.00f);
+		style.Colors[ImGuiCol_PopupBg] = ImVec4(0.13f, 0.14f, 0.15f, 1.00f);
+		style.Colors[ImGuiCol_Border] = ImVec4(0.43f, 0.43f, 0.50f, 0.50f);
+		style.Colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+		style.Colors[ImGuiCol_FrameBg] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
+		style.Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.38f, 0.38f, 0.38f, 1.00f);
+		style.Colors[ImGuiCol_FrameBgActive] = ImVec4(0.67f, 0.67f, 0.67f, 0.39f);
+		style.Colors[ImGuiCol_TitleBg] = ImVec4(0.08f, 0.08f, 0.09f, 1.00f);
+		style.Colors[ImGuiCol_TitleBgActive] = ImVec4(0.08f, 0.08f, 0.09f, 1.00f);
+		style.Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.00f, 0.00f, 0.00f, 0.51f);
+		style.Colors[ImGuiCol_MenuBarBg] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
+		style.Colors[ImGuiCol_ScrollbarBg] = ImVec4(0.02f, 0.02f, 0.02f, 0.53f);
+		style.Colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.31f, 0.31f, 0.31f, 1.00f);
+		style.Colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.41f, 0.41f, 0.41f, 1.00f);
+		style.Colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.51f, 0.51f, 0.51f, 1.00f);
+		style.Colors[ImGuiCol_CheckMark] = ImVec4(0.11f, 0.64f, 0.92f, 1.00f);
+		style.Colors[ImGuiCol_SliderGrab] = ImVec4(0.11f, 0.64f, 0.92f, 1.00f);
+		style.Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.08f, 0.50f, 0.72f, 1.00f);
+		style.Colors[ImGuiCol_Button] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
+		style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.38f, 0.38f, 0.38f, 1.00f);
+		style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.67f, 0.67f, 0.67f, 0.39f);
+		style.Colors[ImGuiCol_Header] = ImVec4(0.22f, 0.22f, 0.22f, 1.00f);
+		style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
+		style.Colors[ImGuiCol_HeaderActive] = ImVec4(0.67f, 0.67f, 0.67f, 0.39f);
+		style.Colors[ImGuiCol_Separator] = style.Colors[ImGuiCol_Border];
+		style.Colors[ImGuiCol_SeparatorHovered] = ImVec4(0.41f, 0.42f, 0.44f, 1.00f);
+		style.Colors[ImGuiCol_SeparatorActive] = ImVec4(0.26f, 0.59f, 0.98f, 0.95f);
+		style.Colors[ImGuiCol_ResizeGrip] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+		style.Colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.29f, 0.30f, 0.31f, 0.67f);
+		style.Colors[ImGuiCol_ResizeGripActive] = ImVec4(0.26f, 0.59f, 0.98f, 0.95f);
+		style.Colors[ImGuiCol_Tab] = ImVec4(0.08f, 0.08f, 0.09f, 0.83f);
+		style.Colors[ImGuiCol_TabHovered] = ImVec4(0.33f, 0.34f, 0.36f, 0.83f);
+		style.Colors[ImGuiCol_TabActive] = ImVec4(0.23f, 0.23f, 0.24f, 1.00f);
+		style.Colors[ImGuiCol_TabUnfocused] = ImVec4(0.08f, 0.08f, 0.09f, 1.00f);
+		style.Colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.13f, 0.14f, 0.15f, 1.00f);
+		style.Colors[ImGuiCol_PlotLines] = ImVec4(0.61f, 0.61f, 0.61f, 1.00f);
+		style.Colors[ImGuiCol_PlotLinesHovered] = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
+		style.Colors[ImGuiCol_PlotHistogram] = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
+		style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
+		style.Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.26f, 0.59f, 0.98f, 0.35f);
+		style.Colors[ImGuiCol_DragDropTarget] = ImVec4(0.11f, 0.64f, 0.92f, 1.00f);
+		style.Colors[ImGuiCol_NavHighlight] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+		style.Colors[ImGuiCol_NavWindowingHighlight] = ImVec4(1.00f, 1.00f, 1.00f, 0.70f);
+		style.Colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
+		style.Colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.35f);
+		style.GrabRounding = style.FrameRounding = 2.3f;
+	}
+
 	void ExoGui::newFrame() {
 		// we tell imgui we are creating new frame
 		ImGui_ImplVulkan_NewFrame();
@@ -127,7 +267,7 @@ namespace exo {
 
 	void ExoGui::runGui(FrameInfo frameInfo) {
 		{ // new scope
-			ImGui::Begin(u8"Seznam těles");  // Begin must be closed with End
+			ImGui::Begin(u8"Seznam těles", nullptr, ImGuiWindowFlags_NoMove);  // Begin must be closed with End
 			int i = 0;
 
 			auto lst_front = windowsOpened.begin();
@@ -156,7 +296,6 @@ namespace exo {
 					++lst_front;
 				};	
 			}
-			ImGui::Checkbox("Debug", &debug);
 			ImGui::End();
 		}
 		{
@@ -166,11 +305,11 @@ namespace exo {
 
 			for (auto& row : this->planetData) {
 				if (lst_front == windowsOpened.end()) {
-
+					
 				}
 				else {
 					if (*lst_front) {
-						ImGui::Begin(row.at(0).second.c_str(), &(*lst_front), ImGuiWindowFlags_::ImGuiWindowFlags_HorizontalScrollbar); // NO WAAAAAAAY IM GENIUS &(*lst_front)
+						ImGui::Begin(row.at(0).second.c_str(), &(*lst_front), ImGuiWindowFlags_HorizontalScrollbar); // NO WAAAAAAAY IM GENIUS &(*lst_front)
 						for (auto& data : row) {
 								ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(112, 147, 184, 255));
 								std::string text1 = data.first + " : ";
@@ -196,9 +335,15 @@ namespace exo {
 			}
 		}
 		{
-			ImGui::Begin(u8"Nastavení scény", 0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar);
-			ImGui::SliderInt(u8"Rychlost času", &timeSpeed, 1, 100); ImGui::SameLine(); if (ImGui::Button(ICON_FA_PLAY)) { timeSpeed = 1; }; ImGui::SameLine(); if (ImGui::Button(ICON_FA_STOP)) { timeSpeed = 0; };
-			ImGui::SliderInt(u8"Velikost planet", &planetSize, 1, 100);
+			ImGui::Begin(u8"Nastavení scény", 0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
+			ImGui::SliderInt(u8"Rychlost času", &timeSpeed, 1, 1000); ImGui::SameLine(); if (ImGui::Button(ICON_FA_PLAY)) { timeSpeed = 1; }; ImGui::SameLine(); if (ImGui::Button(ICON_FA_STOP)) { timeSpeed = 0; };
+			ImGui::SliderInt(u8"Měřítko planet", &planetSize, 1, 100);
+			ImGui::End();
+		}
+		{
+			ImGui::Begin(u8"Nastavení ovládání", nullptr, ImGuiWindowFlags_NoMove);
+			ImGui::SliderFloat(u8"Rychlost pohybu", &moveSpeed, 1, 500);
+			ImGui::SliderFloat(u8"Rychlost myši", &lookSpeed, 1, 10);
 			ImGui::End();
 		}
 		{
@@ -210,7 +355,7 @@ namespace exo {
 			glm::vec3 rotate{ 0 };
 
 			ImGui::SetNextWindowSize(ImVec2{130, 130});
-			ImGui::Begin(u8"Ovládání", 0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize |  ImGuiWindowFlags_NoScrollbar);
+			ImGui::Begin(u8"Ovládání", 0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize |  ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
 
 				// Table (Grid) of controls (3x3)
 				ImGui::BeginTable("Kamera", 3);
@@ -234,34 +379,101 @@ namespace exo {
 				ImGui::EndTable();
 
 			if (glm::dot(rotate, rotate) > std::numeric_limits<float>::epsilon()) {
-				frameInfo.viewerObject.transform.rotation += 4.f * frameInfo.FrameTime * glm::normalize(rotate);
+				frameInfo.viewerObject.transform.rotation += lookSpeed * frameInfo.FrameTime * glm::normalize(rotate);
 			}
 			if (glm::dot(moveDir, moveDir) > std::numeric_limits<float>::epsilon()) {
-				frameInfo.viewerObject.transform.translation += 8.f * frameInfo.FrameTime * glm::normalize(moveDir);
+				frameInfo.viewerObject.transform.translation += moveSpeed * frameInfo.FrameTime * glm::normalize(moveDir);
 			}
 
 			ImGui::End();
 		}
 		{
-			ImGui::Begin(u8"Scénáře", nullptr);
+			ImGui::Begin(u8"Scény", nullptr);
 			ImGui::Button(u8"Porovnání planet");
 			ImGui::Button(u8"Skutečná velikost");
 			ImGui::Button(u8"Zobrazit celou Sluneční soustavu");
 			ImGui::Button(u8"...");
 			ImGui::End();
 		}
-		if (debug) {
-			ImGui::Begin(
-				"Debug",
-				&debug);  // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-			ImGui::Text(
-				"Application average %.3f ms/frame (%.1f FPS)",
-				1000.0f / ImGui::GetIO().Framerate,
-				ImGui::GetIO().Framerate);
+		{
+			ImGui::Begin(u8"Nápověda", nullptr);
+			if (ImGui::TreeNode(u8"Ovládání")) {
+				if (ImGui::TreeNode(u8"Kamera")) {
+					ImGui::TextWrapped(u8"W - posunout kameru dopředu.");
+					ImGui::TextWrapped(u8"S - posunout kameru dozadu.");
+					ImGui::TextWrapped(u8"A - posunout kameru doleva.");
+					ImGui::TextWrapped(u8"D - posunout kameru doprava.");
+					ImGui::TextWrapped(u8"Q - posunout kameru vzhůru.");
+					ImGui::TextWrapped(u8"E - posunout kameru dolů.");
+					ImGui::TextWrapped(u8"Levé tlačítko myši - otočení kamery.");
+					ImGui::TreePop();
+				}
+				if (ImGui::TreeNode(u8"Otevřít menu")) {
+					ImGui::TextWrapped(u8"ESC - otevřít / zavřít.");
+					ImGui::TreePop();
+				}
+				ImGui::TreePop();
+			}
 
-			if (ImGui::Button(u8"Zavřít")) debug = false;
+			if (ImGui::TreeNode(u8"Okna")) {
+				if (ImGui::TreeNode(u8"Seznam těles")) {
+					ImGui::TextWrapped(u8"Tlačítko s názvem planety zobrazí informace o planetách.");
+					ImGui::TextWrapped(u8"Lupa přiblíži kameru k dané planetě.");
+					ImGui::TreePop();
+				};
+				if (ImGui::TreeNode(u8"Scény")) {
+					ImGui::TextWrapped(u8"Po kliknutí na název scény se zobrazí přednastavená scéna.");
+					ImGui::TreePop();
+				};
+				if (ImGui::TreeNode(u8"Nastavení scény")) {
+					if (ImGui::TreeNode(u8"Rychlost času")) {
+						ImGui::TextWrapped(u8"Slider - nastavení rychlosti času.");
+						ImGui::TextWrapped(u8"Tlačítko play - nastavení rychlosti času na 1.");
+						ImGui::TextWrapped(u8"Tlačítko stop - zastavení času.");
+						ImGui::TreePop();
+					};
+					ImGui::TextWrapped(u8"");
+					ImGui::TreePop();
+				};
+				if (ImGui::TreeNode(u8"Nastavení ovládání")) {
+					ImGui::TextWrapped(u8"Rychlost pohybu - Změnením hodnoty upravíte rychlost pohybu v prostoru.");
+					ImGui::TextWrapped(u8"Rychlost myši - Změnením hodnoty upravíte citlivost otáčení kamery.");
+					ImGui::TreePop();
+				};
+				if (ImGui::TreeNode(u8"Ovládání")) {
+					ImGui::TextWrapped(u8"Šipky - pohyb vpřed/vzad/vlevo/vpravo.");
+					ImGui::TextWrapped(u8"Šipky s úrovní - pohyb kamery dolů/vzhůru");
+					ImGui::TextWrapped(u8"Šipky v kroužku - otočení kamery doleva/doprava.");
+					ImGui::TextWrapped(u8"Zeměkoule - vrácení kamery do počáteční pozice.");
+					ImGui::TreePop();
+				};
+				ImGui::TreePop();
+			}
+			if (ImGui::TreeNode(u8"Ukončit")) {
+				ImGui::TextWrapped(u8"ESC - otevřít / zavřít hlavní menu.");
+				ImGui::TreePop();
+			}
 			ImGui::End();
 		}
+		if (mainMenu) {
+			ImGui::Begin(u8"Hlavní menu", &mainMenu, ImGuiWindowFlags_NoMove);
+			if (ImGui::Button(u8"Ukončit", ImVec2(ImGui::GetWindowSize().x, 0.0f))) {
+				std::exit(EXIT_SUCCESS);
+			};
+			ImGui::End();
+		}
+		//if (debug) {
+		//	ImGui::Begin(
+		//		"Debug",
+		//		&debug);  // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+		//	ImGui::Text(
+		//		"Application average %.3f ms/frame (%.1f FPS)",
+		//		1000.0f / ImGui::GetIO().Framerate,
+		//		ImGui::GetIO().Framerate);
+		//
+		//	if (ImGui::Button(u8"Zavřít")) debug = false;
+		//	ImGui::End();
+		//}
 	}
 
 	void ExoGui::renderGui(VkCommandBuffer imGuiCommandBuffer) {

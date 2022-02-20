@@ -5,11 +5,13 @@
 
 namespace exo {
 
-	class KeyboardMouseMovementController {
+    class KeyboardMouseMovementController {
 
-	public:
+    public:
 
-		struct KeyMappings {
+        KeyboardMouseMovementController(GLFWwindow* window);
+
+        struct KeyMappings {
             int moveLeft = GLFW_KEY_A;
             int moveRight = GLFW_KEY_D;
             int moveForward = GLFW_KEY_W;
@@ -21,15 +23,15 @@ namespace exo {
             int lookUp = GLFW_KEY_UP;
             int lookDown = GLFW_KEY_DOWN;
             int drag = GLFW_MOUSE_BUTTON_LEFT;
-		};
+            int exit = GLFW_KEY_ESCAPE;
+        };
 
-        void moveInPlaneXZ(GLFWwindow* window, float dt, ExoObject& object, double previous_window_x, double previous_window_y);
-
-        bool mouseButtonPressed;
+        void moveInPlaneXZ(GLFWwindow* window, float dt, ExoObject& object, double previous_window_x, double previous_window_y, float moveSpeed, float lookSpeed);
 
         KeyMappings keys{};
-        float moveSpeed{ 8.f };
-        float lookSpeed{ 8.f }; 
-	};
 
+        inline static bool mainMenu = false;
+    private:
+        bool mouseButtonPressed;
+    };
 }

@@ -50,6 +50,8 @@ namespace exo {
 		// COMPONENTS
 		int timeSpeed;
 		int planetSize;
+		float moveSpeed;
+		float lookSpeed;
 
 		// CONSTANTS
 		const int earth_base = 12756;

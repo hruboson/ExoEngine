@@ -5,7 +5,7 @@
 
 #include <iostream> // Included for reporting and propagating errors
 
-#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup") // Hide the console
+// #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup") // Hide the console
 
 int main() {
 	exo::Application app{};
