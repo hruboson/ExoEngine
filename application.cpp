@@ -158,7 +158,8 @@ namespace exo {
 				gui.renderGui(commandBuffer);
 				renderer.endSwapChainRenderPass(commandBuffer);
 				renderer.endFrame();
-
+				std::cout << "Position x:" << frameInfo.viewerObject.transform.translation.x << " y:" << frameInfo.viewerObject.transform.translation.y << " z:" << frameInfo.viewerObject.transform.translation.z << std::endl;
+				std::cout << "Angle x:" << frameInfo.viewerObject.transform.rotation.x << "y:" << frameInfo.viewerObject.transform.rotation.y << " z:" << frameInfo.viewerObject.transform.rotation.z << std::endl;
 			}
 
 		}
@@ -195,6 +196,8 @@ namespace exo {
 		// MODELS
 		std::shared_ptr<ExoModel> sphere_model = ExoModel::createModelFromFile(device, "models/earth.obj");
 		std::shared_ptr<ExoModel> ring_model = ExoModel::createModelFromFile(device, "models/rings.obj");
+		std::shared_ptr<ExoModel> uran_ring_model = ExoModel::createModelFromFile(device, "models/uran_rings.obj");
+
 
 		// SUN
 		auto sun = ExoObject::makePointLight(1.f);
@@ -224,10 +227,10 @@ namespace exo {
 		objects.emplace(saturn_ring.getId(), std::move(saturn_ring));
 
 		auto uran_ring = ExoObject::createGameObject();
-		uran_ring.model = ring_model;
+		uran_ring.model = uran_ring_model;
 		uran_ring.transform.translation = { -stof(db.planetData.at(7).at(3).second), -stof(db.planetData.at(7).at(9).second), 0.f };
 		uran_ring.transform.scale = glm::vec3(((stof(db.planetData.at(7).at(4).second) / earth_base) * earth_model_base) / 100);
-		uran_ring.transform.rotation = { 10.f, 0.f, 0.f };
+		uran_ring.transform.rotation = { 1.f, 0.f, 0.f };
 		uran_ring.setRing(7);
 		objects.emplace(uran_ring.getId(), std::move(uran_ring));
 

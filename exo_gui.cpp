@@ -335,8 +335,42 @@ namespace exo {
 			}
 		}
 		{
+			ImGui::Begin(u8"Scény", nullptr);
+			if (ImGui::Button(u8"Zobrazit Sluneční soustavu ve skutečné velikosti")) {
+				frameInfo.viewerObject.transform.rotation = glm::vec3{ -0.0913868f, 5.08866f, 0 };
+				frameInfo.viewerObject.transform.translation = glm::vec3{ 98.9157f, -24.5118f, -135.239f };
+				planetSize = 1;
+			};
+			if (ImGui::Button(u8"Zobrazit Zemi a Měsíc se Sluncem v pozadí")) {
+				frameInfo.viewerObject.transform.translation = { -152.f, 0.f, -2.f }; 
+				frameInfo.viewerObject.transform.rotation = { 0.f, 45.2f, 0.f };
+				planetSize = 1;
+			};
+			if (ImGui::Button(u8"Porovnání velikostí planet - v řadě")) {
+				frameInfo.viewerObject.transform.rotation = glm::vec3{ -1.12992f, 6.27481f, 0 };
+				frameInfo.viewerObject.transform.translation = glm::vec3{ -2904.f, -3566.f, -1615.26f };
+				planetSize = 100;
+			};
+			if (ImGui::Button(u8"Porovnání velikostí planet - za sebou")) {
+				frameInfo.viewerObject.transform.rotation = glm::vec3{ -0.0253871f, 4.12595f, 0 };
+				frameInfo.viewerObject.transform.translation = glm::vec3{ 113.f, -24.5118f, 282.026f };
+				planetSize = 55;
+			};
+			if (ImGui::Button(u8"Zobrazit planety s výraznými prstenci")) {
+				frameInfo.viewerObject.transform.translation = { -2017.34f, 0.f, -1245.f };
+				frameInfo.viewerObject.transform.rotation = { 0.017595f, 6.24023f, 0.f };
+				auto lst_front = windowsOpened.begin();
+				std::advance(lst_front, 6);
+				*lst_front = true;
+				std::advance(lst_front, 1);
+				*lst_front = true;
+				planetSize = 100;
+			};
+			ImGui::End();
+		}
+		{
 			ImGui::Begin(u8"Nastavení scény", 0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-			ImGui::SliderInt(u8"Rychlost času", &timeSpeed, 1, 1000); ImGui::SameLine(); if (ImGui::Button(ICON_FA_PLAY)) { timeSpeed = 1; }; ImGui::SameLine(); if (ImGui::Button(ICON_FA_STOP)) { timeSpeed = 0; };
+			ImGui::SliderInt(u8"Rychlost času", &timeSpeed, -1000, 1000); ImGui::SameLine(); if (ImGui::Button(ICON_FA_PLAY)) { timeSpeed = 1; }; ImGui::SameLine(); if (ImGui::Button(ICON_FA_STOP)) { timeSpeed = 0; };
 			ImGui::SliderInt(u8"Měřítko planet", &planetSize, 1, 100);
 			ImGui::End();
 		}
@@ -388,14 +422,6 @@ namespace exo {
 			ImGui::End();
 		}
 		{
-			ImGui::Begin(u8"Scény", nullptr);
-			ImGui::Button(u8"Porovnání planet");
-			ImGui::Button(u8"Skutečná velikost");
-			ImGui::Button(u8"Zobrazit celou Sluneční soustavu");
-			ImGui::Button(u8"...");
-			ImGui::End();
-		}
-		{
 			ImGui::Begin(u8"Nápověda", nullptr);
 			if (ImGui::TreeNode(u8"Ovládání")) {
 				if (ImGui::TreeNode(u8"Kamera")) {
@@ -416,6 +442,8 @@ namespace exo {
 			}
 
 			if (ImGui::TreeNode(u8"Okna")) {
+				ImGui::TextWrapped(u8"Okna s šipkou vlevo se dají skrýt a znovu otevřít.");
+				ImGui::TextWrapped(u8"Křížkem se okno zavře.");
 				if (ImGui::TreeNode(u8"Seznam těles")) {
 					ImGui::TextWrapped(u8"Tlačítko s názvem planety zobrazí informace o planetách.");
 					ImGui::TextWrapped(u8"Lupa přiblíži kameru k dané planetě.");
@@ -423,6 +451,7 @@ namespace exo {
 				};
 				if (ImGui::TreeNode(u8"Scény")) {
 					ImGui::TextWrapped(u8"Po kliknutí na název scény se zobrazí přednastavená scéna.");
+					ImGui::TextWrapped(u8"Upraví se velikosti planet a kamera se posune.");
 					ImGui::TreePop();
 				};
 				if (ImGui::TreeNode(u8"Nastavení scény")) {
@@ -432,7 +461,9 @@ namespace exo {
 						ImGui::TextWrapped(u8"Tlačítko stop - zastavení času.");
 						ImGui::TreePop();
 					};
-					ImGui::TextWrapped(u8"");
+					if (ImGui::TreeNode(u8"Měřítko planet")) {
+						ImGui::TextWrapped(u8"Zvětší planety podle měřítká. Jejich velikost se vynásobí zadaným číslem.");
+					};
 					ImGui::TreePop();
 				};
 				if (ImGui::TreeNode(u8"Nastavení ovládání")) {
