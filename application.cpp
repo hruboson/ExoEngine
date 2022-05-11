@@ -30,7 +30,7 @@ namespace exo {
 		globalPool = ExoDescriptorPool::Builder(device)
 			.setMaxSets(ExoSwapChain::MAX_FRAMES_IN_FLIGHT)
 			.addPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, ExoSwapChain::MAX_FRAMES_IN_FLIGHT)
-			//.addPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, ExoSwapChain::MAX_FRAMES_IN_FLIGHT)
+			.addPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, ExoSwapChain::MAX_FRAMES_IN_FLIGHT)
 			.build();
 
 		loadObjects();
@@ -63,16 +63,16 @@ namespace exo {
 		// what should descriptors expect
 		auto globalSetLayout = ExoDescriptorSetLayout::Builder(device)
 			.addBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS) // bind to vertex shader
-			//.addBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT, 1)
+			.addBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT, 1)
 			.build();
 
 		std::vector<VkDescriptorSet> globalDescriptorSets(ExoSwapChain::MAX_FRAMES_IN_FLIGHT);
 		for (int i = 0; i < globalDescriptorSets.size(); i++) {
 			auto bufferInfo = uboBuffers[i]->descriptorInfo();
-			//auto imageInfo = ; // NEED TO GET THIS
+			//auto imageInfo = texture; // NEED TO GET THIS
 			ExoDescriptorWriter(*globalSetLayout, *globalPool)
 				.writeBuffer(0, &bufferInfo)
-				//.writeImage(1, &imageInfo)
+				//.writeImage(1, &texture.imageInfo)
 				.build(globalDescriptorSets[i]);
 		}
 
@@ -158,8 +158,8 @@ namespace exo {
 				gui.renderGui(commandBuffer);
 				renderer.endSwapChainRenderPass(commandBuffer);
 				renderer.endFrame();
-				std::cout << "Position x:" << frameInfo.viewerObject.transform.translation.x << " y:" << frameInfo.viewerObject.transform.translation.y << " z:" << frameInfo.viewerObject.transform.translation.z << std::endl;
-				std::cout << "Angle x:" << frameInfo.viewerObject.transform.rotation.x << "y:" << frameInfo.viewerObject.transform.rotation.y << " z:" << frameInfo.viewerObject.transform.rotation.z << std::endl;
+				//std::cout << "Position x:" << frameInfo.viewerObject.transform.translation.x << " y:" << frameInfo.viewerObject.transform.translation.y << " z:" << frameInfo.viewerObject.transform.translation.z << std::endl;
+				//std::cout << "Angle x:" << frameInfo.viewerObject.transform.rotation.x << "y:" << frameInfo.viewerObject.transform.rotation.y << " z:" << frameInfo.viewerObject.transform.rotation.z << std::endl;
 			}
 
 		}
@@ -198,6 +198,9 @@ namespace exo {
 		std::shared_ptr<ExoModel> ring_model = ExoModel::createModelFromFile(device, "models/rings.obj");
 		std::shared_ptr<ExoModel> uran_ring_model = ExoModel::createModelFromFile(device, "models/uran_rings.obj");
 
+		// TEXTURES
+		//this->texture = ExoTexture(device, "textures/earth.jpg");
+
 
 		// SUN
 		auto sun = ExoObject::makePointLight(1.f);
@@ -212,6 +215,7 @@ namespace exo {
 			auto obj = ExoObject::createGameObject();
 			obj.model = sphere_model;
 			obj.transform.translation = { -stof(row.at(3).second), -stof(row.at(9).second), 0.f };
+			obj.baseTransform.translation = { -stof(row.at(3).second), -stof(row.at(9).second), 0.f };
 			float scale = ((stof(row.at(4).second) / earth_base) * earth_model_base) / 100;
 			obj.transform.scale = glm::vec3(scale);
 			objects.emplace(obj.getId(), std::move(obj));
@@ -221,6 +225,7 @@ namespace exo {
 		auto saturn_ring = ExoObject::createGameObject();
 		saturn_ring.model = ring_model;
 		saturn_ring.transform.translation = { -stof(db.planetData.at(6).at(3).second), -stof(db.planetData.at(6).at(9).second), 0.f };
+		saturn_ring.baseTransform.translation = { -stof(db.planetData.at(6).at(3).second), -stof(db.planetData.at(6).at(9).second), 0.f };
 		saturn_ring.transform.scale = glm::vec3(((stof(db.planetData.at(6).at(4).second) / earth_base) * earth_model_base) / 100);
 		saturn_ring.transform.rotation = { 10.f, 0.f, 0.f };
 		saturn_ring.setRing(6);
@@ -229,6 +234,7 @@ namespace exo {
 		auto uran_ring = ExoObject::createGameObject();
 		uran_ring.model = uran_ring_model;
 		uran_ring.transform.translation = { -stof(db.planetData.at(7).at(3).second), -stof(db.planetData.at(7).at(9).second), 0.f };
+		uran_ring.baseTransform.translation = { -stof(db.planetData.at(7).at(3).second), -stof(db.planetData.at(7).at(9).second), 0.f };
 		uran_ring.transform.scale = glm::vec3(((stof(db.planetData.at(7).at(4).second) / earth_base) * earth_model_base) / 100);
 		uran_ring.transform.rotation = { 1.f, 0.f, 0.f };
 		uran_ring.setRing(7);

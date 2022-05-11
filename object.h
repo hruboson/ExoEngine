@@ -45,6 +45,7 @@ namespace exo {
 
 		glm::vec3 color{};
 		TransformComponent transform{};
+		TransformComponent baseTransform{};
 
 		std::shared_ptr<ExoModel> model{};
 		std::unique_ptr<PointLightComponent> pointLight = nullptr;

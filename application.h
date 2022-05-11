@@ -5,6 +5,7 @@
 #include "renderer.h"
 #include "descriptors.h"
 #include "model.h"
+#include "texture.h"
 #include "object.h"
 #include "primitive_model_system.h"
 #include "frame_info.h"
@@ -42,6 +43,7 @@ namespace exo {
 		std::unique_ptr<ExoDescriptorPool> samplerPool{};
 
 		ExoObject::Map objects;
+		//ExoTexture texture{device, "textures/earth.jpg"};
 
 		// SQLITE DB
 		ExoDB db{};

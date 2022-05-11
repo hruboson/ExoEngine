@@ -2,11 +2,15 @@
 
 #include "camera.h"
 #include "object.h"
+#include "exo_db.h"
 
 //lib
 #include <vulkan/vulkan.h>
 
 #define MAX_LIGHTS 10
+
+using queryRow = std::vector<std::pair<std::string, std::string>>;
+using queryData = std::vector<queryRow>;
 
 namespace exo {
 	struct PointLight {
@@ -24,7 +28,6 @@ namespace exo {
 
 		VkDescriptorSet globalDescriptorSet;
 		ExoObject::Map& gameObjects;
-
 	};
 
 	struct GlobalUbo {

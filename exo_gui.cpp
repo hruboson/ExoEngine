@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include <utility>
+#include <string>
 
 #include <iostream>
 
@@ -339,22 +340,46 @@ namespace exo {
 			if (ImGui::Button(u8"Zobrazit Sluneční soustavu ve skutečné velikosti")) {
 				frameInfo.viewerObject.transform.rotation = glm::vec3{ -0.0913868f, 5.08866f, 0 };
 				frameInfo.viewerObject.transform.translation = glm::vec3{ 98.9157f, -24.5118f, -135.239f };
+				int i = 0;
+				for (auto& kv : frameInfo.gameObjects) { // key value
+					auto& obj = kv.second;
+					obj.transform.translation = obj.baseTransform.translation;
+				}
 				planetSize = 1;
+				timeSpeed = 0;
 			};
 			if (ImGui::Button(u8"Zobrazit Zemi a Měsíc se Sluncem v pozadí")) {
 				frameInfo.viewerObject.transform.translation = { -152.f, 0.f, -2.f }; 
 				frameInfo.viewerObject.transform.rotation = { 0.f, 45.2f, 0.f };
+				int i = 0;
+				for (auto& kv : frameInfo.gameObjects) { // key value
+					auto& obj = kv.second;
+					obj.transform.translation = obj.baseTransform.translation;
+				}
 				planetSize = 1;
+				timeSpeed = 0;
 			};
 			if (ImGui::Button(u8"Porovnání velikostí planet - v řadě")) {
 				frameInfo.viewerObject.transform.rotation = glm::vec3{ -1.12992f, 6.27481f, 0 };
 				frameInfo.viewerObject.transform.translation = glm::vec3{ -2904.f, -3566.f, -1615.26f };
+				int i = 0;
+				for (auto& kv : frameInfo.gameObjects) { // key value
+					auto& obj = kv.second;
+					obj.transform.translation = obj.baseTransform.translation;
+				}
 				planetSize = 100;
+				timeSpeed = 0;
 			};
 			if (ImGui::Button(u8"Porovnání velikostí planet - za sebou")) {
 				frameInfo.viewerObject.transform.rotation = glm::vec3{ -0.0253871f, 4.12595f, 0 };
 				frameInfo.viewerObject.transform.translation = glm::vec3{ 113.f, -24.5118f, 282.026f };
+				int i = 0;
+				for (auto& kv : frameInfo.gameObjects) { // key value
+					auto& obj = kv.second;
+					obj.transform.translation = obj.baseTransform.translation;
+				}
 				planetSize = 55;
+				timeSpeed = 0;
 			};
 			if (ImGui::Button(u8"Zobrazit planety s výraznými prstenci")) {
 				frameInfo.viewerObject.transform.translation = { -2017.34f, 0.f, -1245.f };
@@ -364,7 +389,13 @@ namespace exo {
 				*lst_front = true;
 				std::advance(lst_front, 1);
 				*lst_front = true;
+				int i = 0;
+				for (auto& kv : frameInfo.gameObjects) { // key value
+					auto& obj = kv.second;
+					obj.transform.translation = obj.baseTransform.translation;
+				}
 				planetSize = 100;
+				timeSpeed = 0;
 			};
 			ImGui::End();
 		}

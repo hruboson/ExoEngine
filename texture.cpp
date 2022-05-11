@@ -10,7 +10,7 @@
 
 namespace exo {
 
-	ExoTexture::ExoTexture(ExoDevice& device, std::string texturePath) : device_{ device }, texturePath{texturePath} {
+	ExoTexture::ExoTexture(ExoDevice& device, const std::string& texturePath) : device_{ device }, texturePath{texturePath} {
 		createTextureImage();
 		createTextureImageView();
 		createTextureSampler();

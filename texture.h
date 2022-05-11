@@ -6,7 +6,7 @@ namespace exo {
 
 	class ExoTexture {
 	public:
-		ExoTexture(ExoDevice& device, std::string texturePath);
+		ExoTexture(ExoDevice& device, const std::string& texturePath);
 		~ExoTexture();
 	private:
 		ExoDevice& device_;
@@ -20,6 +20,10 @@ namespace exo {
 		void createTextureImage();
 		void createTextureImageView();
 		VkImageView createImageView(VkImage image, VkFormat format);
+
+		VkDescriptorImageInfo descriptor;
+		VkFormat format;
+		VkImageLayout imageLayout;
 
 		// sampler
 		VkSampler textureSampler;

@@ -133,7 +133,7 @@ namespace exo {
 		attributeDescriptions.push_back({ 1, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, color) });
 		attributeDescriptions.push_back({ 2, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, normal) });
 		attributeDescriptions.push_back({ 3, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, uv) });
-		// attributeDescriptions.push_back({ 4, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, texCoord) });
+		attributeDescriptions.push_back({ 4, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, texCoord) });
 
 		return attributeDescriptions;
 
@@ -145,8 +145,6 @@ namespace exo {
 		// binding 0 on both = we are interleaving two bindings in vertex buffer
 		// format of passed data
 		// offsetof = automatically calculates byte offset of color in the Vertex struct
-
-		
 	}
 
 	std::unique_ptr<ExoModel> ExoModel::createModelFromFile(ExoDevice& device, const std::string& filepath) {
@@ -196,6 +194,7 @@ namespace exo {
 						vertex.color = { 1.f,1.f,1.f };
 					}
 				}
+				
 				if (index.normal_index >= 0) {
 					vertex.normal = {
 						attrib.normals[3 * index.normal_index + 0], // x
@@ -207,6 +206,10 @@ namespace exo {
 					vertex.uv = {
 						attrib.texcoords[2 * index.texcoord_index + 0], // u
 						attrib.texcoords[2 * index.texcoord_index + 1], // v
+					};
+					vertex.texCoord = {
+						attrib.texcoords[2 * index.texcoord_index + 0],
+						1.0f - attrib.texcoords[2 * index.texcoord_index + 1]
 					};
 				}
 

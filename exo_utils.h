@@ -19,14 +19,4 @@ namespace exo {
 	UploadContext _uploadContext;
 
 	void immediate_submit(std::function<void(VkCommandBuffer cmd)>&& function);
-
-	// solution by https://stackoverflow.com/a/27977053/12547295
-	//bool get_list_item(std::list<bool> lst, int position) { 
-	//	std::list<bool>::iterator it = lst.begin();
-	//	for (int i = 0; i < position; i++) {
-	//		++it;
-	//	}
-	//	return *it;
-	//}
-
 }
