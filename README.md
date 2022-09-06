@@ -1,28 +1,57 @@
 # ExoEngine
-3D graphcs engine built on the Vulkan API.
-### Application
-The application built on this engine is a Virtual Solar System. It's not as fancy as it could be, but it's a start (This was also my 1st take on 3D graphics (〃￣ω￣〃)ゞ).
 
-# Download and run the application
-You can download the app binaries and all additional files [here](https://tinyurl.com/exoengine).
-To run download the whole folder, unzip it ('duh), and run the file exo.exe.
+3D graphics engine built on the Vulkan API.
+
+<img src="exo.png" alt="ExoEngine icon" width="100"/>
+
+# Build
+
+To build the engine you need following (for Windows):
+
+* MinGW64
+    *It is also posible to use different compiler (MSVC for example), but you would have to change CMakeLists.txt*
+
+    - I'm using MSYS:
+        - Download [MSYS](https://www.msys2.org)
+        - Run following commands:
+            - pacman -Syu
+            - pacman -Su
+            - pacman -S mingw-w64-x86_64-{toolchain,cmake,glfw,vulkan-headers,vulkan-loader,vulkan-validation-layers,libsqlite,SDL2,magnum-integration}
+* [Vulkan SDK](https://vulkan.lunarg.com/sdk/home#windows)
+* [CMake](https://cmake.org/download)
+* Set system environment variables for MinGW, CMake and Vulkan
+    - X:\MSYS\mingw64\bin
+    - X:\CMake\bin
+    - X:\Vulkan\1.3.224.1\Bin
+
+Set variables in ` `.env.cmake` ` to match your system
+Run ` `.\build.bat` ` command from top-most folder
+**You might need to remove the existing build folder before running build for the first time**
+
+I will be testing this build tutorial more, but I hope I haven't forgotten anything. If you have problem, contact me or create an Issue.
 
 # Purpose
-This engine was initially made for my own study purposes, but there is a chance I will work on this more (when I have free time). It breaks my heart to abandon this project for now but I'm sure I will come stronger. ᕙ(  •̀ ᗜ •́  )ᕗ 
+
+This engine was built for my own study purposes. I'm still developing it when I find the time. Tips and critiques are welcome
 
 # Documentation
+
 I made quite nice documentation/paper for this project. The problem is it was for my school so it's in czech language, so I'm not gonna post it here.
-But thorough english documentation is planned, so stay tuned (for the next 100 years).
+But thorough english documentation is planned, so stay tuned.
 
 # FYI
-If you want to copy, study or do anything else with the code you are welcome. I will not allow any pull requests as this isn't really public project. You are free to fork it and do anything you want with it.
+
+If you want to copy, study or do anything else with the code you are welcome. I will not allow any pull requests as this isn't really "public project", but rather my studying material. You are free to fork it and do anything you want with it though.
 
 ## Dependencies
+
 The engine is built mainly on Vulkan API and other additional libraries.
 
 #### Additional libraries
-- TinyObjectLoader
-- STB library
-- GLFW
-- GLM
 
+* TinyObjectLoader
+* STB library
+* GLFW
+* GLM
+* SQLite
+* ImGui
