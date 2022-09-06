@@ -52,10 +52,10 @@ RM = G:\DevTools\CMake\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = G:\Projects\Cpp-projects\ExoEngineVSCode
+CMAKE_SOURCE_DIR = G:\Projects\Cpp-projects\ExoEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = G:\Projects\Cpp-projects\ExoEngineVSCode\build
+CMAKE_BINARY_DIR = G:\Projects\Cpp-projects\ExoEngine\build
 
 # Utility rule file for Shaders.
 
@@ -65,32 +65,32 @@ include CMakeFiles/Shaders.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/Shaders.dir/progress.make
 
-CMakeFiles/Shaders: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.frag.spv
-CMakeFiles/Shaders: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.vert.spv
-CMakeFiles/Shaders: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.frag.spv
-CMakeFiles/Shaders: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.vert.spv
+CMakeFiles/Shaders: G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.frag.spv
+CMakeFiles/Shaders: G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.vert.spv
+CMakeFiles/Shaders: G:/Projects/Cpp-projects/ExoEngine/shaders/shader.frag.spv
+CMakeFiles/Shaders: G:/Projects/Cpp-projects/ExoEngine/shaders/shader.vert.spv
 
-G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.frag.spv: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.frag.spv"
-	G:\Projects\sdk\Vulkan\1.3.204.1\Bin\glslangValidator.exe -V G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.frag -o G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.frag.spv
+G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.frag.spv: G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.frag
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.frag.spv"
+	G:\Projects\sdk\Vulkan\1.3.224.1\Bin\glslangValidator.exe -V G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.frag -o G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.frag.spv
 
-G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.vert.spv: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.vert
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.vert.spv"
-	G:\Projects\sdk\Vulkan\1.3.204.1\Bin\glslangValidator.exe -V G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.vert -o G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.vert.spv
+G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.vert.spv: G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.vert
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.vert.spv"
+	G:\Projects\sdk\Vulkan\1.3.224.1\Bin\glslangValidator.exe -V G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.vert -o G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.vert.spv
 
-G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.frag.spv: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.frag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.frag.spv"
-	G:\Projects\sdk\Vulkan\1.3.204.1\Bin\glslangValidator.exe -V G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.frag -o G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.frag.spv
+G:/Projects/Cpp-projects/ExoEngine/shaders/shader.frag.spv: G:/Projects/Cpp-projects/ExoEngine/shaders/shader.frag
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating G:/Projects/Cpp-projects/ExoEngine/shaders/shader.frag.spv"
+	G:\Projects\sdk\Vulkan\1.3.224.1\Bin\glslangValidator.exe -V G:/Projects/Cpp-projects/ExoEngine/shaders/shader.frag -o G:/Projects/Cpp-projects/ExoEngine/shaders/shader.frag.spv
 
-G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.vert.spv: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.vert
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.vert.spv"
-	G:\Projects\sdk\Vulkan\1.3.204.1\Bin\glslangValidator.exe -V G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.vert -o G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.vert.spv
+G:/Projects/Cpp-projects/ExoEngine/shaders/shader.vert.spv: G:/Projects/Cpp-projects/ExoEngine/shaders/shader.vert
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating G:/Projects/Cpp-projects/ExoEngine/shaders/shader.vert.spv"
+	G:\Projects\sdk\Vulkan\1.3.224.1\Bin\glslangValidator.exe -V G:/Projects/Cpp-projects/ExoEngine/shaders/shader.vert -o G:/Projects/Cpp-projects/ExoEngine/shaders/shader.vert.spv
 
 Shaders: CMakeFiles/Shaders
-Shaders: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.frag.spv
-Shaders: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/point_light.vert.spv
-Shaders: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.frag.spv
-Shaders: G:/Projects/Cpp-projects/ExoEngineVSCode/shaders/shader.vert.spv
+Shaders: G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.frag.spv
+Shaders: G:/Projects/Cpp-projects/ExoEngine/shaders/point_light.vert.spv
+Shaders: G:/Projects/Cpp-projects/ExoEngine/shaders/shader.frag.spv
+Shaders: G:/Projects/Cpp-projects/ExoEngine/shaders/shader.vert.spv
 Shaders: CMakeFiles/Shaders.dir/build.make
 .PHONY : Shaders
 
@@ -103,6 +103,6 @@ CMakeFiles/Shaders.dir/clean:
 .PHONY : CMakeFiles/Shaders.dir/clean
 
 CMakeFiles/Shaders.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" G:\Projects\Cpp-projects\ExoEngineVSCode G:\Projects\Cpp-projects\ExoEngineVSCode G:\Projects\Cpp-projects\ExoEngineVSCode\build G:\Projects\Cpp-projects\ExoEngineVSCode\build G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles\Shaders.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" G:\Projects\Cpp-projects\ExoEngine G:\Projects\Cpp-projects\ExoEngine G:\Projects\Cpp-projects\ExoEngine\build G:\Projects\Cpp-projects\ExoEngine\build G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles\Shaders.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Shaders.dir/depend
 

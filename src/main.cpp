@@ -1,9 +1,10 @@
-#define GLFW_INCLUDE_VULKAN // 
+#define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h> // GLFW is showing content on screen and includes the Vulkan header inside of itself
 
 #include "application.h"
 
 #include <iostream> // Included for reporting and propagating errors
+
 
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup") // Hide the console
 

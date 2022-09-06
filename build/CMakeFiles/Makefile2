@@ -53,10 +53,10 @@ RM = G:\DevTools\CMake\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = G:\Projects\Cpp-projects\ExoEngineVSCode
+CMAKE_SOURCE_DIR = G:\Projects\Cpp-projects\ExoEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = G:\Projects\Cpp-projects\ExoEngineVSCode\build
+CMAKE_BINARY_DIR = G:\Projects\Cpp-projects\ExoEngine\build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -85,14 +85,14 @@ clean: CMakeFiles/Shaders.dir/clean
 CMakeFiles/sqlite.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sqlite.dir\build.make CMakeFiles/sqlite.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sqlite.dir\build.make CMakeFiles/sqlite.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=33,34 "Built target sqlite"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=34,35 "Built target sqlite"
 .PHONY : CMakeFiles/sqlite.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/sqlite.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/sqlite.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles 0
 .PHONY : CMakeFiles/sqlite.dir/rule
 
 # Convenience name for target.
@@ -111,14 +111,14 @@ CMakeFiles/sqlite.dir/clean:
 CMakeFiles/ImGui.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImGui.dir\build.make CMakeFiles/ImGui.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImGui.dir\build.make CMakeFiles/ImGui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=21,22,23,24,25,26,27,28 "Built target ImGui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=22,23,24,25,26,27,28,29 "Built target ImGui"
 .PHONY : CMakeFiles/ImGui.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ImGui.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/ImGui.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles 0
 .PHONY : CMakeFiles/ImGui.dir/rule
 
 # Convenience name for target.
@@ -138,14 +138,14 @@ CMakeFiles/ExoEngine.dir/all: CMakeFiles/sqlite.dir/all
 CMakeFiles/ExoEngine.dir/all: CMakeFiles/ImGui.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExoEngine.dir\build.make CMakeFiles/ExoEngine.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExoEngine.dir\build.make CMakeFiles/ExoEngine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Built target ExoEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 "Built target ExoEngine"
 .PHONY : CMakeFiles/ExoEngine.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ExoEngine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles 30
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/ExoEngine.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles 0
 .PHONY : CMakeFiles/ExoEngine.dir/rule
 
 # Convenience name for target.
@@ -164,14 +164,14 @@ CMakeFiles/ExoEngine.dir/clean:
 CMakeFiles/Shaders.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Shaders.dir\build.make CMakeFiles/Shaders.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Shaders.dir\build.make CMakeFiles/Shaders.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=29,30,31,32 "Built target Shaders"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=30,31,32,33 "Built target Shaders"
 .PHONY : CMakeFiles/Shaders.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Shaders.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Shaders.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles 0
 .PHONY : CMakeFiles/Shaders.dir/rule
 
 # Convenience name for target.

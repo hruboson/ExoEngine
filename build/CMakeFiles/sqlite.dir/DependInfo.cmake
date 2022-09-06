@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "G:/Projects/Cpp-projects/ExoEngineVSCode/external/sqlite/sqlite3.c" "CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj" "gcc" "CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj.d"
+  "G:/Projects/Cpp-projects/ExoEngine/external/sqlite/sqlite3.c" "CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj" "gcc" "CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj.d"
   )
 
 # Targets to which this target links.

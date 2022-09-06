@@ -1,7 +1,7 @@
 CMakeFiles/ImGui.dir/external/dearimgui/imgui_draw.cpp.obj: \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imgui_draw.cpp \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imgui.h \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imconfig.h \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imgui_draw.cpp \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imgui.h \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imconfig.h \
  F:/MSYS/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/float.h \
  F:/MSYS/mingw64/include/float.h F:/MSYS/mingw64/include/crtdefs.h \
  F:/MSYS/mingw64/include/corecrt.h F:/MSYS/mingw64/include/_mingw.h \
@@ -28,7 +28,7 @@ CMakeFiles/ImGui.dir/external/dearimgui/imgui_draw.cpp.obj: \
  F:/MSYS/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/mm_malloc.h \
  F:/MSYS/mingw64/include/errno.h \
  F:/MSYS/mingw64/include/c++/12.2.0/bits/std_abs.h \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imgui_internal.h \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imgui_internal.h \
  F:/MSYS/mingw64/include/stdio.h \
  F:/MSYS/mingw64/include/corecrt_stdio_config.h \
  F:/MSYS/mingw64/include/_mingw_off_t.h \
@@ -154,6 +154,6 @@ CMakeFiles/ImGui.dir/external/dearimgui/imgui_draw.cpp.obj: \
  F:/MSYS/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/amxbf16intrin.h \
  F:/MSYS/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/prfchwintrin.h \
  F:/MSYS/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/keylockerintrin.h \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imstb_textedit.h \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imstb_rectpack.h \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imstb_truetype.h
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imstb_textedit.h \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imstb_rectpack.h \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imstb_truetype.h

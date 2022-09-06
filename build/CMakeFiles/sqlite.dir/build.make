@@ -52,10 +52,10 @@ RM = G:\DevTools\CMake\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = G:\Projects\Cpp-projects\ExoEngineVSCode
+CMAKE_SOURCE_DIR = G:\Projects\Cpp-projects\ExoEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = G:\Projects\Cpp-projects\ExoEngineVSCode\build
+CMAKE_BINARY_DIR = G:\Projects\Cpp-projects\ExoEngine\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/sqlite.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/sqlite.dir/flags.make
 
 CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj: CMakeFiles/sqlite.dir/flags.make
 CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj: CMakeFiles/sqlite.dir/includes_C.rsp
-CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj: G:/Projects/Cpp-projects/ExoEngineVSCode/external/sqlite/sqlite3.c
+CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj: G:/Projects/Cpp-projects/ExoEngine/external/sqlite/sqlite3.c
 CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj: CMakeFiles/sqlite.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj"
-	F:\MSYS\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj -MF CMakeFiles\sqlite.dir\external\sqlite\sqlite3.c.obj.d -o CMakeFiles\sqlite.dir\external\sqlite\sqlite3.c.obj -c G:\Projects\Cpp-projects\ExoEngineVSCode\external\sqlite\sqlite3.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj"
+	F:\MSYS\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj -MF CMakeFiles\sqlite.dir\external\sqlite\sqlite3.c.obj.d -o CMakeFiles\sqlite.dir\external\sqlite\sqlite3.c.obj -c G:\Projects\Cpp-projects\ExoEngine\external\sqlite\sqlite3.c
 
 CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.i"
-	F:\MSYS\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E G:\Projects\Cpp-projects\ExoEngineVSCode\external\sqlite\sqlite3.c > CMakeFiles\sqlite.dir\external\sqlite\sqlite3.c.i
+	F:\MSYS\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E G:\Projects\Cpp-projects\ExoEngine\external\sqlite\sqlite3.c > CMakeFiles\sqlite.dir\external\sqlite\sqlite3.c.i
 
 CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.s"
-	F:\MSYS\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S G:\Projects\Cpp-projects\ExoEngineVSCode\external\sqlite\sqlite3.c -o CMakeFiles\sqlite.dir\external\sqlite\sqlite3.c.s
+	F:\MSYS\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S G:\Projects\Cpp-projects\ExoEngine\external\sqlite\sqlite3.c -o CMakeFiles\sqlite.dir\external\sqlite\sqlite3.c.s
 
 # Object files for target sqlite
 sqlite_OBJECTS = \
@@ -93,7 +93,7 @@ sqlite_EXTERNAL_OBJECTS =
 libsqlite.a: CMakeFiles/sqlite.dir/external/sqlite/sqlite3.c.obj
 libsqlite.a: CMakeFiles/sqlite.dir/build.make
 libsqlite.a: CMakeFiles/sqlite.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libsqlite.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libsqlite.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\sqlite.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\sqlite.dir\link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/sqlite.dir/clean:
 .PHONY : CMakeFiles/sqlite.dir/clean
 
 CMakeFiles/sqlite.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" G:\Projects\Cpp-projects\ExoEngineVSCode G:\Projects\Cpp-projects\ExoEngineVSCode G:\Projects\Cpp-projects\ExoEngineVSCode\build G:\Projects\Cpp-projects\ExoEngineVSCode\build G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles\sqlite.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" G:\Projects\Cpp-projects\ExoEngine G:\Projects\Cpp-projects\ExoEngine G:\Projects\Cpp-projects\ExoEngine\build G:\Projects\Cpp-projects\ExoEngine\build G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles\sqlite.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sqlite.dir/depend
 

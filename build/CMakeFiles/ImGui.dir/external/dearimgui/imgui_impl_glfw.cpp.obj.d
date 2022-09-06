@@ -1,7 +1,7 @@
 CMakeFiles/ImGui.dir/external/dearimgui/imgui_impl_glfw.cpp.obj: \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imgui_impl_glfw.cpp \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imgui.h \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imconfig.h \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imgui_impl_glfw.cpp \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imgui.h \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imconfig.h \
  F:/MSYS/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/float.h \
  F:/MSYS/mingw64/include/float.h F:/MSYS/mingw64/include/crtdefs.h \
  F:/MSYS/mingw64/include/corecrt.h F:/MSYS/mingw64/include/_mingw.h \
@@ -28,7 +28,7 @@ CMakeFiles/ImGui.dir/external/dearimgui/imgui_impl_glfw.cpp.obj: \
  F:/MSYS/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/mm_malloc.h \
  F:/MSYS/mingw64/include/errno.h \
  F:/MSYS/mingw64/include/c++/12.2.0/bits/std_abs.h \
- G:\Projects\Cpp-projects\ExoEngineVSCode\external\dearimgui\imgui_impl_glfw.h \
+ G:\Projects\Cpp-projects\ExoEngine\external\dearimgui\imgui_impl_glfw.h \
  F:/MSYS/mingw64/include/GLFW/glfw3.h \
  F:/MSYS/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/stdint.h \
  F:/MSYS/mingw64/include/stdint.h F:/MSYS/mingw64/include/GL/gl.h \

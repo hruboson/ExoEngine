@@ -41,18 +41,19 @@ std::vector<char> ExoPipeline::readFile(const std::string& filepath) {
     try {
         if (!file.is_open()) {
             throw std::runtime_error("failed to open file: " + enginePath);
+        } else {
+            size_t fileSize = (size_t)file.tellg();
+            std::vector<char> buffer(fileSize);  // buffer - temporary save data
+
+            file.seekg(0);
+            file.read(buffer.data(), fileSize);
+            file.close();  // ALWAYS CLOSE FILE
+
+            return buffer;
         }
-
-        size_t fileSize = (size_t)file.tellg();
-        std::vector<char> buffer(fileSize);  // buffer - temporary save data
-
-        file.seekg(0);
-        file.read(buffer.data(), fileSize);
-        file.close();  // ALWAYS CLOSE FILE
-
-        return buffer;
     } catch (std::runtime_error e) {
         std::cout << e.what() << "\n";
+        return std::vector<char>();
     }
 }
 

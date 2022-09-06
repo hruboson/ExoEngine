@@ -56,10 +56,10 @@ RM = G:\DevTools\CMake\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = G:\Projects\Cpp-projects\ExoEngineVSCode
+CMAKE_SOURCE_DIR = G:\Projects\Cpp-projects\ExoEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = G:\Projects\Cpp-projects\ExoEngineVSCode\build
+CMAKE_BINARY_DIR = G:\Projects\Cpp-projects\ExoEngine\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles G:\Projects\Cpp-projects\ExoEngineVSCode\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles G:\Projects\Cpp-projects\ExoEngine\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngineVSCode\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\Projects\Cpp-projects\ExoEngine\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -166,6 +166,14 @@ Shaders: cmake_check_build_system
 Shaders/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Shaders.dir\build.make CMakeFiles/Shaders.dir/build
 .PHONY : Shaders/fast
+
+appicon.obj: appicon.rc.obj
+.PHONY : appicon.obj
+
+# target to build an object file
+appicon.rc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExoEngine.dir\build.make CMakeFiles/ExoEngine.dir/appicon.rc.obj
+.PHONY : appicon.rc.obj
 
 external/dearimgui/imgui.obj: external/dearimgui/imgui.cpp.obj
 .PHONY : external/dearimgui/imgui.obj
@@ -827,6 +835,7 @@ help:
 	@echo ... ExoEngine
 	@echo ... ImGui
 	@echo ... sqlite
+	@echo ... appicon.obj
 	@echo ... external/dearimgui/imgui.obj
 	@echo ... external/dearimgui/imgui.i
 	@echo ... external/dearimgui/imgui.s
