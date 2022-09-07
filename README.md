@@ -24,8 +24,8 @@ To build the engine you need following (for Windows):
     - X:\CMake\bin
     - X:\Vulkan\1.3.224.1\Bin
 
-Set variables in ` `.env.cmake` ` to match your system
-Run ` `.\build.bat` ` command from top-most folder
+Set variables in `.env.cmake` to match your system
+Run `.\build.bat` command from top-most folder
 **You might need to remove the existing build folder before running build for the first time**
 
 I will be testing this build tutorial more, but I hope I haven't forgotten anything. If you have problem, contact me or create an Issue.
