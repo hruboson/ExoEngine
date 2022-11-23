@@ -9,7 +9,7 @@
 To build the engine you need following (for Windows):
 
 * MinGW64
-    *It is also posible to use different compiler (MSVC for example), but you would have to change CMakeLists.txt*
+    (*It is also posible to use different compiler (MSVC for example), but you would have to change CMakeLists.txt*)
 
     - I'm using MSYS:
         - Download [MSYS](https://www.msys2.org)
@@ -36,7 +36,7 @@ This engine was built for my own study purposes. I'm still developing it when I 
 
 # Documentation
 
-I made quite nice documentation/paper for this project. The problem is it was for my school so it's in czech language, so I'm not gonna post it here.
+I made quite nice documentation/paper for this project. The problem is it was for my high school so it's in czech language, so I'm not gonna post it here.
 But thorough english documentation is planned, so stay tuned.
 
 # FYI
